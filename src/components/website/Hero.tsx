@@ -1,8 +1,22 @@
 import { Button } from "../ui/button";
-import { ArrowRight, MessageSquare, Users, Sparkles } from "lucide-react";
+import { ArrowRight, MessageSquare, Users, Sparkles, Play, Pause } from "lucide-react";
 import demoVideo from "../../assets/demo.mp4";
+import { useState, useRef } from "react";
 
 export function Hero() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-purple-950">
       {/* Dynamic Animated Background */}
@@ -114,13 +128,31 @@ export function Hero() {
                 }}></div>
                 
                 <video 
+                  ref={videoRef}
                   autoPlay
                   loop
                   muted
                   playsInline
                   className="w-full h-full object-cover relative z-10 mix-blend-screen opacity-90"
                   src={demoVideo}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
                 />
+                
+                {/* Play/Pause Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center z-30 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <button
+                    onClick={togglePlay}
+                    className="w-16 h-16 rounded-full bg-blue-600/80 hover:bg-blue-600 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
+                  >
+                    {isPlaying ? (
+                      <Pause className="w-8 h-8 text-white" />
+                    ) : (
+                      <Play className="w-8 h-8 text-white ml-1" />
+                    )}
+                  </button>
+                </div>
                 
                 {/* Gradient overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/60 via-transparent to-purple-950/60 pointer-events-none z-20"></div>

@@ -70,6 +70,7 @@ export function VideoDemo({
               onPause={() => setIsPlaying(false)}
               onEnded={() => setIsPlaying(false)}
               playsInline
+              controls
             >
               <source src={videoUrl} type="video/mp4" />
               <source src={videoUrl.replace('.mp4', '.webm')} type="video/webm" />

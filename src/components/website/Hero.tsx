@@ -60,7 +60,7 @@ export function Hero() {
             </h1>
 
             <p className="text-gray-300 text-xl animate-fade-in-up opacity-0 animation-delay-200">
-              Empowering Student Success Through Intelligent Support
+              Your AI Assistant For Smarter Learning
             </p>
 
             <p className="text-gray-400 text-lg animate-fade-in-up opacity-0 animation-delay-300">

@@ -45,24 +45,6 @@ export function Contact() {
                   </div>
                 </div>
 
-                {/* Demo Link */}
-                <div className="flex items-start gap-4 group transition-transform duration-300 hover:translate-x-2">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    <ExternalLink className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-white mb-2 font-semibold">Try the Demo</h3>
-                    <Button 
-                      variant="outline" 
-                      className="border-green-500/30 text-green-300 hover:bg-green-500/10 transition-all duration-300 hover:scale-105"
-                      onClick={() => window.open('https://poe.com/alu_sc', '_blank')}
-                    >
-                      Launch Prototype
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
-                  </div>
-                </div>
-
                 {/* Social Links */}
                 <div className="pt-6 border-t border-gray-800">
                   <h3 className="text-white mb-4 font-semibold">Connect With Us</h3>

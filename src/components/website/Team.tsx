@@ -1,5 +1,8 @@
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import andrewImage from "figma:asset/2e6926818e8e7e5cc64c27b5330dd94be9ac235a.png";
+import aluCampus from "../../assets/African-Leadership-University-Rwanda.jpg";
+import marvinImage from "../../assets/02.-marvin.jpg";
+import dieudonneImage from "../../assets/IMG_20230418_145857_633-removebg-preview (1).png";
 
 const teamMembers = [
   {
@@ -10,12 +13,12 @@ const teamMembers = [
   {
     name: "Dieudonne Ngum",
     role: "Technical Development Lead",
-    image: "https://images.unsplash.com/photo-1668752600261-e56e7f3780b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBhZnJpY2FuJTIwbWFuJTIwaGVhZHNob3R8ZW58MXx8fHwxNzYyNTI2Mjg3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    image: dieudonneImage
   },
   {
     name: "Marvin Mayonga Ogore",
     role: "Technical Supervisory Coach",
-    image: "https://images.unsplash.com/photo-1598201116904-9613ee826e9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwcHJvZmVzc2lvbmFsJTIwcG9ydHJhaXQlMjBtYWxlfGVufDF8fHx8MTc2MjUyNjI4OHww&ixlib=rb-4.1.0&q=80&w=1080"
+    image: marvinImage
   },
   {
     name: "Henry Chukwudi John",
@@ -108,7 +111,7 @@ export function Team() {
         {/* Team Image */}
         <div className="mt-12 rounded-2xl overflow-hidden border border-blue-500/20 shadow-2xl">
           <img 
-            src="https://images.unsplash.com/photo-1583100524290-599c9ac2bf21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwY2FtcHVzJTIwYWZyaWNhfGVufDF8fHx8MTc2MjUyMjg4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+            src={aluCampus}
             alt="African Leadership University Campus"
             className="w-full h-80 object-cover"
           />

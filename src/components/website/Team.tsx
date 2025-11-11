@@ -3,6 +3,7 @@ import andrewImage from "figma:asset/2e6926818e8e7e5cc64c27b5330dd94be9ac235a.pn
 import aluCampus from "../../assets/African-Leadership-University-Rwanda.jpg";
 import marvinImage from "../../assets/02.-marvin.jpg";
 import dieudonneImage from "../../assets/IMG_20230418_145857_633-removebg-preview (1).png";
+import henryImage from "../../assets/WhatsApp Image 2025-11-11 at 09.25.25.jpeg";
 
 const teamMembers = [
   {
@@ -23,7 +24,7 @@ const teamMembers = [
   {
     name: "Henry Chukwudi John",
     role: "Strategic Stakeholder Engagement Lead",
-    image: "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MjQ5OTMyMnww&ixlib=rb-4.1.0&q=80&w=1080"
+    image: henryImage
   }
 ];
 

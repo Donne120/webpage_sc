@@ -34,7 +34,6 @@ export default function App() {
         <VideoDemo 
           videoUrl={demoVideo}
           title="See Student Companion in Action"
-          description="A 25-second walkthrough of how our AI chatbot transforms student support"
         />
         <Mission />
         <Prototype />

@@ -1,30 +1,33 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
 import { Avatar } from "../ui/avatar";
+import deborahImage from "../../assets/StaticShot_11-11-2025_10-36-15.png";
+import conzanaImage from "../../assets/StaticShot_11-11-2025_10-39-02.png";
+import soniaImage from "../../assets/StaticShot_11-11-2025_10-40-04.png";
 
 const testimonials = [
   {
-    name: "Amara Okonkwo",
-    role: "Computer Science Student",
+    name: "Deborah Isimbi",
+    role: "Student",
     university: "ALU",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400",
-    quote: "Student Companion has been a game-changer! I get instant answers to my questions about courses, deadlines, and campus resources. It's like having a personal advisor available 24/7.",
+    image: deborahImage,
+    quote: "The ALU AI chatbot is very helpful and has helped me on countless occasions when I needed clarifications about academics at ALU",
     rating: 5
   },
   {
-    name: "Kwame Mensah",
-    role: "Business Administration Student",
+    name: "Conzana Mangati",
+    role: "Student",
     university: "ALU",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400",
-    quote: "The chatbot helped me navigate the scholarship application process seamlessly. I love how it remembers our previous conversations and provides personalized recommendations.",
+    image: conzanaImage,
+    quote: "Very useful and helpful, and saves me time. It's a very recommendable tool.",
     rating: 5
   },
   {
-    name: "Dr. Sarah Kimani",
-    role: "Director of Student Services",
-    university: "Partner University",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400",
-    quote: "Since implementing Student Companion, we've seen a 60% reduction in repetitive inquiries to our student services office. Our staff can now focus on complex cases that truly need human attention.",
+    name: "Sonia Teta",
+    role: "Student",
+    university: "ALU",
+    image: soniaImage,
+    quote: "The chatbot saved me time by curating all my mission curator information in one response, originally I would have gone through a long process of asking my colleagues and waiting for a response.",
     rating: 5
   },
   {

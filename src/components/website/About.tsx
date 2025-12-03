@@ -1,4 +1,4 @@
-import chatbotImage from "figma:asset/e0d117d7c62ad45303b9bac8805cf007143cbf0e.png";
+import chatbotImage from "../../assets/e0d117d7c62ad45303b9bac8805cf007143cbf0e.png";
 
 export function About() {
   return (

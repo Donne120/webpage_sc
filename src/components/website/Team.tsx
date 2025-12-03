@@ -4,6 +4,7 @@ import aluCampus from "../../assets/African-Leadership-University-Rwanda.jpg";
 import marvinImage from "../../assets/02.-marvin.jpg";
 import dieudonneImage from "../../assets/IMG_20230418_145857_633-removebg-preview (1).png";
 import henryImage from "../../assets/WhatsApp Image 2025-11-11 at 09.25.25.jpeg";
+import oziomaImage from "../../assets/Bropart.webp";
 
 const teamMembers = [
   {
@@ -25,6 +26,11 @@ const teamMembers = [
     name: "Henry Chukwudi John",
     role: "Strategic Stakeholder Engagement Lead",
     image: henryImage
+  },
+  {
+    name: "Ogbonna Ozioma Ikenna",
+    role: "Customer Success and Implementation Lead",
+    image: oziomaImage
   }
 ];
 
@@ -85,6 +91,11 @@ export function Team() {
                 name: "Henry Chukwudi John",
                 affiliation: "ALU – Library Services Lead",
                 responsibilities: "Manages institutional relations and engagement strategy."
+              },
+              {
+                name: "Ogbonna Ozioma Ikenna",
+                affiliation: "ALU – Customer Success",
+                responsibilities: "Leads customer success initiatives and implementation strategy."
               }
             ];
 

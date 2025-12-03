@@ -112,7 +112,7 @@ export function Prototype() {
 
               <Button 
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white"
-                onClick={() => window.open('https://alu-student-companion.onrender.com/', '_blank')}
+                onClick={() => window.open('https://student-companion-cyan.vercel.app/login', '_blank')}
               >
                 Access MVP Platform
                 <ExternalLink className="w-4 h-4 ml-2" />

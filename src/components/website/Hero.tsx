@@ -35,10 +35,6 @@ export function Hero() {
         <div className="absolute bottom-40 left-1/4 w-2 h-2 bg-cyan-400/60 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
         <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-pink-400/60 rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
         
-        {/* Floating Elements */}
-        <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-blue-500/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-2/3 right-1/4 w-24 h-24 border border-purple-500/10 rounded-full animate-float" style={{ animationDelay: '3s' }}></div>
-        
         {/* Scanline Effect */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent animate-pulse" style={{ animationDuration: '3s' }}></div>
       </div>

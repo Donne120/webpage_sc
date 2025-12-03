@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "figma:asset/36b051d60104e3285554b24e0c1bcda2866bc06d.png";
+import logo from "../../assets/Screenshot_20251114_221540_Gallery.jpg";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,14 +43,19 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src={logo} 
-              alt="ALU Student Companion" 
-              className="h-10 w-auto"
-            />
+          <div className="flex items-center gap-3">
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-400/50 shadow-lg shadow-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/40">
+              <img 
+                src={logo} 
+                alt="Student Companion Chatbot" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="hidden sm:block text-white font-semibold text-lg">
+              Student Companion
+            </span>
           </div>
 
           {/* Desktop Navigation */}

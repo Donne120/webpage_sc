@@ -10,8 +10,6 @@ import {
   Users,
   ShieldCheck,
   PlayCircle,
-  Plus,
-  Minus,
   Mail,
   MapPin,
   Linkedin,
@@ -108,7 +106,6 @@ function Nav() {
     ["About", "#about"],
     ["Features", "#features"],
     ["Testimonials", "#testimonials"],
-    ["FAQ", "#faq"],
     ["Team", "#team"],
   ];
 
@@ -1127,160 +1124,6 @@ function Testimonials() {
   );
 }
 
-/* ───────────────── FAQ ───────────────── */
-
-function FAQ() {
-  const items = [
-    [
-      "What makes Student Companion different from other chatbots?",
-      "We're built specifically for student life: academic, administrative and personal support — securely integrated with each institution's systems for context-aware, reliable answers.",
-    ],
-    [
-      "How does the chatbot handle data privacy and security?",
-      "Strict institutional standards, Google SSO, verified email domains, and data hosted within the institution's own infrastructure.",
-    ],
-    [
-      "Can the chatbot integrate with our existing university systems?",
-      "Yes — the MVP platform is designed for secure data integration with student information systems, LMSs and internal directories.",
-    ],
-    [
-      "What languages does the chatbot support?",
-      "English at launch, with multi-language support on the roadmap, prioritized by institutional needs.",
-    ],
-    [
-      "How quickly can we implement Student Companion at our university?",
-      "Typical pilot rollouts take a few weeks; full deployments depend on your data sources and approval workflow.",
-    ],
-    [
-      "What support do universities receive after implementation?",
-      "Dedicated onboarding, training for staff, and a customer success lead embedded with your team.",
-    ],
-    [
-      "Can students access the chatbot outside of campus?",
-      "Yes — anytime, anywhere, on any device with a browser.",
-    ],
-    [
-      "How does the AI learn and improve over time?",
-      "Through curated institutional knowledge updates and aggregated, privacy-preserving usage signals.",
-    ],
-    [
-      "What happens when the chatbot can't answer a question?",
-      "It seamlessly hands off to the right human staff member, with full context preserved.",
-    ],
-    [
-      "Is there a cost for students to use the chatbot?",
-      "No — Student Companion is licensed to the institution, free for every student to use.",
-    ],
-  ];
-
-  const [openSet, setOpenSet] = useState<Set<number>>(() => new Set());
-  const toggle = (i: number) =>
-    setOpenSet((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
-
-  return (
-    <section id="faq" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-0 select-none font-display text-[14rem] leading-none opacity-[0.06]"
-        style={{ color: "var(--terracotta)" }}
-      >
-        06
-      </div>
-      <div className="grid grid-cols-12 gap-10">
-        <div className="col-span-12 lg:col-span-4">
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-            <SectionTag>Chapter 06 · Questions</SectionTag>
-          </div>
-          <h2 className="mt-4 text-[clamp(2.25rem,3.5vw,3.5rem)] leading-[1.02]">
-            Frequently asked{" "}
-            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>questions.</span>
-          </h2>
-          <div className="sticky-note mt-8 inline-block max-w-[240px] -rotate-[3deg]">
-            can't find yours?<br />we read every email.
-            <div className="hand mt-1 text-xs opacity-60">— the team</div>
-          </div>
-          <a
-            href="#contact"
-            className="mt-8 inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline"
-          >
-            Contact our team <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-        <div className="col-span-12 lg:col-span-8">
-          <ul className="border-y-2 border-foreground/80">
-            {items.map(([q, a], i) => {
-              const isOpen = openSet.has(i);
-              return (
-                <li key={q} className={`border-b border-foreground/15 ${isOpen ? "" : ""}`}>
-                  <button
-                    onClick={() => toggle(i)}
-                    aria-expanded={isOpen}
-                    className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors"
-                  >
-                    <span className="flex items-baseline gap-4">
-                      <span
-                        className="font-display text-sm"
-                        style={{ color: "var(--terracotta)" }}
-                      >
-                        Q.{String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-display text-xl leading-snug md:text-2xl">
-                        {q}
-                      </span>
-                    </span>
-                    <span
-                      className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border transition-transform group-hover:rotate-90"
-                      style={
-                        isOpen
-                          ? { backgroundColor: "var(--terracotta)", color: "var(--paper)", borderColor: "var(--terracotta)" }
-                          : undefined
-                      }
-                    >
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    </span>
-                  </button>
-                  <div
-                    className="grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{
-                      gridTemplateRows: isOpen ? "1fr" : "0fr",
-                      opacity: isOpen ? 1 : 0,
-                    }}
-                  >
-                    <div className="min-h-0">
-                      <div
-                        className="flex gap-4 pb-6 pl-14 pr-12 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                        style={{
-                          transform: isOpen ? "translateY(0)" : "translateY(-8px)",
-                        }}
-                      >
-                        <span
-                          className="font-display text-sm flex-shrink-0"
-                          style={{ color: "var(--sage)" }}
-                        >
-                          A.
-                        </span>
-                        <p className="text-base leading-relaxed text-ink-soft">
-                          {a}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ───────────────── CTA banner ───────────────── */
 
 function CTABanner() {
@@ -1691,7 +1534,6 @@ function Landing() {
       <Features />
       <Value />
       <Testimonials />
-      <FAQ />
       <CTABanner />
       <Team />
       <Contact />

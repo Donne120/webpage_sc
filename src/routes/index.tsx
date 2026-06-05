@@ -155,7 +155,7 @@ function Nav() {
           >
             Contact
           </a>
-          <PrimaryButton href="#demo">Try Demo</PrimaryButton>
+          <PrimaryButton href="#demo">Launch Companion</PrimaryButton>
         </div>
       </div>
     </header>
@@ -262,7 +262,7 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <PrimaryButton href="#demo">Try the prototype</PrimaryButton>
+              <PrimaryButton href="#demo">Launch Companion</PrimaryButton>
               <GhostButton href="#about">See how it works</GhostButton>
             </div>
 
@@ -518,7 +518,7 @@ function Demo() {
             with sources, warmth, and zero queue time.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <PrimaryButton href="#">Try it live</PrimaryButton>
+            <PrimaryButton href="#">Launch Companion</PrimaryButton>
             <GhostButton href="#contact">Schedule full demo</GhostButton>
           </div>
 
@@ -687,11 +687,11 @@ function AlreadyBuilt() {
     {
       kicker: "Volume I",
       stamp: "Hosted on Poe",
-      title: "Try the live chatbot today.",
+      title: "Meet the live chatbot today.",
       body:
         "A live version of the chatbot is on Poe, where anyone can interact with core features.",
       features: ["Student Q&As", "Academic guidance", "Student-life support", "Admission info", "Career development"],
-      cta: "Try Poe prototype",
+      cta: "Open on Poe",
       tilt: "-rotate-[1.5deg]",
       bg: "var(--sand)",
     },
@@ -1326,7 +1326,7 @@ function CTABanner() {
               className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
               style={{ backgroundColor: "var(--paper)", color: "var(--ink)" }}
             >
-              Try the live demo <ArrowUpRight className="h-4 w-4" />
+              Launch Companion <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
               href="#contact"

@@ -927,54 +927,77 @@ function Features() {
 
 function Value() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
       <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>04 — Value</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
-          Value for institutions{" "}
-          <span className="serif-italic">& students</span> alike.
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 04 · Value</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
+          Good for{" "}
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>institutions.</span>
+          <br />
+          Great for{" "}
+          <span className="serif-italic" style={{ color: "var(--sage)" }}>students.</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
-        <div className="bento-card bento-card-hover col-span-12 lg:col-span-6">
-          <span className="section-label">For institutions</span>
-          <h3 className="mt-4 font-display text-3xl">
+      {/* Two-column spread like an open book */}
+      <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-0">
+        {/* center spine */}
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 lg:block" style={{ backgroundColor: "var(--border)" }} />
+
+        <div className="relative lg:pr-12">
+          <div className="flex items-baseline justify-between border-b border-border pb-3">
+            <span className="section-label">For institutions</span>
+            <span className="font-display text-3xl" style={{ color: "var(--terracotta)" }}>I.</span>
+          </div>
+          <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
             Transform how you support learners.
           </h3>
-          <ul className="mt-6 space-y-4 text-base text-ink-soft">
+          <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
               "Automates repetitive student inquiries, freeing staff for higher-value work.",
               "Generates data-driven insights on student engagement and service gaps.",
               "Strengthens reputation as a digitally advanced, student-centered institution.",
-            ].map((t) => (
+            ].map((t, i) => (
               <li key={t} className="flex gap-4">
-                <span className="mt-2 h-1 w-4 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--clay)" }} />
+                <span className="font-display text-2xl leading-none" style={{ color: "var(--terracotta)" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span>{t}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
-        <div
-          className="bento-card bento-card-hover col-span-12 lg:col-span-6"
-          style={{ backgroundColor: "var(--sand)" }}
-        >
-          <span className="section-label">For students</span>
-          <h3 className="mt-4 font-display text-3xl">
-            Empowering academic success.
+
+        <div className="relative lg:pl-12">
+          <div className="flex items-baseline justify-between border-b border-border pb-3">
+            <span className="section-label">For students</span>
+            <span className="font-display text-3xl" style={{ color: "var(--sage)" }}>II.</span>
+          </div>
+          <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
+            Empowering academic <span className="serif-italic">success.</span>
           </h3>
-          <ul className="mt-6 space-y-4 text-base text-ink-soft">
+          <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
               "24/7 access to academic and administrative support.",
-              "Instant answers about courses, policies, and deadlines.",
+              "Instant answers about courses, policies and deadlines.",
               "Personalized learning guidance and career insights.",
-            ].map((t) => (
+            ].map((t, i) => (
               <li key={t} className="flex gap-4">
-                <span className="mt-2 h-1 w-4 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--clay)" }} />
+                <span className="font-display text-2xl leading-none" style={{ color: "var(--sage)" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span>{t}</span>
               </li>
             ))}
-          </ul>
+          </ol>
+
+          <div className="sticky-note mt-10 inline-block max-w-[220px] -rotate-[3deg]">
+            free for every student.<br />always.
+            <div className="hand mt-1 text-xs opacity-60">↗ no catch</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1005,39 +1028,67 @@ function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>05 — In their words</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
-          What students <span className="serif-italic">actually</span> say.
+    <section id="testimonials" className="relative mx-auto max-w-7xl px-6 pb-32 lg:px-10 lg:pb-40">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 05 · In their words</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
+          What students{" "}
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            actually
+          </span>{" "}
+          say.
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {quotes.map((q, i) => (
-          <figure
-            key={q.name}
-            className={`bento-card bento-card-hover flex flex-col justify-between ${
-              i === 1 ? "md:translate-y-8" : ""
-            }`}
-          >
-            <span className="font-display text-5xl leading-none text-clay">“</span>
-            <blockquote className="mt-4 font-display text-xl leading-snug text-foreground">
-              {q.quote}
-            </blockquote>
-            <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-6">
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full font-display text-lg"
-                style={{ backgroundColor: "var(--sand)", color: "var(--clay)" }}
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
+        {quotes.map((q, i) => {
+          const tilt = [-2.5, 1.5, -1.5][i];
+          const bg = ["var(--card)", "var(--butter)", "var(--card)"][i];
+          return (
+            <figure
+              key={q.name}
+              className={`relative ${i === 1 ? "md:translate-y-10" : ""}`}
+              style={{ transform: `rotate(${tilt}deg)` }}
+            >
+              <span className="tape -top-3 left-10 -rotate-6" />
+              <div
+                className="flex h-full flex-col justify-between border border-border p-6 shadow-[0_30px_60px_-30px_oklch(0.3_0.05_60/0.4)]"
+                style={{ backgroundColor: bg }}
               >
-                {q.name[0]}
-              </span>
-              <div>
-                <div className="text-sm font-medium text-foreground">{q.name}</div>
-                <div className="text-xs text-muted-foreground">{q.role}</div>
+                <div
+                  className="font-display text-7xl leading-none"
+                  style={{ color: "var(--terracotta)" }}
+                >
+                  &ldquo;
+                </div>
+                <blockquote className="mt-2 font-display text-xl leading-snug text-foreground">
+                  {q.quote}
+                </blockquote>
+                <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-4">
+                  <span
+                    className="flex h-10 w-10 items-center justify-center rounded-full font-display text-lg"
+                    style={{
+                      backgroundColor: ["var(--terracotta)", "var(--sage)", "var(--sand-deep)"][i],
+                      color: i === 1 ? "var(--ink)" : "var(--paper)",
+                    }}
+                  >
+                    {q.name[0]}
+                  </span>
+                  <div>
+                    <div className="hand text-lg" style={{ fontFamily: "var(--font-hand)" }}>
+                      {q.name}
+                    </div>
+                    <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                      {q.role}
+                    </div>
+                  </div>
+                </figcaption>
               </div>
-            </figcaption>
-          </figure>
-        ))}
+            </figure>
+          );
+        })}
       </div>
     </section>
   );

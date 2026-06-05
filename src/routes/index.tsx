@@ -1143,41 +1143,61 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+    <section id="faq" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 select-none font-display text-[14rem] leading-none opacity-[0.06]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        06
+      </div>
       <div className="grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-4">
-          <SectionTag>06 — Questions</SectionTag>
-          <h2 className="mt-4 text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.05]">
-            Frequently asked <span className="serif-italic">questions.</span>
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+            <SectionTag>Chapter 06 · Questions</SectionTag>
+          </div>
+          <h2 className="mt-4 text-[clamp(2.25rem,3.5vw,3.5rem)] leading-[1.02]">
+            Frequently asked{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>questions.</span>
           </h2>
-          <p className="mt-6 text-ink-soft">
-            Still have questions?
-          </p>
+          <div className="sticky-note mt-8 inline-block max-w-[240px] -rotate-[3deg]">
+            can't find yours?<br />we read every email.
+            <div className="hand mt-1 text-xs opacity-60">— the team</div>
+          </div>
           <a
             href="#contact"
-            className="mt-2 inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline"
+            className="mt-8 inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline"
           >
             Contact our team <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
         <div className="col-span-12 lg:col-span-8">
-          <ul className="divide-y divide-border border-y border-border">
+          <ul className="border-y-2 border-foreground/80">
             {items.map(([q, a], i) => {
               const isOpen = open === i;
               return (
-                <li key={q}>
+                <li key={q} className={`border-b border-foreground/15 ${isOpen ? "" : ""}`}>
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-clay"
+                    className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors"
                   >
-                    <span className="font-display text-xl leading-snug md:text-2xl">
-                      {q}
+                    <span className="flex items-baseline gap-4">
+                      <span
+                        className="font-display text-sm"
+                        style={{ color: "var(--terracotta)" }}
+                      >
+                        Q.{String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-display text-xl leading-snug md:text-2xl">
+                        {q}
+                      </span>
                     </span>
                     <span
-                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border"
+                      className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border transition-transform group-hover:rotate-90"
                       style={
                         isOpen
-                          ? { backgroundColor: "var(--ink)", color: "var(--paper)", borderColor: "var(--ink)" }
+                          ? { backgroundColor: "var(--terracotta)", color: "var(--paper)", borderColor: "var(--terracotta)" }
                           : undefined
                       }
                     >
@@ -1189,9 +1209,17 @@ function FAQ() {
                     style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                   >
                     <div className="min-h-0">
-                      <p className="pb-6 pr-12 text-base leading-relaxed text-ink-soft">
-                        {a}
-                      </p>
+                      <div className="flex gap-4 pb-6 pl-14 pr-12">
+                        <span
+                          className="font-display text-sm flex-shrink-0"
+                          style={{ color: "var(--sage)" }}
+                        >
+                          A.
+                        </span>
+                        <p className="text-base leading-relaxed text-ink-soft">
+                          {a}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -1210,23 +1238,32 @@ function CTABanner() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
       <div
-        className="relative overflow-hidden rounded-3xl px-8 py-20 text-center md:px-16 md:py-28"
+        className="relative overflow-hidden px-8 py-20 text-center md:px-16 md:py-28"
         style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
       >
         <img
           src={campus}
           alt=""
           aria-hidden
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          className="absolute inset-0 h-full w-full object-cover opacity-20"
           loading="lazy"
         />
+        {/* postmark */}
+        <div
+          className="absolute right-6 top-6 hidden h-28 w-28 -rotate-[14deg] flex-col items-center justify-center rounded-full border-2 text-center font-display text-[10px] uppercase tracking-[0.18em] md:flex"
+          style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+        >
+          <span>Special</span>
+          <span>Edition</span>
+          <span className="mt-1">2026</span>
+        </div>
         <div className="relative">
-          <span className="section-label" style={{ color: "var(--sand-deep)" }}>
-            Ready to transform your campus?
+          <span className="section-label" style={{ color: "var(--terracotta)" }}>
+            ✦ Ready to transform your campus?
           </span>
-          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.25rem,5vw,5rem)] leading-[1.05]">
+          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02]">
             Join the future of{" "}
-            <span className="italic" style={{ color: "var(--sand-deep)" }}>
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
               student support.
             </span>
           </h2>
@@ -1249,6 +1286,12 @@ function CTABanner() {
               Book a meeting <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
+          <p
+            className="hand mx-auto mt-8 max-w-md text-xl opacity-80"
+            style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}
+          >
+            p.s. we reply within 24 hours. always.
+          </p>
         </div>
       </div>
     </section>

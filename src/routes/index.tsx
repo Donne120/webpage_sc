@@ -1140,7 +1140,14 @@ function FAQ() {
     ],
   ];
 
-  const [open, setOpen] = useState<number | null>(0);
+  const [openSet, setOpenSet] = useState<Set<number>>(() => new Set());
+  const toggle = (i: number) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
 
   return (
     <section id="faq" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
@@ -1175,11 +1182,12 @@ function FAQ() {
         <div className="col-span-12 lg:col-span-8">
           <ul className="border-y-2 border-foreground/80">
             {items.map(([q, a], i) => {
-              const isOpen = open === i;
+              const isOpen = openSet.has(i);
               return (
                 <li key={q} className={`border-b border-foreground/15 ${isOpen ? "" : ""}`}>
                   <button
-                    onClick={() => setOpen(isOpen ? null : i)}
+                    onClick={() => toggle(i)}
+                    aria-expanded={isOpen}
                     className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors"
                   >
                     <span className="flex items-baseline gap-4">

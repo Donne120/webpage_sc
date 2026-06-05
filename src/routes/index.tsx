@@ -22,6 +22,8 @@ import heroStudents from "@/assets/hero-students.jpg";
 import studentPortrait from "@/assets/student-portrait.jpg";
 import deskStill from "@/assets/desk-still-life.jpg";
 import campus from "@/assets/campus.jpg";
+import studentCover from "@/assets/student-cover.jpg";
+import notebookFlatlay from "@/assets/notebook-flatlay.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -117,7 +119,7 @@ function Nav() {
         <a href="#top" className="flex items-center gap-2">
           <span
             className="flex h-9 w-9 items-center justify-center rounded-full text-paper"
-            style={{ backgroundColor: "var(--ink)" }}
+            style={{ backgroundColor: "var(--terracotta)" }}
           >
             <Sparkles className="h-4 w-4" />
           </span>
@@ -158,94 +160,235 @@ function Nav() {
 /* ───────────────── Hero ───────────────── */
 
 function Hero() {
+  const rotating = ["companion.", "study buddy.", "campus guide.", "late-night hero."];
   return (
-    <section id="top" className="relative overflow-hidden pt-32 lg:pt-40">
-      {/* soft gradient wash */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[120%]"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 50% 0%, oklch(0.93 0.04 75 / 0.7), transparent 70%)",
-        }}
-      />
+    <section
+      id="top"
+      className="relative overflow-hidden pt-28 lg:pt-36"
+      style={{
+        backgroundImage:
+          "radial-gradient(70% 55% at 50% 0%, oklch(0.92 0.05 60 / 0.55), transparent 70%)",
+      }}
+    >
+      {/* Issue / date masthead */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-col items-center text-center fade-up">
-          <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs tracking-wide text-ink-soft">
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ backgroundColor: "var(--clay)" }}
-            />
-            AI student support · built for every campus
-          </span>
-
-          <h1 className="max-w-5xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-foreground">
-            Your student companion,{" "}
-            <span className="serif-italic">reimagined.</span>
-          </h1>
-
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            A warm, intelligent assistant that gives every student academic,
-            administrative and personal support — instantly, reliably, and at
-            any hour.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <PrimaryButton href="#demo">Try the prototype</PrimaryButton>
-            <GhostButton href="#about">See how it works</GhostButton>
-          </div>
-
-          <p className="mt-10 text-sm text-muted-foreground">
-            Built by students, for students — and ready to scale to any
-            institution.
-          </p>
+        <div className="flex items-center justify-between border-y border-foreground/15 py-3 text-[11px] uppercase tracking-[0.22em] text-ink-soft">
+          <span>Volume 01 · The Companion Issue</span>
+          <span className="hidden md:inline">A zine for student support</span>
+          <span>Est. Kigali · Worldwide</span>
         </div>
+      </div>
 
-        {/* Hero bento */}
-        <div className="mt-16 grid grid-cols-12 gap-4 lg:gap-6">
-          <div className="col-span-12 overflow-hidden rounded-3xl lg:col-span-8">
-            <img
-              src={heroStudents}
-              alt="Students collaborating with laptops in a warm sunlit library"
-              width={1600}
-              height={1200}
-              className="h-[420px] w-full object-cover lg:h-[540px]"
-            />
-          </div>
-          <div className="col-span-12 grid gap-4 lg:col-span-4 lg:gap-6">
-            <div
-              className="bento-card flex flex-col justify-between"
-              style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-            >
-              <Sparkles className="h-6 w-6" style={{ color: "var(--sand-deep)" }} />
-              <p className="mt-6 font-display text-2xl leading-snug">
-                “Like having a brilliant guide on every student's shoulder.”
-              </p>
-              <p className="mt-6 text-xs uppercase tracking-[0.18em] opacity-60">
-                Live demo
-              </p>
+      <div className="mx-auto mt-10 max-w-7xl px-6 lg:px-10">
+        <div className="grid grid-cols-12 gap-6 lg:gap-10">
+          {/* LEFT — big editorial type */}
+          <div className="relative col-span-12 lg:col-span-7 fade-up">
+            <div className="flex items-center gap-3">
+              <span
+                className="h-px w-10"
+                style={{ backgroundColor: "var(--terracotta)" }}
+              />
+              <span className="section-label">
+                AI student support · built for every campus
+              </span>
             </div>
-            <div
-              className="bento-card flex items-center justify-between"
-              style={{ backgroundColor: "var(--sand-deep)" }}
+
+            <h1 className="mt-6 text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.02em]">
+              Your
+              <br />
+              student
+              <br />
+              <span className="relative inline-block align-baseline">
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 -bottom-2 h-3 -z-0"
+                  style={{
+                    background:
+                      "linear-gradient(transparent 55%, oklch(0.92 0.13 70 / 0.7) 55%)",
+                  }}
+                />
+                <span
+                  className="relative serif-italic"
+                  style={{ color: "var(--terracotta)" }}
+                >
+                  {/* rotating word */}
+                  <span className="relative inline-block h-[1em] overflow-hidden align-bottom">
+                    <span className="invisible">{rotating[0]}</span>
+                    {rotating.map((w, i) => (
+                      <span
+                        key={w}
+                        className="absolute inset-0"
+                        style={{
+                          animation: `wordFlip${i === 0 ? "" : i + 1} 9s ${
+                            (i * 0) | 0
+                          }s infinite`,
+                        }}
+                      >
+                        {w}
+                      </span>
+                    ))}
+                  </span>
+                </span>
+              </span>
+            </h1>
+
+            {/* hand-drawn underline svg */}
+            <svg
+              aria-hidden
+              viewBox="0 0 320 18"
+              className="-mt-1 h-4 w-56"
+              fill="none"
             >
-              <div>
-                <div className="font-display text-5xl text-ink">24/7</div>
-                <div className="mt-1 text-sm text-ink-soft">
-                  support, every single day
+              <path
+                d="M2 12 C 80 2, 160 18, 318 6"
+                stroke="var(--terracotta)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                className="draw-underline"
+              />
+            </svg>
+
+            <p className="mt-8 max-w-md text-base leading-relaxed text-ink-soft">
+              A warm, intelligent assistant that gives every student academic,
+              administrative and personal support —{" "}
+              <em className="serif-italic" style={{ color: "var(--ink)" }}>
+                instantly, reliably, at any hour.
+              </em>
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <PrimaryButton href="#demo">Try the prototype</PrimaryButton>
+              <GhostButton href="#about">See how it works</GhostButton>
+            </div>
+
+            {/* footnote row */}
+            <div className="mt-12 flex items-center gap-6 text-xs text-muted-foreground">
+              <div className="flex -space-x-2">
+                {["D", "S", "C", "A"].map((c, i) => (
+                  <span
+                    key={c}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-paper font-display text-sm"
+                    style={{
+                      backgroundColor: ["var(--sand-deep)", "var(--sage)", "var(--terracotta)", "var(--butter)"][i],
+                      color: "var(--ink)",
+                    }}
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <span>
+                Loved by students at <strong className="text-foreground">12+</strong> institutions
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT — magazine collage */}
+          <div className="relative col-span-12 lg:col-span-5">
+            {/* big issue number */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -left-6 -top-10 select-none font-display text-[14rem] leading-none opacity-10"
+              style={{ color: "var(--terracotta)" }}
+            >
+              01
+            </div>
+
+            {/* cover photo with tape */}
+            <div className="relative mx-auto w-full max-w-md rotate-[1.2deg]">
+              <span className="tape -top-3 left-8 -rotate-6" />
+              <span className="tape -top-3 right-10 rotate-6" />
+              <div
+                className="overflow-hidden rounded-[4px] border border-border bg-card p-3 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.45)]"
+              >
+                <img
+                  src={studentCover}
+                  alt="A smiling student holding books and a laptop"
+                  width={1100}
+                  height={1400}
+                  className="h-[440px] w-full object-cover lg:h-[520px]"
+                />
+                <div className="flex items-center justify-between pt-3 text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+                  <span>Cover · Spring</span>
+                  <span>№ 001</span>
                 </div>
               </div>
-              <div
-                className="flex h-12 w-12 items-center justify-center rounded-full"
-                style={{ backgroundColor: "var(--ink)" }}
+            </div>
+
+            {/* sticky note */}
+            <div className="sticky-note absolute -left-2 top-10 max-w-[200px] -rotate-[6deg] hidden md:block">
+              “Like a brilliant friend on every student's shoulder.”
+              <div className="hand mt-2 text-xs opacity-60">— deborah, undergrad</div>
+            </div>
+
+            {/* 24/7 chip */}
+            <div
+              className="absolute -bottom-4 right-0 flex items-center gap-3 rounded-full px-5 py-3 shadow-lg rotate-[-3deg]"
+              style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+            >
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-full"
+                style={{ backgroundColor: "var(--terracotta)" }}
               >
-                <PlayCircle className="h-6 w-6" style={{ color: "var(--paper)" }} />
+                <Sparkles className="h-4 w-4" />
+              </span>
+              <div className="leading-tight">
+                <div className="font-display text-xl">24/7</div>
+                <div className="text-[10px] uppercase tracking-[0.18em] opacity-60">
+                  always on
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ───────────────── Marquee ───────────────── */
+
+function Marquee() {
+  const items = [
+    "Academic Q&A",
+    "★",
+    "Course navigation",
+    "★",
+    "Scholarships & deadlines",
+    "★",
+    "Career advice",
+    "★",
+    "Admissions help",
+    "★",
+    "Campus services",
+    "★",
+    "Mentorship",
+    "★",
+    "Always on, 24/7",
+    "★",
+  ];
+  const row = [...items, ...items];
+  return (
+    <div
+      className="relative overflow-hidden border-y py-5"
+      style={{ backgroundColor: "var(--ink)", borderColor: "var(--ink)" }}
+    >
+      <div className="marquee-track">
+        {row.map((t, i) => (
+          <span
+            key={i}
+            className="font-display text-3xl md:text-4xl"
+            style={{
+              color:
+                t === "★" ? "var(--terracotta)" : "var(--paper)",
+              fontStyle: t === "★" ? "normal" : "italic",
+            }}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -1203,6 +1346,7 @@ function Landing() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Marquee />
       <About />
       <Demo />
       <Mission />

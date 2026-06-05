@@ -45,8 +45,12 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-paper: var(--paper);
+  --color-terracotta: var(--terracotta);
+  --color-sage: var(--sage);
+  --color-butter: var(--butter);
   --font-display: "Instrument Serif", ui-serif, Georgia, serif;
   --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", "Bradley Hand", cursive;
 }
 
 :root {
@@ -56,8 +60,11 @@
   --paper: oklch(0.985 0.008 80);            /* #faf8f5 */
   --sand: oklch(0.955 0.014 78);             /* #f0ebe3 */
   --sand-deep: oklch(0.84 0.035 75);         /* #c9b99a */
-  --clay: oklch(0.5 0.045 55);               /* #8b7355 deep clay */
-  --clay-soft: oklch(0.7 0.06 58);           /* warm tan accent */
+  --clay: oklch(0.58 0.16 38);               /* terracotta — charming, alive */
+  --clay-soft: oklch(0.72 0.12 40);
+  --terracotta: oklch(0.62 0.18 35);
+  --sage: oklch(0.68 0.06 145);              /* soft sage secondary */
+  --butter: oklch(0.92 0.08 90);             /* warm pale yellow */
   --ink: oklch(0.22 0.015 60);               /* near-black warm */
   --ink-soft: oklch(0.42 0.015 60);
 
@@ -73,7 +80,7 @@
   --secondary-foreground: var(--ink);
   --muted: var(--sand);
   --muted-foreground: var(--ink-soft);
-  --accent: var(--clay);
+  --accent: var(--terracotta);
   --accent-foreground: var(--paper);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: var(--paper);
@@ -145,4 +152,72 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@utility sticky-note {
+  background: var(--butter);
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 14px 30px -12px oklch(0.3 0.05 60 / 0.35);
+  border-radius: 2px;
+}
+
+@utility tape {
+  position: absolute;
+  width: 80px;
+  height: 22px;
+  background: oklch(0.92 0.04 75 / 0.85);
+  box-shadow: 0 2px 6px -2px oklch(0.3 0.05 60 / 0.25);
+}
+
+@utility hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes drawUnderline {
+  from { stroke-dashoffset: 320; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@utility draw-underline {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: drawUnderline 1.6s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes wordFlip {
+  0%, 22%   { transform: translateY(0); opacity: 1; }
+  28%, 47%  { transform: translateY(-100%); opacity: 0; }
+  53%, 72%  { transform: translateY(-200%); opacity: 0; }
+  78%, 100% { transform: translateY(-300%); opacity: 0; }
+}
+@keyframes wordFlip2 {
+  0%, 22%   { transform: translateY(100%); opacity: 0; }
+  28%, 47%  { transform: translateY(0); opacity: 1; }
+  53%, 100% { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes wordFlip3 {
+  0%, 47%   { transform: translateY(100%); opacity: 0; }
+  53%, 72%  { transform: translateY(0); opacity: 1; }
+  78%, 100% { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes wordFlip4 {
+  0%, 72%   { transform: translateY(100%); opacity: 0; }
+  78%, 100% { transform: translateY(0); opacity: 1; }
 }

@@ -1213,11 +1213,19 @@ function FAQ() {
                     </span>
                   </button>
                   <div
-                    className="grid overflow-hidden transition-all duration-500 ease-out"
-                    style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                    className="grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{
+                      gridTemplateRows: isOpen ? "1fr" : "0fr",
+                      opacity: isOpen ? 1 : 0,
+                    }}
                   >
                     <div className="min-h-0">
-                      <div className="flex gap-4 pb-6 pl-14 pr-12">
+                      <div
+                        className="flex gap-4 pb-6 pl-14 pr-12 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        style={{
+                          transform: isOpen ? "translateY(0)" : "translateY(-8px)",
+                        }}
+                      >
                         <span
                           className="font-display text-sm flex-shrink-0"
                           style={{ color: "var(--sage)" }}

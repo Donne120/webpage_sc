@@ -108,7 +108,6 @@ function Nav() {
     ["About", "#about"],
     ["Features", "#features"],
     ["Testimonials", "#testimonials"],
-    ["FAQ", "#faq"],
     ["Team", "#team"],
   ];
 
@@ -1691,7 +1690,6 @@ function Landing() {
       <Features />
       <Value />
       <Testimonials />
-      <FAQ />
       <CTABanner />
       <Team />
       <Contact />

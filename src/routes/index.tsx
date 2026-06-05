@@ -830,45 +830,61 @@ function Features() {
   ];
 
   return (
-    <section id="features" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>02 — Capabilities</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section id="features" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0 select-none font-display text-[14rem] leading-none opacity-[0.05]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        02
+      </div>
+      <div className="relative mb-14 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 02 · Capabilities</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           Everything a student needs,{" "}
-          <span className="serif-italic">in one companion.</span>
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            in one companion.
+          </span>
         </h2>
+        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
+          like a swiss army knife, but warmer ✿
+        </p>
       </div>
 
       <div className="grid auto-rows-fr grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
         {items.map(({ n, icon: Icon, title, body, span, dark }) => (
           <div
             key={n}
-            className={`bento-card bento-card-hover col-span-12 flex flex-col justify-between ${span}`}
+            className={`relative bento-card bento-card-hover col-span-12 flex flex-col justify-between ${span}`}
             style={
               dark
                 ? { backgroundColor: "var(--ink)", color: "var(--paper)" }
                 : undefined
             }
           >
+            {/* corner stamp */}
+            <div
+              className="absolute right-5 top-5 font-display text-sm"
+              style={{ color: dark ? "var(--terracotta)" : "var(--terracotta)" }}
+            >
+              № {n}
+            </div>
             <div className="flex items-start justify-between">
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-full ${
                   dark ? "" : ""
                 }`}
                 style={{
-                  backgroundColor: dark ? "oklch(0.985 0.008 80 / 0.1)" : "var(--sand)",
+                  backgroundColor: dark ? "var(--terracotta)" : "var(--sand)",
                 }}
               >
                 <Icon
                   className="h-5 w-5"
-                  style={{ color: dark ? "var(--paper)" : "var(--clay)" }}
+                  style={{ color: dark ? "var(--paper)" : "var(--terracotta)" }}
                 />
-              </span>
-              <span
-                className="font-display text-2xl"
-                style={{ color: dark ? "var(--sand-deep)" : "var(--clay)" }}
-              >
-                {n}
               </span>
             </div>
             <div className="mt-10">
@@ -886,15 +902,20 @@ function Features() {
         ))}
 
         <div
-          className="bento-card col-span-12 flex flex-col justify-between lg:col-span-5 lg:row-span-1"
-          style={{ backgroundColor: "var(--sand-deep)" }}
+          className="relative bento-card col-span-12 flex flex-col justify-between lg:col-span-5 lg:row-span-1"
+          style={{ backgroundColor: "var(--butter)" }}
         >
+          <div
+            className="absolute -right-3 -top-3 -rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper"
+            style={{ backgroundColor: "var(--terracotta)" }}
+          >
+            For every campus
+          </div>
           <p className="font-display text-2xl leading-snug text-ink lg:text-3xl">
-            Built for every institution — universities, colleges, high schools.
-            Student Companion adapts to your programs, policies and tone of voice.
+            Universities. Colleges. High schools. <em className="serif-italic" style={{ color: "var(--terracotta)" }}>Student Companion</em> adapts to your programs, policies and tone of voice.
           </p>
           <div className="mt-6">
-            <GhostButton href="#contact">Talk to our team</GhostButton>
+            <PrimaryButton href="#contact">Talk to our team</PrimaryButton>
           </div>
         </div>
       </div>

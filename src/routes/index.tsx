@@ -27,6 +27,12 @@ import capCampus from "@/assets/cap-campus.jpg";
 import capGrowth from "@/assets/cap-growth.jpg";
 import capEvents from "@/assets/cap-events.jpg";
 import capHuman from "@/assets/cap-human.jpg";
+import teamAndrew from "@/assets/Andrew.png";
+import teamNgum from "@/assets/Ngum.png";
+import teamMarvin from "@/assets/02.-marvin (1).jpg";
+import teamHenry from "@/assets/Henry Chukwudi.jpeg";
+import teamOzioma from "@/assets/Ozioma Ikenna.webp";
+import logoImg from "@/assets/logo (3).png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,12 +125,11 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <a href="#top" className="flex items-center gap-2">
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-full text-paper"
-            style={{ backgroundColor: "var(--terracotta)" }}
-          >
-            <Sparkles className="h-4 w-4" />
-          </span>
+          <img
+            src={logoImg}
+            alt="Student Companion AI logo"
+            className="h-9 w-9 rounded-full object-cover"
+          />
           <div className="leading-tight">
             <div className="font-display text-lg">Student Companion</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -1199,30 +1204,35 @@ function Team() {
       role: "Founder & Project Lead",
       meta: "BSc (Hons) Entrepreneurial Leadership",
       blurb: "Leads project vision, strategy, and partnerships.",
+      photo: teamAndrew,
     },
     {
       name: "Dieudonne Ngum",
       role: "Technical Development Lead",
       meta: "BSc (Hons) Software Engineering",
       blurb: "Oversees AI model design and system integration.",
+      photo: teamNgum,
     },
     {
       name: "Marvin Mayonga Ogore",
       role: "Technical Supervisory Coach",
       meta: "Machine Learning Coach",
       blurb: "Provides technical guidance and quality assurance.",
+      photo: teamMarvin,
     },
     {
       name: "Henry Chukwudi John",
       role: "Stakeholder Engagement Lead",
       meta: "Library & Information Services",
       blurb: "Manages institutional relations and engagement strategy.",
+      photo: teamHenry,
     },
     {
       name: "Ogbonna Ozioma Ikenna",
       role: "Customer Success & Implementation Lead",
       meta: "Customer Success",
       blurb: "Leads customer success initiatives and implementation.",
+      photo: teamOzioma,
     },
   ];
 
@@ -1255,21 +1265,30 @@ function Team() {
               <div
                 className="border border-border bg-card p-3 shadow-[0_30px_60px_-30px_oklch(0.3_0.05_60/0.4)]"
               >
-                {/* "photo" tile — initials */}
+                {/* photo tile (falls back to initials if no photo) */}
                 <div
-                  className="flex aspect-[4/5] items-center justify-center"
+                  className="flex aspect-[4/5] items-center justify-center overflow-hidden"
                   style={{ backgroundColor: bgs[i] }}
                 >
-                  <span
-                    className="font-display text-8xl"
-                    style={{ color: i === 3 ? "var(--ink)" : "var(--paper)" }}
-                  >
-                    {m.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </span>
+                  {m.photo ? (
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span
+                      className="font-display text-8xl"
+                      style={{ color: i === 3 ? "var(--ink)" : "var(--paper)" }}
+                    >
+                      {m.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .slice(0, 2)
+                        .join("")}
+                    </span>
+                  )}
                 </div>
                 {/* caption */}
                 <div className="pt-3">
@@ -1473,11 +1492,17 @@ function Contact() {
             </div>
           </div>
           <div className="flex gap-3">
-            {[Linkedin, Twitter, Instagram].map((Icon, i) => (
+            {[
+              { Icon: Linkedin, href: "https://www.linkedin.com/company/student-companion-ai-chatbot/", label: "LinkedIn" },
+              { Icon: Twitter, href: "#", label: "Twitter" },
+              { Icon: Instagram, href: "#", label: "Instagram" },
+            ].map(({ Icon, href, label }, i) => (
               <a
                 key={i}
-                href="#"
-                aria-label="Social link"
+                href={href}
+                target={href === "#" ? undefined : "_blank"}
+                rel={href === "#" ? undefined : "noopener noreferrer"}
+                aria-label={label}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-paper transition-colors hover:bg-foreground hover:text-paper"
               >
                 <Icon className="h-4 w-4" />
@@ -1497,12 +1522,11 @@ function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 py-12 md:flex-row md:items-center lg:px-10">
         <div className="flex items-center gap-3">
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-full"
-            style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-          >
-            <Sparkles className="h-4 w-4" />
-          </span>
+          <img
+            src={logoImg}
+            alt="Student Companion AI logo"
+            className="h-9 w-9 rounded-full object-cover"
+          />
           <div className="leading-tight">
             <div className="font-display text-lg">Student Companion</div>
             <div className="text-xs text-muted-foreground">
@@ -1510,10 +1534,21 @@ function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground">
-          © 2026 Student Companion AI. Built with care for students and
-          institutions everywhere.
-        </p>
+        <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
+          <a
+            href="https://www.linkedin.com/company/student-companion-ai-chatbot/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Student Companion AI on LinkedIn"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-paper transition-colors hover:bg-foreground hover:text-paper"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <p className="text-sm text-muted-foreground">
+            © 2026 Student Companion AI. Built with care for students and
+            institutions everywhere.
+          </p>
+        </div>
       </div>
     </footer>
   );

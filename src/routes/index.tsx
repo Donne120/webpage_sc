@@ -1346,6 +1346,7 @@ function Landing() {
     <main className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <Marquee />
       <About />
       <Demo />
       <Mission />

@@ -119,7 +119,7 @@ function Nav() {
         <a href="#top" className="flex items-center gap-2">
           <span
             className="flex h-9 w-9 items-center justify-center rounded-full text-paper"
-            style={{ backgroundColor: "var(--ink)" }}
+            style={{ backgroundColor: "var(--terracotta)" }}
           >
             <Sparkles className="h-4 w-4" />
           </span>

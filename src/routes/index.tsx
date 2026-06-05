@@ -396,55 +396,91 @@ function Marquee() {
 
 function About() {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+    <section id="about" className="relative mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-10 select-none font-display text-[16rem] leading-none opacity-[0.06]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        01
+      </div>
+
       <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>01 — About the project</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05] tracking-tight">
-          A <span className="serif-italic">warmer</span> way to support every
-          student.
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 01 · About</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight">
+          A <span className="serif-italic">warmer</span> way to support{" "}
+          <span className="relative inline-block">
+            every student.
+            <svg aria-hidden viewBox="0 0 340 14" className="absolute -bottom-2 left-0 h-3 w-full" fill="none">
+              <path d="M4 9 C 90 2, 200 14, 336 5" stroke="var(--terracotta)" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          </span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
+      <div className="relative grid grid-cols-12 gap-8 lg:gap-12">
         <div className="col-span-12 space-y-6 text-lg leading-relaxed text-ink-soft lg:col-span-7">
+          <p className="text-2xl leading-snug text-foreground font-display">
+            Student Companion AI is an elegant, AI-driven platform that elevates
+            the student experience across universities, colleges and schools.
+          </p>
           <p>
-            <span className="text-foreground">Student Companion AI</span> is an
-            elegant, AI-driven platform designed to elevate the student
-            experience across universities, colleges and schools everywhere. It
-            delivers instant academic and administrative assistance — helping
+            It delivers instant academic and administrative assistance — helping
             students find information, connect with departments, and access
             resources with ease.
           </p>
           <p>
             By integrating securely with each institution's systems, it offers
-            context-aware, reliable support — reducing administrative pressure
-            while making every learner feel genuinely looked after.
+            context-aware support — reducing staff pressure while making every
+            learner feel <em className="serif-italic" style={{ color: "var(--terracotta)" }}>genuinely looked after.</em>
           </p>
 
-          <div className="grid grid-cols-3 gap-4 pt-6">
+          <div className="grid grid-cols-3 gap-4 pt-8">
             {[
-              ["Faster", "Answers"],
-              ["Lower", "Staff load"],
-              ["Happier", "Students"],
-            ].map(([a, b]) => (
-              <div key={a} className="border-t border-border pt-4">
-                <div className="font-display text-2xl text-foreground">{a}</div>
-                <div className="text-sm text-muted-foreground">{b}</div>
+              ["Faster", "Answers", "var(--terracotta)"],
+              ["Lower", "Staff load", "var(--sage)"],
+              ["Happier", "Students", "var(--butter)"],
+            ].map(([a, b, c]) => (
+              <div key={a} className="relative">
+                <span
+                  className="absolute -left-1 top-0 h-full w-1 rounded-full"
+                  style={{ backgroundColor: c }}
+                />
+                <div className="pl-4">
+                  <div className="font-display text-3xl text-foreground">{a}</div>
+                  <div className="text-sm text-muted-foreground">{b}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-span-5">
-          <div className="overflow-hidden rounded-3xl">
-            <img
-              src={studentPortrait}
-              alt="A student smiling while using the Student Companion AI"
-              width={1000}
-              height={1200}
-              loading="lazy"
-              className="h-[520px] w-full object-cover"
-            />
+        <div className="relative col-span-12 lg:col-span-5">
+          {/* Polaroid */}
+          <div className="relative mx-auto w-full max-w-sm -rotate-[2deg]">
+            <span className="tape -top-3 left-10 -rotate-6" />
+            <div className="bg-card border border-border p-3 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.45)]">
+              <img
+                src={studentPortrait}
+                alt="A student smiling while using the Student Companion AI"
+                width={1000}
+                height={1200}
+                loading="lazy"
+                className="h-[460px] w-full object-cover"
+              />
+              <div className="pt-3 text-center font-hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+                — late-night study, saved.
+              </div>
+            </div>
+          </div>
+
+          {/* Sticky note */}
+          <div className="sticky-note absolute -bottom-6 -left-2 max-w-[200px] rotate-[4deg] hidden md:block">
+            warm. helpful.<br />never sleepy.
+            <div className="hand mt-1 text-xs opacity-60">↗ that's the point</div>
           </div>
         </div>
       </div>

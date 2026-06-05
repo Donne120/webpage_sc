@@ -10,8 +10,6 @@ import {
   Users,
   ShieldCheck,
   PlayCircle,
-  Plus,
-  Minus,
   Mail,
   MapPin,
   Linkedin,

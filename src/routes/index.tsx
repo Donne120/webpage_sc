@@ -1335,56 +1335,80 @@ function Team() {
   ];
 
   return (
-    <section id="team" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>07 — The makers</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section id="team" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 07 · The makers</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           Built by people who{" "}
-          <span className="serif-italic">care</span> about students.
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            care
+          </span>{" "}
+          about students.
         </h2>
+        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
+          ✿ a class photo, of sorts
+        </p>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {team.map((m, i) => (
-          <div
-            key={m.name}
-            className={`bento-card bento-card-hover ${
-              i === 0 ? "lg:col-span-2" : ""
-            }`}
-            style={
-              i === 0
-                ? { backgroundColor: "var(--sand-deep)" }
-                : undefined
-            }
-          >
-            <div className="flex h-full flex-col justify-between">
-              <div>
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
+        {team.map((m, i) => {
+          const tilts = [-2, 1.5, -1, 2, -1.5];
+          const bgs = ["var(--terracotta)", "var(--sage)", "var(--sand-deep)", "var(--butter)", "var(--terracotta)"];
+          const fg = i === 3 ? "var(--ink)" : "var(--paper)";
+          return (
+            <div key={m.name} className="relative" style={{ transform: `rotate(${tilts[i]}deg)` }}>
+              <span className="tape -top-3 left-10 -rotate-6" />
+              <div
+                className="border border-border bg-card p-3 shadow-[0_30px_60px_-30px_oklch(0.3_0.05_60/0.4)]"
+              >
+                {/* "photo" tile — initials */}
                 <div
-                  className="flex h-14 w-14 items-center justify-center rounded-full font-display text-2xl"
-                  style={{
-                    backgroundColor: i === 0 ? "var(--ink)" : "var(--sand)",
-                    color: i === 0 ? "var(--paper)" : "var(--clay)",
-                  }}
+                  className="flex aspect-[4/5] items-center justify-center"
+                  style={{ backgroundColor: bgs[i] }}
                 >
-                  {m.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
+                  <span
+                    className="font-display text-8xl"
+                    style={{ color: i === 3 ? "var(--ink)" : "var(--paper)" }}
+                  >
+                    {m.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </span>
                 </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight">
-                  {m.name}
-                </h3>
-                <p className="mt-1 text-sm text-ink-soft">{m.role}</p>
-              </div>
-              <div className="mt-8 border-t border-border/60 pt-4 text-xs text-muted-foreground">
-                <div className="uppercase tracking-[0.15em]">{m.meta}</div>
-                <p className="mt-2 text-sm normal-case tracking-normal text-ink-soft">
-                  {m.blurb}
-                </p>
+                {/* caption */}
+                <div className="pt-3">
+                  <div className="hand text-2xl leading-tight" style={{ fontFamily: "var(--font-hand)" }}>
+                    {m.name}
+                  </div>
+                  <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                    {m.role}
+                  </div>
+                  <div className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
+                    {m.meta}
+                  </div>
+                  <p className="mt-2 text-sm text-ink-soft">{m.blurb}</p>
+                </div>
               </div>
             </div>
+          );
+        })}
+
+        {/* sign-off card */}
+        <div className="relative flex items-center justify-center p-8">
+          <div className="text-center">
+            <div className="font-display text-7xl" style={{ color: "var(--terracotta)" }}>+5</div>
+            <p className="mt-2 max-w-[200px] text-sm text-ink-soft">
+              years of student-life experience between us.
+            </p>
+            <p className="hand mt-4 text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+              and still counting ✿
+            </p>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

@@ -24,6 +24,11 @@ import deskStill from "@/assets/desk-still-life.jpg";
 import campus from "@/assets/campus.jpg";
 import studentCover from "@/assets/student-cover.jpg";
 import notebookFlatlay from "@/assets/notebook-flatlay.jpg";
+import capAcademic from "@/assets/cap-academic.jpg";
+import capCampus from "@/assets/cap-campus.jpg";
+import capGrowth from "@/assets/cap-growth.jpg";
+import capEvents from "@/assets/cap-events.jpg";
+import capHuman from "@/assets/cap-human.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

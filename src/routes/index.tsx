@@ -396,55 +396,91 @@ function Marquee() {
 
 function About() {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+    <section id="about" className="relative mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-10 select-none font-display text-[16rem] leading-none opacity-[0.06]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        01
+      </div>
+
       <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>01 — About the project</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05] tracking-tight">
-          A <span className="serif-italic">warmer</span> way to support every
-          student.
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 01 · About</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight">
+          A <span className="serif-italic">warmer</span> way to support{" "}
+          <span className="relative inline-block">
+            every student.
+            <svg aria-hidden viewBox="0 0 340 14" className="absolute -bottom-2 left-0 h-3 w-full" fill="none">
+              <path d="M4 9 C 90 2, 200 14, 336 5" stroke="var(--terracotta)" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          </span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
+      <div className="relative grid grid-cols-12 gap-8 lg:gap-12">
         <div className="col-span-12 space-y-6 text-lg leading-relaxed text-ink-soft lg:col-span-7">
+          <p className="text-2xl leading-snug text-foreground font-display">
+            Student Companion AI is an elegant, AI-driven platform that elevates
+            the student experience across universities, colleges and schools.
+          </p>
           <p>
-            <span className="text-foreground">Student Companion AI</span> is an
-            elegant, AI-driven platform designed to elevate the student
-            experience across universities, colleges and schools everywhere. It
-            delivers instant academic and administrative assistance — helping
+            It delivers instant academic and administrative assistance — helping
             students find information, connect with departments, and access
             resources with ease.
           </p>
           <p>
             By integrating securely with each institution's systems, it offers
-            context-aware, reliable support — reducing administrative pressure
-            while making every learner feel genuinely looked after.
+            context-aware support — reducing staff pressure while making every
+            learner feel <em className="serif-italic" style={{ color: "var(--terracotta)" }}>genuinely looked after.</em>
           </p>
 
-          <div className="grid grid-cols-3 gap-4 pt-6">
+          <div className="grid grid-cols-3 gap-4 pt-8">
             {[
-              ["Faster", "Answers"],
-              ["Lower", "Staff load"],
-              ["Happier", "Students"],
-            ].map(([a, b]) => (
-              <div key={a} className="border-t border-border pt-4">
-                <div className="font-display text-2xl text-foreground">{a}</div>
-                <div className="text-sm text-muted-foreground">{b}</div>
+              ["Faster", "Answers", "var(--terracotta)"],
+              ["Lower", "Staff load", "var(--sage)"],
+              ["Happier", "Students", "var(--butter)"],
+            ].map(([a, b, c]) => (
+              <div key={a} className="relative">
+                <span
+                  className="absolute -left-1 top-0 h-full w-1 rounded-full"
+                  style={{ backgroundColor: c }}
+                />
+                <div className="pl-4">
+                  <div className="font-display text-3xl text-foreground">{a}</div>
+                  <div className="text-sm text-muted-foreground">{b}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-span-5">
-          <div className="overflow-hidden rounded-3xl">
-            <img
-              src={studentPortrait}
-              alt="A student smiling while using the Student Companion AI"
-              width={1000}
-              height={1200}
-              loading="lazy"
-              className="h-[520px] w-full object-cover"
-            />
+        <div className="relative col-span-12 lg:col-span-5">
+          {/* Polaroid */}
+          <div className="relative mx-auto w-full max-w-sm -rotate-[2deg]">
+            <span className="tape -top-3 left-10 -rotate-6" />
+            <div className="bg-card border border-border p-3 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.45)]">
+              <img
+                src={studentPortrait}
+                alt="A student smiling while using the Student Companion AI"
+                width={1000}
+                height={1200}
+                loading="lazy"
+                className="h-[460px] w-full object-cover"
+              />
+              <div className="pt-3 text-center font-hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+                — late-night study, saved.
+              </div>
+            </div>
+          </div>
+
+          {/* Sticky note */}
+          <div className="sticky-note absolute -bottom-6 -left-2 max-w-[200px] rotate-[4deg] hidden md:block">
+            warm. helpful.<br />never sleepy.
+            <div className="hand mt-1 text-xs opacity-60">↗ that's the point</div>
           </div>
         </div>
       </div>
@@ -456,64 +492,103 @@ function About() {
 
 function Demo() {
   return (
-    <section id="demo" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div
-        className="overflow-hidden rounded-3xl"
-        style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-      >
-        <div className="grid grid-cols-12 gap-0">
-          <div className="col-span-12 flex flex-col justify-between p-10 lg:col-span-5 lg:p-14">
-            <SectionTag>See it in action</SectionTag>
-            <h3 className="mt-6 font-display text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.05]">
-              Student Companion,{" "}
-              <span className="italic" style={{ color: "var(--sand-deep)" }}>
-                live.
-              </span>
-            </h3>
-            <p className="mt-6 max-w-md text-base opacity-75">
-              Watch how Student Companion AI helps students get instant
-              support — from a quick course question to scheduling a meeting
-              with their department.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
-                style={{
-                  backgroundColor: "var(--paper)",
-                  color: "var(--ink)",
-                }}
-              >
-                Try it live <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-6 py-3 text-sm font-medium transition-all hover:border-paper hover:gap-3"
-              >
-                Schedule full demo <ArrowUpRight className="h-4 w-4" />
-              </a>
+    <section id="demo" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="grid grid-cols-12 gap-8 lg:gap-12">
+        {/* Left — narrative */}
+        <div className="col-span-12 lg:col-span-5">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+            <SectionTag>Live demo · see it run</SectionTag>
+          </div>
+          <h3 className="mt-6 font-display text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.02]">
+            A chat that{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+              actually
+            </span>{" "}
+            gets it.
+          </h3>
+          <p className="mt-6 max-w-md text-base text-ink-soft">
+            Quick course question? Department contact? A scholarship deadline
+            that snuck up? Watch how Student Companion answers in seconds —
+            with sources, warmth, and zero queue time.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <PrimaryButton href="#">Try it live</PrimaryButton>
+            <GhostButton href="#contact">Schedule full demo</GhostButton>
+          </div>
+
+          {/* hand-drawn caption */}
+          <div className="mt-10 flex items-start gap-3 text-ink-soft">
+            <svg viewBox="0 0 50 60" className="h-12 w-12" fill="none">
+              <path
+                d="M5 5 C 20 25, 30 45, 42 55 M42 55 L 32 50 M42 55 L 40 44"
+                stroke="var(--terracotta)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+            <span className="hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+              try asking <em>“when is my essay due?”</em>
+            </span>
+          </div>
+        </div>
+
+        {/* Right — chat collage */}
+        <div className="relative col-span-12 lg:col-span-7">
+          {/* polaroid background */}
+          <div className="relative ml-auto w-full max-w-xl rotate-[1.5deg]">
+            <span className="tape -top-3 left-8 -rotate-6" />
+            <span className="tape -top-3 right-12 rotate-6" />
+            <div className="bg-card border border-border p-3 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.4)]">
+              <img
+                src={notebookFlatlay}
+                alt="A notebook with handwritten doodles, sticky notes and a cup of tea"
+                width={1100}
+                height={900}
+                loading="lazy"
+                className="h-[420px] w-full object-cover"
+              />
             </div>
           </div>
-          <div className="relative col-span-12 lg:col-span-7">
-            <img
-              src={deskStill}
-              alt="A notebook, coffee cup, and phone showing the Student Companion chat"
-              width={1200}
-              height={1000}
-              loading="lazy"
-              className="h-full min-h-[360px] w-full object-cover"
-            />
-            <button
-              aria-label="Play demo"
-              className="absolute inset-0 flex items-center justify-center"
+
+          {/* Floating chat bubble — student */}
+          <div
+            className="absolute -left-2 top-12 max-w-[240px] -rotate-[3deg] rounded-2xl rounded-bl-sm border border-border bg-paper px-4 py-3 shadow-lg"
+          >
+            <div className="text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+              student
+            </div>
+            <p className="mt-1 text-sm">
+              hey companion, when is my essay due? 😅
+            </p>
+          </div>
+
+          {/* Floating chat bubble — AI */}
+          <div
+            className="absolute -bottom-4 right-2 max-w-[260px] rotate-[2deg] rounded-2xl rounded-br-sm px-4 py-3 shadow-lg"
+            style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+          >
+            <div
+              className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em]"
+              style={{ color: "var(--terracotta)" }}
             >
-              <span
-                className="flex h-20 w-20 items-center justify-center rounded-full backdrop-blur transition-transform duration-300 hover:scale-110"
-                style={{ backgroundColor: "oklch(0.985 0.008 80 / 0.9)" }}
-              >
-                <PlayCircle className="h-10 w-10" style={{ color: "var(--ink)" }} />
-              </span>
-            </button>
+              <Sparkles className="h-3 w-3" /> companion
+            </div>
+            <p className="mt-1 text-sm">
+              Your <em className="serif-italic" style={{ color: "var(--sand-deep)" }}>ENT401</em> essay
+              is due <strong>Friday 11:59pm</strong>. Want a rubric link?
+            </p>
+          </div>
+
+          {/* stamp */}
+          <div
+            className="absolute -top-4 right-2 flex h-20 w-20 items-center justify-center rounded-full border-2 -rotate-12 text-center font-display text-xs uppercase tracking-[0.18em]"
+            style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+          >
+            <span>
+              Live<br />№001
+            </span>
           </div>
         </div>
       </div>
@@ -526,38 +601,73 @@ function Demo() {
 function Mission() {
   const items = [
     {
-      n: "01",
-      title: "Mission",
+      n: "M.",
+      kicker: "our mission",
+      head: "Elevate student support, everywhere.",
       body:
-        "To revolutionize student support across institutions worldwide through AI-driven tools that improve accessibility, engagement, and student success.",
+        "Revolutionize student support across institutions worldwide through AI-driven tools that improve accessibility, engagement and success.",
+      bg: "var(--sand)",
+      accent: "var(--terracotta)",
     },
     {
-      n: "02",
-      title: "Vision",
+      n: "V.",
+      kicker: "our vision",
+      head: "The most trusted companion in education.",
       body:
-        "To become the world's most trusted AI-powered student support platform — empowering learners through personalized guidance, seamless access to resources, and transformative experiences.",
+        "To become the world's most trusted AI-powered student support platform — empowering learners through personalized guidance and transformative experiences.",
+      bg: "var(--ink)",
+      accent: "var(--sage)",
+      dark: true,
     },
   ];
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14">
-        <SectionTag>03 — Why we exist</SectionTag>
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-14 flex items-end justify-between">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 03 · Why we exist</SectionTag>
+        </div>
+        <span className="hand text-xl text-ink-soft hidden md:inline" style={{ fontFamily: "var(--font-hand)" }}>
+          read me twice ↓
+        </span>
       </div>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {items.map((it) => (
-          <div key={it.n} className="bento-card bento-card-hover">
-            <div className="flex items-baseline justify-between">
-              <span className="font-display text-5xl text-clay">{it.n}</span>
-              <span className="section-label">{it.title}</span>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {items.map((it, i) => (
+          <div
+            key={it.n}
+            className={`relative overflow-hidden rounded-[4px] p-10 lg:p-12 ${
+              i === 1 ? "lg:translate-y-10" : ""
+            }`}
+            style={{ backgroundColor: it.bg, color: it.dark ? "var(--paper)" : "var(--ink)" }}
+          >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -bottom-12 -right-6 select-none font-display text-[18rem] leading-none opacity-20"
+              style={{ color: it.accent }}
+            >
+              {it.n}
+            </span>
+            <div className="relative">
+              <div
+                className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.22em]"
+                style={{
+                  borderColor: it.dark ? "oklch(0.985 0.008 80 / 0.25)" : "var(--border)",
+                  color: it.accent,
+                }}
+              >
+                <span className="h-1 w-1 rounded-full" style={{ backgroundColor: it.accent }} />
+                {it.kicker}
+              </div>
+              <h3 className="mt-8 font-display text-[clamp(2rem,3vw,3rem)] leading-[1.05]">
+                {it.head}
+              </h3>
+              <p
+                className="mt-6 max-w-md text-base leading-relaxed"
+                style={{ color: it.dark ? "oklch(0.985 0.008 80 / 0.7)" : "var(--ink-soft)" }}
+              >
+                {it.body}
+              </p>
             </div>
-            <h3 className="mt-8 font-display text-3xl leading-tight">
-              {it.title === "Mission"
-                ? "Elevate student support, everywhere."
-                : "The most trusted companion in education."}
-            </h3>
-            <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              {it.body}
-            </p>
           </div>
         ))}
       </div>
@@ -568,111 +678,109 @@ function Mission() {
 /* ───────────────── Already built ───────────────── */
 
 function AlreadyBuilt() {
+  const cards = [
+    {
+      kicker: "Volume I",
+      stamp: "Hosted on Poe",
+      title: "Try the live chatbot today.",
+      body:
+        "A live version of the chatbot is on Poe, where anyone can interact with core features.",
+      features: ["Student Q&As", "Academic guidance", "Student-life support", "Admission info", "Career development"],
+      cta: "Try Poe prototype",
+      tilt: "-rotate-[1.5deg]",
+      bg: "var(--sand)",
+    },
+    {
+      kicker: "Volume II",
+      stamp: "Institution-ready",
+      title: "Your institution's secure home.",
+      body:
+        "An independent MVP built for secure data integration and hosting within each institution's infrastructure.",
+      features: ["Institutional email only", "Google SSO", "Compliance-first", "Secure integration", "Built to scale"],
+      cta: "Access MVP",
+      tilt: "rotate-[1.5deg]",
+      bg: "var(--card)",
+      ink: true,
+    },
+  ];
+
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>Already built</SectionTag>
-        <h2 className="max-w-3xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Already built · two volumes</SectionTag>
+        </div>
+        <h2 className="max-w-3xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           From idea to{" "}
-          <span className="serif-italic">working product.</span>
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            working product.
+          </span>
         </h2>
         <p className="max-w-2xl text-lg text-ink-soft">
-          To demonstrate feasibility, we've built two live versions of the
-          system — one for public exploration, one for secure institutional use.
+          To prove it works, we've shipped two live versions — one for public
+          exploration, one for secure institutional use.
         </p>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
-        <div className="bento-card bento-card-hover col-span-12 lg:col-span-6">
-          <div className="flex items-center justify-between">
-            <span className="section-label">Functional prototype</span>
-            <span className="rounded-full border border-border px-3 py-1 text-xs text-ink-soft">
-              Hosted on Poe
-            </span>
-          </div>
-          <h3 className="mt-6 font-display text-3xl leading-tight">
-            Try the live chatbot today.
-          </h3>
-          <p className="mt-4 text-ink-soft">
-            A live version of the chatbot is accessible on the Poe platform,
-            allowing users to interact with core features.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-            {[
-              "Student Q&As",
-              "Academic guidance",
-              "Student-life support",
-              "Admission information",
-              "Professional development hub",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-3">
-                <span
-                  className="h-1 w-4 rounded-full"
-                  style={{ backgroundColor: "var(--clay)" }}
-                />
-                {f}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <GhostButton>Try Poe prototype</GhostButton>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
+        {cards.map((c, i) => (
+          <div key={c.kicker} className={`relative ${c.tilt}`}>
+            <span className="tape -top-3 left-12 -rotate-6" />
+            <span className="tape -top-3 right-14 rotate-6" />
+            <div
+              className="relative border border-border p-8 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.3)]"
+              style={{ backgroundColor: c.bg }}
+            >
+              {/* postmark stamp */}
+              <div
+                className="absolute right-4 top-4 flex h-16 w-16 -rotate-[14deg] items-center justify-center rounded-full border-2 text-center font-display text-[9px] uppercase leading-tight tracking-[0.18em]"
+                style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+              >
+                <span>{c.stamp}</span>
+              </div>
 
-        <div
-          className="bento-card bento-card-hover col-span-12 lg:col-span-6"
-          style={{ backgroundColor: "var(--sand)" }}
-        >
-          <div className="flex items-center justify-between">
-            <span className="section-label">Secure MVP platform</span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-border bg-paper px-3 py-1 text-xs text-ink-soft">
-              <ShieldCheck className="h-3 w-3" /> Institution-ready
-            </span>
-          </div>
-          <h3 className="mt-6 font-display text-3xl leading-tight">
-            A stand-alone, compliant home for your institution.
-          </h3>
-          <p className="mt-4 text-ink-soft">
-            Designed for secure data integration and hosting within each
-            institution's own infrastructure.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-            {[
-              "Institutional email domains only",
-              "Google Single Sign-On (SSO)",
-              "Institutional compliance",
-              "Secure data integration",
-              "Flexible for future scaling",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-3">
-                <span
-                  className="h-1 w-4 rounded-full"
-                  style={{ backgroundColor: "var(--clay)" }}
-                />
-                {f}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <PrimaryButton>Access MVP platform</PrimaryButton>
-          </div>
-        </div>
-
-        <div
-          className="bento-card col-span-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
-          style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-        >
-          <div className="flex items-start gap-4">
-            <ShieldCheck className="mt-1 h-6 w-6" style={{ color: "var(--sand-deep)" }} />
-            <div>
-              <h4 className="font-display text-2xl">Security & compliance</h4>
-              <p className="mt-1 max-w-2xl text-sm opacity-70">
-                Access restricted to verified institutional email domains with
-                Google SSO authentication — maintaining the highest standards
-                for student data.
-              </p>
+              <span className="section-label">{c.kicker}</span>
+              <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
+                {c.title}
+              </h3>
+              <p className="mt-4 max-w-md text-ink-soft">{c.body}</p>
+              <ul className="mt-6 space-y-2 text-sm text-ink-soft">
+                {c.features.map((f) => (
+                  <li key={f} className="flex items-center gap-3">
+                    <span
+                      className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                      style={{ backgroundColor: "var(--terracotta)" }}
+                    />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                {i === 0 ? <GhostButton>{c.cta}</GhostButton> : <PrimaryButton>{c.cta}</PrimaryButton>}
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Security strip */}
+      <div
+        className="mt-16 flex flex-col items-start gap-4 rounded-[4px] border border-paper/15 p-8 md:flex-row md:items-center md:justify-between"
+        style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+      >
+        <div className="flex items-start gap-4">
+          <ShieldCheck className="mt-1 h-6 w-6" style={{ color: "var(--terracotta)" }} />
+          <div>
+            <h4 className="font-display text-2xl">Security & compliance</h4>
+            <p className="mt-1 max-w-2xl text-sm opacity-70">
+              Access restricted to verified institutional email domains with
+              Google SSO — the highest standards for student data.
+            </p>
+          </div>
+        </div>
+        <div className="hand text-xl" style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}>
+          ✓ stamped & sealed
         </div>
       </div>
     </section>
@@ -722,45 +830,61 @@ function Features() {
   ];
 
   return (
-    <section id="features" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>02 — Capabilities</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section id="features" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0 select-none font-display text-[14rem] leading-none opacity-[0.05]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        02
+      </div>
+      <div className="relative mb-14 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 02 · Capabilities</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           Everything a student needs,{" "}
-          <span className="serif-italic">in one companion.</span>
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            in one companion.
+          </span>
         </h2>
+        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
+          like a swiss army knife, but warmer ✿
+        </p>
       </div>
 
       <div className="grid auto-rows-fr grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
         {items.map(({ n, icon: Icon, title, body, span, dark }) => (
           <div
             key={n}
-            className={`bento-card bento-card-hover col-span-12 flex flex-col justify-between ${span}`}
+            className={`relative bento-card bento-card-hover col-span-12 flex flex-col justify-between ${span}`}
             style={
               dark
                 ? { backgroundColor: "var(--ink)", color: "var(--paper)" }
                 : undefined
             }
           >
+            {/* corner stamp */}
+            <div
+              className="absolute right-5 top-5 font-display text-sm"
+              style={{ color: dark ? "var(--terracotta)" : "var(--terracotta)" }}
+            >
+              № {n}
+            </div>
             <div className="flex items-start justify-between">
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-full ${
                   dark ? "" : ""
                 }`}
                 style={{
-                  backgroundColor: dark ? "oklch(0.985 0.008 80 / 0.1)" : "var(--sand)",
+                  backgroundColor: dark ? "var(--terracotta)" : "var(--sand)",
                 }}
               >
                 <Icon
                   className="h-5 w-5"
-                  style={{ color: dark ? "var(--paper)" : "var(--clay)" }}
+                  style={{ color: dark ? "var(--paper)" : "var(--terracotta)" }}
                 />
-              </span>
-              <span
-                className="font-display text-2xl"
-                style={{ color: dark ? "var(--sand-deep)" : "var(--clay)" }}
-              >
-                {n}
               </span>
             </div>
             <div className="mt-10">
@@ -778,15 +902,20 @@ function Features() {
         ))}
 
         <div
-          className="bento-card col-span-12 flex flex-col justify-between lg:col-span-5 lg:row-span-1"
-          style={{ backgroundColor: "var(--sand-deep)" }}
+          className="relative bento-card col-span-12 flex flex-col justify-between lg:col-span-5 lg:row-span-1"
+          style={{ backgroundColor: "var(--butter)" }}
         >
+          <div
+            className="absolute -right-3 -top-3 -rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper"
+            style={{ backgroundColor: "var(--terracotta)" }}
+          >
+            For every campus
+          </div>
           <p className="font-display text-2xl leading-snug text-ink lg:text-3xl">
-            Built for every institution — universities, colleges, high schools.
-            Student Companion adapts to your programs, policies and tone of voice.
+            Universities. Colleges. High schools. <em className="serif-italic" style={{ color: "var(--terracotta)" }}>Student Companion</em> adapts to your programs, policies and tone of voice.
           </p>
           <div className="mt-6">
-            <GhostButton href="#contact">Talk to our team</GhostButton>
+            <PrimaryButton href="#contact">Talk to our team</PrimaryButton>
           </div>
         </div>
       </div>
@@ -798,54 +927,77 @@ function Features() {
 
 function Value() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
       <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>04 — Value</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
-          Value for institutions{" "}
-          <span className="serif-italic">& students</span> alike.
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 04 · Value</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
+          Good for{" "}
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>institutions.</span>
+          <br />
+          Great for{" "}
+          <span className="serif-italic" style={{ color: "var(--sage)" }}>students.</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
-        <div className="bento-card bento-card-hover col-span-12 lg:col-span-6">
-          <span className="section-label">For institutions</span>
-          <h3 className="mt-4 font-display text-3xl">
+      {/* Two-column spread like an open book */}
+      <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-0">
+        {/* center spine */}
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 lg:block" style={{ backgroundColor: "var(--border)" }} />
+
+        <div className="relative lg:pr-12">
+          <div className="flex items-baseline justify-between border-b border-border pb-3">
+            <span className="section-label">For institutions</span>
+            <span className="font-display text-3xl" style={{ color: "var(--terracotta)" }}>I.</span>
+          </div>
+          <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
             Transform how you support learners.
           </h3>
-          <ul className="mt-6 space-y-4 text-base text-ink-soft">
+          <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
               "Automates repetitive student inquiries, freeing staff for higher-value work.",
               "Generates data-driven insights on student engagement and service gaps.",
               "Strengthens reputation as a digitally advanced, student-centered institution.",
-            ].map((t) => (
+            ].map((t, i) => (
               <li key={t} className="flex gap-4">
-                <span className="mt-2 h-1 w-4 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--clay)" }} />
+                <span className="font-display text-2xl leading-none" style={{ color: "var(--terracotta)" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span>{t}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
-        <div
-          className="bento-card bento-card-hover col-span-12 lg:col-span-6"
-          style={{ backgroundColor: "var(--sand)" }}
-        >
-          <span className="section-label">For students</span>
-          <h3 className="mt-4 font-display text-3xl">
-            Empowering academic success.
+
+        <div className="relative lg:pl-12">
+          <div className="flex items-baseline justify-between border-b border-border pb-3">
+            <span className="section-label">For students</span>
+            <span className="font-display text-3xl" style={{ color: "var(--sage)" }}>II.</span>
+          </div>
+          <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
+            Empowering academic <span className="serif-italic">success.</span>
           </h3>
-          <ul className="mt-6 space-y-4 text-base text-ink-soft">
+          <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
               "24/7 access to academic and administrative support.",
-              "Instant answers about courses, policies, and deadlines.",
+              "Instant answers about courses, policies and deadlines.",
               "Personalized learning guidance and career insights.",
-            ].map((t) => (
+            ].map((t, i) => (
               <li key={t} className="flex gap-4">
-                <span className="mt-2 h-1 w-4 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--clay)" }} />
+                <span className="font-display text-2xl leading-none" style={{ color: "var(--sage)" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span>{t}</span>
               </li>
             ))}
-          </ul>
+          </ol>
+
+          <div className="sticky-note mt-10 inline-block max-w-[220px] -rotate-[3deg]">
+            free for every student.<br />always.
+            <div className="hand mt-1 text-xs opacity-60">↗ no catch</div>
+          </div>
         </div>
       </div>
     </section>
@@ -876,39 +1028,67 @@ function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>05 — In their words</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
-          What students <span className="serif-italic">actually</span> say.
+    <section id="testimonials" className="relative mx-auto max-w-7xl px-6 pb-32 lg:px-10 lg:pb-40">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 05 · In their words</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
+          What students{" "}
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            actually
+          </span>{" "}
+          say.
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {quotes.map((q, i) => (
-          <figure
-            key={q.name}
-            className={`bento-card bento-card-hover flex flex-col justify-between ${
-              i === 1 ? "md:translate-y-8" : ""
-            }`}
-          >
-            <span className="font-display text-5xl leading-none text-clay">“</span>
-            <blockquote className="mt-4 font-display text-xl leading-snug text-foreground">
-              {q.quote}
-            </blockquote>
-            <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-6">
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full font-display text-lg"
-                style={{ backgroundColor: "var(--sand)", color: "var(--clay)" }}
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
+        {quotes.map((q, i) => {
+          const tilt = [-2.5, 1.5, -1.5][i];
+          const bg = ["var(--card)", "var(--butter)", "var(--card)"][i];
+          return (
+            <figure
+              key={q.name}
+              className={`relative ${i === 1 ? "md:translate-y-10" : ""}`}
+              style={{ transform: `rotate(${tilt}deg)` }}
+            >
+              <span className="tape -top-3 left-10 -rotate-6" />
+              <div
+                className="flex h-full flex-col justify-between border border-border p-6 shadow-[0_30px_60px_-30px_oklch(0.3_0.05_60/0.4)]"
+                style={{ backgroundColor: bg }}
               >
-                {q.name[0]}
-              </span>
-              <div>
-                <div className="text-sm font-medium text-foreground">{q.name}</div>
-                <div className="text-xs text-muted-foreground">{q.role}</div>
+                <div
+                  className="font-display text-7xl leading-none"
+                  style={{ color: "var(--terracotta)" }}
+                >
+                  &ldquo;
+                </div>
+                <blockquote className="mt-2 font-display text-xl leading-snug text-foreground">
+                  {q.quote}
+                </blockquote>
+                <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-4">
+                  <span
+                    className="flex h-10 w-10 items-center justify-center rounded-full font-display text-lg"
+                    style={{
+                      backgroundColor: ["var(--terracotta)", "var(--sage)", "var(--sand-deep)"][i],
+                      color: i === 1 ? "var(--ink)" : "var(--paper)",
+                    }}
+                  >
+                    {q.name[0]}
+                  </span>
+                  <div>
+                    <div className="hand text-lg" style={{ fontFamily: "var(--font-hand)" }}>
+                      {q.name}
+                    </div>
+                    <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                      {q.role}
+                    </div>
+                  </div>
+                </figcaption>
               </div>
-            </figcaption>
-          </figure>
-        ))}
+            </figure>
+          );
+        })}
       </div>
     </section>
   );
@@ -963,41 +1143,61 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+    <section id="faq" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 select-none font-display text-[14rem] leading-none opacity-[0.06]"
+        style={{ color: "var(--terracotta)" }}
+      >
+        06
+      </div>
       <div className="grid grid-cols-12 gap-10">
         <div className="col-span-12 lg:col-span-4">
-          <SectionTag>06 — Questions</SectionTag>
-          <h2 className="mt-4 text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.05]">
-            Frequently asked <span className="serif-italic">questions.</span>
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+            <SectionTag>Chapter 06 · Questions</SectionTag>
+          </div>
+          <h2 className="mt-4 text-[clamp(2.25rem,3.5vw,3.5rem)] leading-[1.02]">
+            Frequently asked{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>questions.</span>
           </h2>
-          <p className="mt-6 text-ink-soft">
-            Still have questions?
-          </p>
+          <div className="sticky-note mt-8 inline-block max-w-[240px] -rotate-[3deg]">
+            can't find yours?<br />we read every email.
+            <div className="hand mt-1 text-xs opacity-60">— the team</div>
+          </div>
           <a
             href="#contact"
-            className="mt-2 inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline"
+            className="mt-8 inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline"
           >
             Contact our team <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
         <div className="col-span-12 lg:col-span-8">
-          <ul className="divide-y divide-border border-y border-border">
+          <ul className="border-y-2 border-foreground/80">
             {items.map(([q, a], i) => {
               const isOpen = open === i;
               return (
-                <li key={q}>
+                <li key={q} className={`border-b border-foreground/15 ${isOpen ? "" : ""}`}>
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-clay"
+                    className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors"
                   >
-                    <span className="font-display text-xl leading-snug md:text-2xl">
-                      {q}
+                    <span className="flex items-baseline gap-4">
+                      <span
+                        className="font-display text-sm"
+                        style={{ color: "var(--terracotta)" }}
+                      >
+                        Q.{String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-display text-xl leading-snug md:text-2xl">
+                        {q}
+                      </span>
                     </span>
                     <span
-                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border"
+                      className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border transition-transform group-hover:rotate-90"
                       style={
                         isOpen
-                          ? { backgroundColor: "var(--ink)", color: "var(--paper)", borderColor: "var(--ink)" }
+                          ? { backgroundColor: "var(--terracotta)", color: "var(--paper)", borderColor: "var(--terracotta)" }
                           : undefined
                       }
                     >
@@ -1009,9 +1209,17 @@ function FAQ() {
                     style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                   >
                     <div className="min-h-0">
-                      <p className="pb-6 pr-12 text-base leading-relaxed text-ink-soft">
-                        {a}
-                      </p>
+                      <div className="flex gap-4 pb-6 pl-14 pr-12">
+                        <span
+                          className="font-display text-sm flex-shrink-0"
+                          style={{ color: "var(--sage)" }}
+                        >
+                          A.
+                        </span>
+                        <p className="text-base leading-relaxed text-ink-soft">
+                          {a}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -1030,23 +1238,32 @@ function CTABanner() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
       <div
-        className="relative overflow-hidden rounded-3xl px-8 py-20 text-center md:px-16 md:py-28"
+        className="relative overflow-hidden px-8 py-20 text-center md:px-16 md:py-28"
         style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
       >
         <img
           src={campus}
           alt=""
           aria-hidden
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          className="absolute inset-0 h-full w-full object-cover opacity-20"
           loading="lazy"
         />
+        {/* postmark */}
+        <div
+          className="absolute right-6 top-6 hidden h-28 w-28 -rotate-[14deg] flex-col items-center justify-center rounded-full border-2 text-center font-display text-[10px] uppercase tracking-[0.18em] md:flex"
+          style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+        >
+          <span>Special</span>
+          <span>Edition</span>
+          <span className="mt-1">2026</span>
+        </div>
         <div className="relative">
-          <span className="section-label" style={{ color: "var(--sand-deep)" }}>
-            Ready to transform your campus?
+          <span className="section-label" style={{ color: "var(--terracotta)" }}>
+            ✦ Ready to transform your campus?
           </span>
-          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.25rem,5vw,5rem)] leading-[1.05]">
+          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02]">
             Join the future of{" "}
-            <span className="italic" style={{ color: "var(--sand-deep)" }}>
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
               student support.
             </span>
           </h2>
@@ -1069,6 +1286,12 @@ function CTABanner() {
               Book a meeting <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
+          <p
+            className="hand mx-auto mt-8 max-w-md text-xl opacity-80"
+            style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}
+          >
+            p.s. we reply within 24 hours. always.
+          </p>
         </div>
       </div>
     </section>
@@ -1112,56 +1335,80 @@ function Team() {
   ];
 
   return (
-    <section id="team" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>07 — The makers</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section id="team" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 07 · The makers</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           Built by people who{" "}
-          <span className="serif-italic">care</span> about students.
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            care
+          </span>{" "}
+          about students.
         </h2>
+        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
+          ✿ a class photo, of sorts
+        </p>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {team.map((m, i) => (
-          <div
-            key={m.name}
-            className={`bento-card bento-card-hover ${
-              i === 0 ? "lg:col-span-2" : ""
-            }`}
-            style={
-              i === 0
-                ? { backgroundColor: "var(--sand-deep)" }
-                : undefined
-            }
-          >
-            <div className="flex h-full flex-col justify-between">
-              <div>
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
+        {team.map((m, i) => {
+          const tilts = [-2, 1.5, -1, 2, -1.5];
+          const bgs = ["var(--terracotta)", "var(--sage)", "var(--sand-deep)", "var(--butter)", "var(--terracotta)"];
+          const fg = i === 3 ? "var(--ink)" : "var(--paper)";
+          return (
+            <div key={m.name} className="relative" style={{ transform: `rotate(${tilts[i]}deg)` }}>
+              <span className="tape -top-3 left-10 -rotate-6" />
+              <div
+                className="border border-border bg-card p-3 shadow-[0_30px_60px_-30px_oklch(0.3_0.05_60/0.4)]"
+              >
+                {/* "photo" tile — initials */}
                 <div
-                  className="flex h-14 w-14 items-center justify-center rounded-full font-display text-2xl"
-                  style={{
-                    backgroundColor: i === 0 ? "var(--ink)" : "var(--sand)",
-                    color: i === 0 ? "var(--paper)" : "var(--clay)",
-                  }}
+                  className="flex aspect-[4/5] items-center justify-center"
+                  style={{ backgroundColor: bgs[i] }}
                 >
-                  {m.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .slice(0, 2)
-                    .join("")}
+                  <span
+                    className="font-display text-8xl"
+                    style={{ color: i === 3 ? "var(--ink)" : "var(--paper)" }}
+                  >
+                    {m.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </span>
                 </div>
-                <h3 className="mt-6 font-display text-2xl leading-tight">
-                  {m.name}
-                </h3>
-                <p className="mt-1 text-sm text-ink-soft">{m.role}</p>
-              </div>
-              <div className="mt-8 border-t border-border/60 pt-4 text-xs text-muted-foreground">
-                <div className="uppercase tracking-[0.15em]">{m.meta}</div>
-                <p className="mt-2 text-sm normal-case tracking-normal text-ink-soft">
-                  {m.blurb}
-                </p>
+                {/* caption */}
+                <div className="pt-3">
+                  <div className="hand text-2xl leading-tight" style={{ fontFamily: "var(--font-hand)" }}>
+                    {m.name}
+                  </div>
+                  <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                    {m.role}
+                  </div>
+                  <div className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
+                    {m.meta}
+                  </div>
+                  <p className="mt-2 text-sm text-ink-soft">{m.blurb}</p>
+                </div>
               </div>
             </div>
+          );
+        })}
+
+        {/* sign-off card */}
+        <div className="relative flex items-center justify-center p-8">
+          <div className="text-center">
+            <div className="font-display text-7xl" style={{ color: "var(--terracotta)" }}>+5</div>
+            <p className="mt-2 max-w-[200px] text-sm text-ink-soft">
+              years of student-life experience between us.
+            </p>
+            <p className="hand mt-4 text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+              and still counting ✿
+            </p>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
@@ -1171,57 +1418,88 @@ function Team() {
 
 function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>Say hello</SectionTag>
-        <h2 className="max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section id="contact" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Say hello · finis</SectionTag>
+        </div>
+        <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           Let's talk about your institution's{" "}
-          <span className="serif-italic">future.</span>
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            future.
+          </span>
         </h2>
         <p className="max-w-2xl text-lg text-ink-soft">
-          Book a personalized demo or consultation with our team. We'll show
-          you how Student Companion can transform your institution's student
-          support services.
+          Book a personalized demo or consultation. We'll show you how Student
+          Companion can transform your support services.
         </p>
       </div>
 
       <div className="grid grid-cols-12 gap-6">
-        {/* What to expect */}
-        <div className="col-span-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:col-span-7">
-          {[
-            ["Personalized demo", "See how our AI works with your specific use cases and requirements."],
-            ["Expert consultation", "Get answers to all your questions from our experienced team."],
-            ["Custom proposal", "Receive a tailored implementation plan and pricing for your institution."],
-          ].map(([t, b]) => (
-            <div key={t} className="bento-card bento-card-hover">
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full"
-                style={{ backgroundColor: "var(--sand)", color: "var(--clay)" }}
-              >
-                <Sparkles className="h-4 w-4" />
-              </span>
-              <h3 className="mt-6 font-display text-xl leading-snug">{t}</h3>
-              <p className="mt-2 text-sm text-ink-soft">{b}</p>
+        {/* What to expect — receipt */}
+        <div className="col-span-12 lg:col-span-7">
+          <div className="relative border border-border bg-card p-8 lg:p-10">
+            <div className="absolute -top-3 left-8 -rotate-3 rounded-sm px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper" style={{ backgroundColor: "var(--terracotta)" }}>
+              Your ticket
             </div>
-          ))}
+            <div className="flex items-center justify-between border-b border-dashed border-foreground/30 pb-4">
+              <span className="section-label">What to expect</span>
+              <span className="font-display text-sm" style={{ color: "var(--terracotta)" }}>
+                № 001 · admit one
+              </span>
+            </div>
+            <ol className="mt-6 divide-y divide-dashed divide-foreground/15">
+              {[
+                ["01", "Personalized demo", "See how our AI works with your specific use cases and requirements."],
+                ["02", "Expert consultation", "Get answers to all your questions from our experienced team."],
+                ["03", "Custom proposal", "A tailored implementation plan and pricing for your institution."],
+              ].map(([n, t, b]) => (
+                <li key={t} className="flex items-start gap-6 py-5">
+                  <span className="font-display text-3xl" style={{ color: "var(--terracotta)" }}>
+                    {n}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-xl">{t}</h3>
+                    <p className="mt-1 text-sm text-ink-soft">{b}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-6 flex items-center justify-between border-t border-dashed border-foreground/30 pt-4 text-xs text-muted-foreground">
+              <span>kigali · serving worldwide</span>
+              <span className="hand text-lg" style={{ fontFamily: "var(--font-hand)" }}>
+                ✓ confirmed
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Schedule card */}
         <div
-          className="bento-card col-span-12 flex flex-col justify-between lg:col-span-5"
+          className="relative col-span-12 flex flex-col justify-between border border-paper/10 p-8 lg:col-span-5 lg:p-10"
           style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
         >
+          <div
+            className="absolute -right-3 -top-3 -rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em]"
+            style={{ backgroundColor: "var(--terracotta)", color: "var(--paper)" }}
+          >
+            Free · 15–30 min
+          </div>
           <div>
-            <span className="section-label" style={{ color: "var(--sand-deep)" }}>
+            <span className="section-label" style={{ color: "var(--terracotta)" }}>
               Schedule a meeting
             </span>
-            <h3 className="mt-4 font-display text-3xl">
-              Pick a time that works for you.
+            <h3 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+              Pick a time that{" "}
+              <span className="serif-italic" style={{ color: "var(--sand-deep)" }}>
+                works for you.
+              </span>
             </h3>
             <ul className="mt-6 space-y-3 text-sm opacity-80">
-              <li>· 15–30 minute sessions available</li>
-              <li>· Instant confirmation</li>
-              <li>· Automatic calendar invites</li>
+              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> 15–30 minute sessions</li>
+              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> Instant confirmation</li>
+              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> Automatic calendar invites</li>
             </ul>
           </div>
           <a
@@ -1234,10 +1512,14 @@ function Contact() {
         </div>
 
         {/* Newsletter + contact info */}
-        <div className="bento-card col-span-12 lg:col-span-7">
-          <span className="section-label">Stay in the loop</span>
-          <h3 className="mt-4 font-display text-2xl">
-            Latest updates, features, and insights on AI in education.
+        <div className="relative col-span-12 border border-border bg-card p-8 lg:col-span-7">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-2xl" style={{ color: "var(--terracotta)" }}>✉</span>
+            <span className="section-label">Stay in the loop</span>
+          </div>
+          <h3 className="mt-4 font-display text-2xl md:text-3xl">
+            Dispatches from the{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>companion</span> newsroom.
           </h3>
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -1263,9 +1545,15 @@ function Contact() {
         </div>
 
         <div
-          className="bento-card col-span-12 flex flex-col justify-between gap-6 lg:col-span-5"
+          className="relative col-span-12 flex flex-col justify-between gap-6 border border-border p-8 lg:col-span-5"
           style={{ backgroundColor: "var(--sand)" }}
         >
+          <div
+            className="absolute -top-3 left-8 -rotate-3 rounded-sm px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper"
+            style={{ backgroundColor: "var(--ink)" }}
+          >
+            Return address
+          </div>
           <div className="space-y-4">
             <div className="flex items-start gap-3">
               <Mail className="mt-1 h-4 w-4" style={{ color: "var(--clay)" }} />

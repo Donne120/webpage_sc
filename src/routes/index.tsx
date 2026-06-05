@@ -22,6 +22,8 @@ import heroStudents from "@/assets/hero-students.jpg";
 import studentPortrait from "@/assets/student-portrait.jpg";
 import deskStill from "@/assets/desk-still-life.jpg";
 import campus from "@/assets/campus.jpg";
+import studentCover from "@/assets/student-cover.jpg";
+import notebookFlatlay from "@/assets/notebook-flatlay.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -492,64 +492,103 @@ function About() {
 
 function Demo() {
   return (
-    <section id="demo" className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div
-        className="overflow-hidden rounded-3xl"
-        style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-      >
-        <div className="grid grid-cols-12 gap-0">
-          <div className="col-span-12 flex flex-col justify-between p-10 lg:col-span-5 lg:p-14">
-            <SectionTag>See it in action</SectionTag>
-            <h3 className="mt-6 font-display text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.05]">
-              Student Companion,{" "}
-              <span className="italic" style={{ color: "var(--sand-deep)" }}>
-                live.
-              </span>
-            </h3>
-            <p className="mt-6 max-w-md text-base opacity-75">
-              Watch how Student Companion AI helps students get instant
-              support — from a quick course question to scheduling a meeting
-              with their department.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
-                style={{
-                  backgroundColor: "var(--paper)",
-                  color: "var(--ink)",
-                }}
-              >
-                Try it live <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-6 py-3 text-sm font-medium transition-all hover:border-paper hover:gap-3"
-              >
-                Schedule full demo <ArrowUpRight className="h-4 w-4" />
-              </a>
+    <section id="demo" className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="grid grid-cols-12 gap-8 lg:gap-12">
+        {/* Left — narrative */}
+        <div className="col-span-12 lg:col-span-5">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+            <SectionTag>Live demo · see it run</SectionTag>
+          </div>
+          <h3 className="mt-6 font-display text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.02]">
+            A chat that{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+              actually
+            </span>{" "}
+            gets it.
+          </h3>
+          <p className="mt-6 max-w-md text-base text-ink-soft">
+            Quick course question? Department contact? A scholarship deadline
+            that snuck up? Watch how Student Companion answers in seconds —
+            with sources, warmth, and zero queue time.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <PrimaryButton href="#">Try it live</PrimaryButton>
+            <GhostButton href="#contact">Schedule full demo</GhostButton>
+          </div>
+
+          {/* hand-drawn caption */}
+          <div className="mt-10 flex items-start gap-3 text-ink-soft">
+            <svg viewBox="0 0 50 60" className="h-12 w-12" fill="none">
+              <path
+                d="M5 5 C 20 25, 30 45, 42 55 M42 55 L 32 50 M42 55 L 40 44"
+                stroke="var(--terracotta)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+            <span className="hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
+              try asking <em>“when is my essay due?”</em>
+            </span>
+          </div>
+        </div>
+
+        {/* Right — chat collage */}
+        <div className="relative col-span-12 lg:col-span-7">
+          {/* polaroid background */}
+          <div className="relative ml-auto w-full max-w-xl rotate-[1.5deg]">
+            <span className="tape -top-3 left-8 -rotate-6" />
+            <span className="tape -top-3 right-12 rotate-6" />
+            <div className="bg-card border border-border p-3 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.4)]">
+              <img
+                src={notebookFlatlay}
+                alt="A notebook with handwritten doodles, sticky notes and a cup of tea"
+                width={1100}
+                height={900}
+                loading="lazy"
+                className="h-[420px] w-full object-cover"
+              />
             </div>
           </div>
-          <div className="relative col-span-12 lg:col-span-7">
-            <img
-              src={deskStill}
-              alt="A notebook, coffee cup, and phone showing the Student Companion chat"
-              width={1200}
-              height={1000}
-              loading="lazy"
-              className="h-full min-h-[360px] w-full object-cover"
-            />
-            <button
-              aria-label="Play demo"
-              className="absolute inset-0 flex items-center justify-center"
+
+          {/* Floating chat bubble — student */}
+          <div
+            className="absolute -left-2 top-12 max-w-[240px] -rotate-[3deg] rounded-2xl rounded-bl-sm border border-border bg-paper px-4 py-3 shadow-lg"
+          >
+            <div className="text-[10px] uppercase tracking-[0.18em] text-ink-soft">
+              student
+            </div>
+            <p className="mt-1 text-sm">
+              hey companion, when is my essay due? 😅
+            </p>
+          </div>
+
+          {/* Floating chat bubble — AI */}
+          <div
+            className="absolute -bottom-4 right-2 max-w-[260px] rotate-[2deg] rounded-2xl rounded-br-sm px-4 py-3 shadow-lg"
+            style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+          >
+            <div
+              className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em]"
+              style={{ color: "var(--terracotta)" }}
             >
-              <span
-                className="flex h-20 w-20 items-center justify-center rounded-full backdrop-blur transition-transform duration-300 hover:scale-110"
-                style={{ backgroundColor: "oklch(0.985 0.008 80 / 0.9)" }}
-              >
-                <PlayCircle className="h-10 w-10" style={{ color: "var(--ink)" }} />
-              </span>
-            </button>
+              <Sparkles className="h-3 w-3" /> companion
+            </div>
+            <p className="mt-1 text-sm">
+              Your <em className="serif-italic" style={{ color: "var(--sand-deep)" }}>ENT401</em> essay
+              is due <strong>Friday 11:59pm</strong>. Want a rubric link?
+            </p>
+          </div>
+
+          {/* stamp */}
+          <div
+            className="absolute -top-4 right-2 flex h-20 w-20 items-center justify-center rounded-full border-2 -rotate-12 text-center font-display text-xs uppercase tracking-[0.18em]"
+            style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+          >
+            <span>
+              Live<br />№001
+            </span>
           </div>
         </div>
       </div>
@@ -562,38 +601,73 @@ function Demo() {
 function Mission() {
   const items = [
     {
-      n: "01",
-      title: "Mission",
+      n: "M.",
+      kicker: "our mission",
+      head: "Elevate student support, everywhere.",
       body:
-        "To revolutionize student support across institutions worldwide through AI-driven tools that improve accessibility, engagement, and student success.",
+        "Revolutionize student support across institutions worldwide through AI-driven tools that improve accessibility, engagement and success.",
+      bg: "var(--sand)",
+      accent: "var(--terracotta)",
     },
     {
-      n: "02",
-      title: "Vision",
+      n: "V.",
+      kicker: "our vision",
+      head: "The most trusted companion in education.",
       body:
-        "To become the world's most trusted AI-powered student support platform — empowering learners through personalized guidance, seamless access to resources, and transformative experiences.",
+        "To become the world's most trusted AI-powered student support platform — empowering learners through personalized guidance and transformative experiences.",
+      bg: "var(--ink)",
+      accent: "var(--sage)",
+      dark: true,
     },
   ];
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14">
-        <SectionTag>03 — Why we exist</SectionTag>
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-14 flex items-end justify-between">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Chapter 03 · Why we exist</SectionTag>
+        </div>
+        <span className="hand text-xl text-ink-soft hidden md:inline" style={{ fontFamily: "var(--font-hand)" }}>
+          read me twice ↓
+        </span>
       </div>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {items.map((it) => (
-          <div key={it.n} className="bento-card bento-card-hover">
-            <div className="flex items-baseline justify-between">
-              <span className="font-display text-5xl text-clay">{it.n}</span>
-              <span className="section-label">{it.title}</span>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {items.map((it, i) => (
+          <div
+            key={it.n}
+            className={`relative overflow-hidden rounded-[4px] p-10 lg:p-12 ${
+              i === 1 ? "lg:translate-y-10" : ""
+            }`}
+            style={{ backgroundColor: it.bg, color: it.dark ? "var(--paper)" : "var(--ink)" }}
+          >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -bottom-12 -right-6 select-none font-display text-[18rem] leading-none opacity-20"
+              style={{ color: it.accent }}
+            >
+              {it.n}
+            </span>
+            <div className="relative">
+              <div
+                className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.22em]"
+                style={{
+                  borderColor: it.dark ? "oklch(0.985 0.008 80 / 0.25)" : "var(--border)",
+                  color: it.accent,
+                }}
+              >
+                <span className="h-1 w-1 rounded-full" style={{ backgroundColor: it.accent }} />
+                {it.kicker}
+              </div>
+              <h3 className="mt-8 font-display text-[clamp(2rem,3vw,3rem)] leading-[1.05]">
+                {it.head}
+              </h3>
+              <p
+                className="mt-6 max-w-md text-base leading-relaxed"
+                style={{ color: it.dark ? "oklch(0.985 0.008 80 / 0.7)" : "var(--ink-soft)" }}
+              >
+                {it.body}
+              </p>
             </div>
-            <h3 className="mt-8 font-display text-3xl leading-tight">
-              {it.title === "Mission"
-                ? "Elevate student support, everywhere."
-                : "The most trusted companion in education."}
-            </h3>
-            <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              {it.body}
-            </p>
           </div>
         ))}
       </div>
@@ -604,111 +678,109 @@ function Mission() {
 /* ───────────────── Already built ───────────────── */
 
 function AlreadyBuilt() {
+  const cards = [
+    {
+      kicker: "Volume I",
+      stamp: "Hosted on Poe",
+      title: "Try the live chatbot today.",
+      body:
+        "A live version of the chatbot is on Poe, where anyone can interact with core features.",
+      features: ["Student Q&As", "Academic guidance", "Student-life support", "Admission info", "Career development"],
+      cta: "Try Poe prototype",
+      tilt: "-rotate-[1.5deg]",
+      bg: "var(--sand)",
+    },
+    {
+      kicker: "Volume II",
+      stamp: "Institution-ready",
+      title: "Your institution's secure home.",
+      body:
+        "An independent MVP built for secure data integration and hosting within each institution's infrastructure.",
+      features: ["Institutional email only", "Google SSO", "Compliance-first", "Secure integration", "Built to scale"],
+      cta: "Access MVP",
+      tilt: "rotate-[1.5deg]",
+      bg: "var(--card)",
+      ink: true,
+    },
+  ];
+
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-14 flex flex-col gap-4">
-        <SectionTag>Already built</SectionTag>
-        <h2 className="max-w-3xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.05]">
+    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
+      <div className="mb-16 flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+          <SectionTag>Already built · two volumes</SectionTag>
+        </div>
+        <h2 className="max-w-3xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
           From idea to{" "}
-          <span className="serif-italic">working product.</span>
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            working product.
+          </span>
         </h2>
         <p className="max-w-2xl text-lg text-ink-soft">
-          To demonstrate feasibility, we've built two live versions of the
-          system — one for public exploration, one for secure institutional use.
+          To prove it works, we've shipped two live versions — one for public
+          exploration, one for secure institutional use.
         </p>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
-        <div className="bento-card bento-card-hover col-span-12 lg:col-span-6">
-          <div className="flex items-center justify-between">
-            <span className="section-label">Functional prototype</span>
-            <span className="rounded-full border border-border px-3 py-1 text-xs text-ink-soft">
-              Hosted on Poe
-            </span>
-          </div>
-          <h3 className="mt-6 font-display text-3xl leading-tight">
-            Try the live chatbot today.
-          </h3>
-          <p className="mt-4 text-ink-soft">
-            A live version of the chatbot is accessible on the Poe platform,
-            allowing users to interact with core features.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-            {[
-              "Student Q&As",
-              "Academic guidance",
-              "Student-life support",
-              "Admission information",
-              "Professional development hub",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-3">
-                <span
-                  className="h-1 w-4 rounded-full"
-                  style={{ backgroundColor: "var(--clay)" }}
-                />
-                {f}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <GhostButton>Try Poe prototype</GhostButton>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
+        {cards.map((c, i) => (
+          <div key={c.kicker} className={`relative ${c.tilt}`}>
+            <span className="tape -top-3 left-12 -rotate-6" />
+            <span className="tape -top-3 right-14 rotate-6" />
+            <div
+              className="relative border border-border p-8 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.3)]"
+              style={{ backgroundColor: c.bg }}
+            >
+              {/* postmark stamp */}
+              <div
+                className="absolute right-4 top-4 flex h-16 w-16 -rotate-[14deg] items-center justify-center rounded-full border-2 text-center font-display text-[9px] uppercase leading-tight tracking-[0.18em]"
+                style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
+              >
+                <span>{c.stamp}</span>
+              </div>
 
-        <div
-          className="bento-card bento-card-hover col-span-12 lg:col-span-6"
-          style={{ backgroundColor: "var(--sand)" }}
-        >
-          <div className="flex items-center justify-between">
-            <span className="section-label">Secure MVP platform</span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-border bg-paper px-3 py-1 text-xs text-ink-soft">
-              <ShieldCheck className="h-3 w-3" /> Institution-ready
-            </span>
-          </div>
-          <h3 className="mt-6 font-display text-3xl leading-tight">
-            A stand-alone, compliant home for your institution.
-          </h3>
-          <p className="mt-4 text-ink-soft">
-            Designed for secure data integration and hosting within each
-            institution's own infrastructure.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-            {[
-              "Institutional email domains only",
-              "Google Single Sign-On (SSO)",
-              "Institutional compliance",
-              "Secure data integration",
-              "Flexible for future scaling",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-3">
-                <span
-                  className="h-1 w-4 rounded-full"
-                  style={{ backgroundColor: "var(--clay)" }}
-                />
-                {f}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <PrimaryButton>Access MVP platform</PrimaryButton>
-          </div>
-        </div>
-
-        <div
-          className="bento-card col-span-12 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
-          style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-        >
-          <div className="flex items-start gap-4">
-            <ShieldCheck className="mt-1 h-6 w-6" style={{ color: "var(--sand-deep)" }} />
-            <div>
-              <h4 className="font-display text-2xl">Security & compliance</h4>
-              <p className="mt-1 max-w-2xl text-sm opacity-70">
-                Access restricted to verified institutional email domains with
-                Google SSO authentication — maintaining the highest standards
-                for student data.
-              </p>
+              <span className="section-label">{c.kicker}</span>
+              <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
+                {c.title}
+              </h3>
+              <p className="mt-4 max-w-md text-ink-soft">{c.body}</p>
+              <ul className="mt-6 space-y-2 text-sm text-ink-soft">
+                {c.features.map((f) => (
+                  <li key={f} className="flex items-center gap-3">
+                    <span
+                      className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                      style={{ backgroundColor: "var(--terracotta)" }}
+                    />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                {i === 0 ? <GhostButton>{c.cta}</GhostButton> : <PrimaryButton>{c.cta}</PrimaryButton>}
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Security strip */}
+      <div
+        className="mt-16 flex flex-col items-start gap-4 rounded-[4px] border border-paper/15 p-8 md:flex-row md:items-center md:justify-between"
+        style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+      >
+        <div className="flex items-start gap-4">
+          <ShieldCheck className="mt-1 h-6 w-6" style={{ color: "var(--terracotta)" }} />
+          <div>
+            <h4 className="font-display text-2xl">Security & compliance</h4>
+            <p className="mt-1 max-w-2xl text-sm opacity-70">
+              Access restricted to verified institutional email domains with
+              Google SSO — the highest standards for student data.
+            </p>
+          </div>
+        </div>
+        <div className="hand text-xl" style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}>
+          ✓ stamped & sealed
         </div>
       </div>
     </section>

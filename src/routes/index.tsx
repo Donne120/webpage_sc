@@ -24,6 +24,11 @@ import deskStill from "@/assets/desk-still-life.jpg";
 import campus from "@/assets/campus.jpg";
 import studentCover from "@/assets/student-cover.jpg";
 import notebookFlatlay from "@/assets/notebook-flatlay.jpg";
+import capAcademic from "@/assets/cap-academic.jpg";
+import capCampus from "@/assets/cap-campus.jpg";
+import capGrowth from "@/assets/cap-growth.jpg";
+import capEvents from "@/assets/cap-events.jpg";
+import capHuman from "@/assets/cap-human.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -798,6 +803,7 @@ function Features() {
       body: "Help with assignments, course navigation, and access to materials.",
       span: "lg:col-span-5 lg:row-span-2",
       dark: true,
+      image: capAcademic,
     },
     {
       n: "02",
@@ -805,6 +811,7 @@ function Features() {
       title: "Campus Services",
       body: "Connect with departments, schedule appointments, and request assistance.",
       span: "lg:col-span-4",
+      image: capCampus,
     },
     {
       n: "03",
@@ -812,6 +819,7 @@ function Features() {
       title: "Personal Growth",
       body: "Career advice, skills development, and mentorship opportunities.",
       span: "lg:col-span-3",
+      image: capGrowth,
     },
     {
       n: "04",
@@ -819,6 +827,7 @@ function Features() {
       title: "Event Updates",
       body: "Deadlines, internships, scholarships and campus events — never miss a moment.",
       span: "lg:col-span-3",
+      image: capEvents,
     },
     {
       n: "05",
@@ -826,6 +835,7 @@ function Features() {
       title: "Human Assistance",
       body: "Switch seamlessly from AI to live staff whenever the moment calls for it.",
       span: "lg:col-span-4",
+      image: capHuman,
     },
   ];
 
@@ -855,24 +865,47 @@ function Features() {
       </div>
 
       <div className="grid auto-rows-fr grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-        {items.map(({ n, icon: Icon, title, body, span, dark }) => (
+        {items.map(({ n, icon: Icon, title, body, span, dark, image }) => (
           <div
             key={n}
-            className={`relative bento-card bento-card-hover col-span-12 flex flex-col justify-between ${span}`}
+            className={`group relative bento-card bento-card-hover col-span-12 flex flex-col justify-between overflow-hidden ${span}`}
             style={
               dark
                 ? { backgroundColor: "var(--ink)", color: "var(--paper)" }
                 : undefined
             }
           >
+            {/* background photo */}
+            {image && (
+              <>
+                <img
+                  src={image}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 transition-all duration-700 group-hover:opacity-55 group-hover:scale-105"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background: dark
+                      ? "linear-gradient(180deg, color-mix(in oklab, var(--ink) 55%, transparent) 0%, color-mix(in oklab, var(--ink) 88%, transparent) 65%, var(--ink) 100%)"
+                      : "linear-gradient(180deg, color-mix(in oklab, var(--paper) 35%, transparent) 0%, color-mix(in oklab, var(--paper) 82%, transparent) 60%, var(--paper) 100%)",
+                  }}
+                />
+              </>
+            )}
             {/* corner stamp */}
             <div
-              className="absolute right-5 top-5 font-display text-sm"
+              className="relative z-10 absolute right-5 top-5 font-display text-sm"
               style={{ color: dark ? "var(--terracotta)" : "var(--terracotta)" }}
             >
               № {n}
             </div>
-            <div className="flex items-start justify-between">
+            <div className="relative z-10 flex items-start justify-between">
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-full ${
                   dark ? "" : ""
@@ -887,7 +920,7 @@ function Features() {
                 />
               </span>
             </div>
-            <div className="mt-10">
+            <div className="relative z-10 mt-10">
               <h3 className="font-display text-2xl leading-snug lg:text-3xl">
                 {title}
               </h3>

@@ -34,6 +34,9 @@ import teamHenry from "@/assets/Henry Chukwudi.jpeg";
 import teamOzioma from "@/assets/Ozioma Ikenna.webp";
 import logoImg from "@/assets/logo (3).png";
 
+const BOOKING_URL =
+  "https://calendar.zoho.com/zc/view/slot-booking/zz080112208b34be761ee5eb780e0eaee02becd4e5f631653127149a0b00f33b5f2fe2f907";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -64,13 +67,17 @@ function SectionTag({ children }: { children: React.ReactNode }) {
 function PrimaryButton({
   children,
   href = "#",
+  external = false,
 }: {
   children: React.ReactNode;
   href?: string;
+  external?: boolean;
 }) {
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-all duration-300 hover:bg-clay hover:gap-3"
       style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
     >
@@ -83,13 +90,17 @@ function PrimaryButton({
 function GhostButton({
   children,
   href = "#",
+  external = false,
 }: {
   children: React.ReactNode;
   href?: string;
+  external?: boolean;
 }) {
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className="group inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground hover:gap-3"
     >
       {children}
@@ -521,7 +532,9 @@ function Demo() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <PrimaryButton href="#">Launch Companion</PrimaryButton>
-            <GhostButton href="#contact">Schedule full demo</GhostButton>
+            <GhostButton href={BOOKING_URL} external>
+              Book a demo session
+            </GhostButton>
           </div>
 
           {/* hand-drawn caption */}
@@ -1177,10 +1190,12 @@ function CTABanner() {
               Launch Companion <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
-              href="#contact"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-6 py-3 text-sm font-medium transition-all hover:border-paper hover:gap-3"
             >
-              Book a meeting <ArrowUpRight className="h-4 w-4" />
+              Book a demo session <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
           <p
@@ -1414,11 +1429,13 @@ function Contact() {
             </ul>
           </div>
           <a
-            href="#"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-10 inline-flex items-center justify-between gap-2 rounded-full px-6 py-4 text-sm font-medium transition-all hover:gap-3"
             style={{ backgroundColor: "var(--paper)", color: "var(--ink)" }}
           >
-            Schedule on Calendly <ArrowUpRight className="h-4 w-4" />
+            Book a demo session <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
 

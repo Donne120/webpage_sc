@@ -8,7 +8,6 @@ import {
   Compass,
   CalendarDays,
   Users,
-  ShieldCheck,
   PlayCircle,
   Mail,
   MapPin,
@@ -36,6 +35,8 @@ import logoImg from "@/assets/logo (3).png";
 
 const BOOKING_URL =
   "https://calendar.zoho.com/zc/view/slot-booking/zz080112208b34be761ee5eb780e0eaee02becd4e5f631653127149a0b00f33b5f2fe2f907";
+
+const COMPANION_URL = "https://student-companion-cyan.vercel.app/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -168,7 +169,7 @@ function Nav() {
           >
             Contact
           </a>
-          <PrimaryButton href="#demo">Launch Companion</PrimaryButton>
+          <PrimaryButton href={COMPANION_URL} external>Launch Companion</PrimaryButton>
         </div>
       </div>
     </header>
@@ -275,7 +276,7 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <PrimaryButton href="#demo">Launch Companion</PrimaryButton>
+              <PrimaryButton href={COMPANION_URL} external>Launch Companion</PrimaryButton>
               <GhostButton href="#about">See how it works</GhostButton>
             </div>
 
@@ -531,7 +532,7 @@ function Demo() {
             with sources, warmth, and zero queue time.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <PrimaryButton href="#">Launch Companion</PrimaryButton>
+            <PrimaryButton href={COMPANION_URL} external>Launch Companion</PrimaryButton>
             <GhostButton href={BOOKING_URL} external>
               Book a demo session
             </GhostButton>
@@ -690,118 +691,6 @@ function Mission() {
             </div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-/* ───────────────── Already built ───────────────── */
-
-function AlreadyBuilt() {
-  const cards = [
-    {
-      kicker: "Volume I",
-      stamp: "Hosted on Poe",
-      title: "Meet the live chatbot today.",
-      body:
-        "A live version of the chatbot is on Poe, where anyone can interact with core features.",
-      features: ["Student Q&As", "Academic guidance", "Student-life support", "Admission info", "Career development"],
-      cta: "Open on Poe",
-      tilt: "-rotate-[1.5deg]",
-      bg: "var(--sand)",
-    },
-    {
-      kicker: "Volume II",
-      stamp: "Institution-ready",
-      title: "Your institution's secure home.",
-      body:
-        "An independent MVP built for secure data integration and hosting within each institution's infrastructure.",
-      features: ["Institutional email only", "Google SSO", "Compliance-first", "Secure integration", "Built to scale"],
-      cta: "Access MVP",
-      tilt: "rotate-[1.5deg]",
-      bg: "var(--card)",
-      ink: true,
-    },
-  ];
-
-  return (
-    <section className="relative mx-auto max-w-7xl px-6 pb-28 lg:px-10 lg:pb-36">
-      <div className="mb-16 flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Already built · two volumes</SectionTag>
-        </div>
-        <h2 className="max-w-3xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          From idea to{" "}
-          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-            working product.
-          </span>
-        </h2>
-        <p className="max-w-2xl text-lg text-ink-soft">
-          To prove it works, we've shipped two live versions — one for public
-          exploration, one for secure institutional use.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
-        {cards.map((c, i) => (
-          <div key={c.kicker} className={`relative ${c.tilt}`}>
-            <span className="tape -top-3 left-12 -rotate-6" />
-            <span className="tape -top-3 right-14 rotate-6" />
-            <div
-              className="relative border border-border p-8 shadow-[0_30px_70px_-30px_oklch(0.3_0.05_60/0.3)]"
-              style={{ backgroundColor: c.bg }}
-            >
-              {/* postmark stamp */}
-              <div
-                className="absolute right-4 top-4 flex h-16 w-16 -rotate-[14deg] items-center justify-center rounded-full border-2 text-center font-display text-[9px] uppercase leading-tight tracking-[0.18em]"
-                style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
-              >
-                <span>{c.stamp}</span>
-              </div>
-
-              <span className="section-label">{c.kicker}</span>
-              <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
-                {c.title}
-              </h3>
-              <p className="mt-4 max-w-md text-ink-soft">{c.body}</p>
-              <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-                {c.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3">
-                    <span
-                      className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ backgroundColor: "var(--terracotta)" }}
-                    />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                {i === 0 ? <GhostButton>{c.cta}</GhostButton> : <PrimaryButton>{c.cta}</PrimaryButton>}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Security strip */}
-      <div
-        className="mt-16 flex flex-col items-start gap-4 rounded-[4px] border border-paper/15 p-8 md:flex-row md:items-center md:justify-between"
-        style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-      >
-        <div className="flex items-start gap-4">
-          <ShieldCheck className="mt-1 h-6 w-6" style={{ color: "var(--terracotta)" }} />
-          <div>
-            <h4 className="font-display text-2xl">Security & compliance</h4>
-            <p className="mt-1 max-w-2xl text-sm opacity-70">
-              Access restricted to verified institutional email domains with
-              Google SSO — the highest standards for student data.
-            </p>
-          </div>
-        </div>
-        <div className="hand text-xl" style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}>
-          ✓ stamped & sealed
-        </div>
       </div>
     </section>
   );
@@ -1183,7 +1072,9 @@ function CTABanner() {
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="#demo"
+              href={COMPANION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
               style={{ backgroundColor: "var(--paper)", color: "var(--ink)" }}
             >
@@ -1582,7 +1473,6 @@ function Landing() {
       <About />
       <Demo />
       <Mission />
-      <AlreadyBuilt />
       <Features />
       <Value />
       <Testimonials />

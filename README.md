@@ -1,8 +1,8 @@
 # Student Companion
 
-An AI-powered companion for student life — academic, administrative, and personal support, securely integrated with each institution's systems for context-aware, reliable answers.
+Marketing site for Student Companion — an assistant that answers student questions from an institution's own handbooks, calendars and policy documents, rather than from general web knowledge.
 
-This repository contains the marketing site and product entry point for Student Companion, built with TanStack Start, React 19, Vite 7, and Tailwind CSS v4.
+Built at African Leadership University in Kigali. The site is TanStack Start (React 19), Vite 7 and Tailwind CSS v4, deployed on Vercel.
 
 ---
 
@@ -31,13 +31,14 @@ Student Companion is a context-aware assistant purpose-built for universities. I
 - Event updates, deadlines, internships, and scholarships
 - Seamless handoff from AI to live staff when needed
 
-## Features
+## Page sections
 
-- Editorial, accessible landing experience
-- Animated, collapsible FAQ section
-- Capability cards with rich imagery and semantic theming
-- Mobile-first responsive layout
-- SEO-ready metadata and semantic HTML
+Single route (`src/routes/index.tsx`), composed of: hero, marquee, about, demo,
+mission, capabilities, value, testimonials, CTA, team, contact, footer.
+
+There is no FAQ section — it was removed in `0ddddd1`. Chapter numbering in the
+section labels runs 01–06 with no gaps; keep it that way if you add or remove a
+section.
 
 ## Tech Stack
 
@@ -108,13 +109,15 @@ All color, typography, and spacing decisions flow through semantic tokens define
 
 ## Deployment
 
-The project builds to a serverless-compatible output and is designed to run on edge platforms (e.g. Cloudflare Workers). To deploy:
+`vite.config.ts` sets the nitro preset to `vercel`, so `build` emits Vercel's
+Build Output API structure in `.vercel/output`.
 
 ```bash
 bun run build
 ```
 
-Then deploy the generated output with your hosting provider of choice.
+Vercel picks this up automatically on push. Note `.npmrc` pins
+`legacy-peer-deps` — the install fails on Vercel without it.
 
 ## Contributing
 

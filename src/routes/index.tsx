@@ -12,8 +12,6 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  Twitter,
-  Instagram,
 } from "lucide-react";
 import heroStudents from "@/assets/hero-students.jpg";
 import studentPortrait from "@/assets/student-portrait.jpg";
@@ -41,17 +39,17 @@ const COMPANION_URL = "https://student-companion-cyan.vercel.app/";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Student Companion AI — A warmer way to support every student" },
+      { title: "Student Companion — the campus questions nobody has time to answer" },
       {
         name: "description",
         content:
-          "An elegant AI assistant giving every student academic, administrative and personal support — instantly, reliably, and at any hour.",
+          "An AI assistant that reads your institution's own policies and answers student questions at 2am. Built at African Leadership University, Kigali.",
       },
-      { property: "og:title", content: "Student Companion AI" },
+      { property: "og:title", content: "Student Companion" },
       {
         property: "og:description",
         content:
-          "A warm, intelligent assistant — built by students, for students. Ready to scale to any institution.",
+          "Deadlines, forms, which office to ask. Answered from your institution's own systems, at any hour. Built at ALU in Kigali.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -121,9 +119,9 @@ function Nav() {
   }, []);
 
   const links = [
-    ["About", "#about"],
-    ["Features", "#features"],
-    ["Testimonials", "#testimonials"],
+    ["Why", "#about"],
+    ["What it handles", "#features"],
+    ["Students", "#testimonials"],
     ["Team", "#team"],
   ];
 
@@ -145,7 +143,7 @@ function Nav() {
           <div className="leading-tight">
             <div className="font-display text-lg">Student Companion</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              AI Learning Assistant
+              Kigali
             </div>
           </div>
         </a>
@@ -179,7 +177,6 @@ function Nav() {
 /* ───────────────── Hero ───────────────── */
 
 function Hero() {
-  const rotating = ["companion.", "study buddy.", "campus guide.", "late-night hero."];
   return (
     <section
       id="top"
@@ -192,9 +189,9 @@ function Hero() {
       {/* Issue / date masthead */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center justify-between border-y border-foreground/15 py-3 text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-          <span>Volume 01 · The Companion Issue</span>
-          <span className="hidden md:inline">A zine for student support</span>
-          <span>Est. Kigali · Worldwide</span>
+          <span>Student Companion</span>
+          <span className="hidden md:inline">Built at ALU</span>
+          <span>Kigali, Rwanda</span>
         </div>
       </div>
 
@@ -208,14 +205,14 @@ function Hero() {
                 style={{ backgroundColor: "var(--terracotta)" }}
               />
               <span className="section-label">
-                AI student support · built for every campus
+                Nobody has read page 30 of the handbook
               </span>
             </div>
 
-            <h1 className="mt-6 text-[clamp(3rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.02em]">
-              Your
+            <h1 className="mt-6 text-[clamp(2.75rem,7.5vw,7rem)] leading-[0.92] tracking-[-0.02em]">
+              The answer
               <br />
-              student
+              is in the
               <br />
               <span className="relative inline-block align-baseline">
                 <span
@@ -230,23 +227,7 @@ function Hero() {
                   className="relative serif-italic"
                   style={{ color: "var(--terracotta)" }}
                 >
-                  {/* rotating word */}
-                  <span className="relative inline-block h-[1em] overflow-hidden align-bottom">
-                    <span className="invisible">{rotating[0]}</span>
-                    {rotating.map((w, i) => (
-                      <span
-                        key={w}
-                        className="absolute inset-0"
-                        style={{
-                          animation: `wordFlip${i === 0 ? "" : i + 1} 9s ${
-                            (i * 0) | 0
-                          }s infinite`,
-                        }}
-                      >
-                        {w}
-                      </span>
-                    ))}
-                  </span>
+                  handbook.
                 </span>
               </span>
             </h1>
@@ -268,11 +249,13 @@ function Hero() {
             </svg>
 
             <p className="mt-8 max-w-md text-base leading-relaxed text-ink-soft">
-              A warm, intelligent assistant that gives every student academic,
-              administrative and personal support —{" "}
+              Ask it where the deferral form lives, or what your scholarship
+              does if you drop a course. It reads your institution's actual
+              policies and answers at{" "}
               <em className="serif-italic" style={{ color: "var(--ink)" }}>
-                instantly, reliably, at any hour.
-              </em>
+                two in the morning,
+              </em>{" "}
+              when the registrar is closed.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -281,24 +264,10 @@ function Hero() {
             </div>
 
             {/* footnote row */}
-            <div className="mt-12 flex items-center gap-6 text-xs text-muted-foreground">
-              <div className="flex -space-x-2">
-                {["D", "S", "C", "A"].map((c, i) => (
-                  <span
-                    key={c}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-paper font-display text-sm"
-                    style={{
-                      backgroundColor: ["var(--sand-deep)", "var(--sage)", "var(--terracotta)", "var(--butter)"][i],
-                      color: "var(--ink)",
-                    }}
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-              <span>
-                Loved by students at <strong className="text-foreground">12+</strong> institutions
-              </span>
+            <div className="mt-12 max-w-sm border-l-2 pl-4 text-sm text-muted-foreground" style={{ borderColor: "var(--sand-deep)" }}>
+              In daily use by students at{" "}
+              <strong className="text-foreground">African Leadership University</strong>,
+              Kigali. Talking to a few other campuses now.
             </div>
           </div>
 
@@ -328,16 +297,19 @@ function Hero() {
                   className="h-[440px] w-full object-cover lg:h-[520px]"
                 />
                 <div className="flex items-center justify-between pt-3 text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-                  <span>Cover · Spring</span>
-                  <span>№ 001</span>
+                  <span>ALU campus</span>
+                  <span>Kigali</span>
                 </div>
               </div>
             </div>
 
             {/* sticky note */}
-            <div className="sticky-note absolute -left-2 top-10 max-w-[200px] -rotate-[6deg] hidden md:block">
-              “Like a brilliant friend on every student's shoulder.”
-              <div className="hand mt-2 text-xs opacity-60">— deborah, undergrad</div>
+            <div className="sticky-note absolute -left-2 top-10 max-w-[210px] -rotate-[6deg] hidden md:block">
+              “Saved me on countless occasions when I needed clarifications
+              about my academics.”
+              <div className="hand mt-2 text-xs opacity-60">
+                — Deborah Isimbi, ALU
+              </div>
             </div>
 
             {/* 24/7 chip */}
@@ -352,9 +324,9 @@ function Hero() {
                 <Sparkles className="h-4 w-4" />
               </span>
               <div className="leading-tight">
-                <div className="font-display text-xl">24/7</div>
+                <div className="font-display text-xl">Cited</div>
                 <div className="text-[10px] uppercase tracking-[0.18em] opacity-60">
-                  always on
+                  every answer
                 </div>
               </div>
             </div>
@@ -369,21 +341,17 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    "Academic Q&A",
+    "where do I submit this",
     "★",
-    "Course navigation",
+    "is the registrar open",
     "★",
-    "Scholarships & deadlines",
+    "what's the late penalty",
     "★",
-    "Career advice",
+    "can I still add a course",
     "★",
-    "Admissions help",
+    "who do I email about this",
     "★",
-    "Campus services",
-    "★",
-    "Mentorship",
-    "★",
-    "Always on, 24/7",
+    "when does the window close",
     "★",
   ];
   const row = [...items, ...items];
@@ -430,9 +398,9 @@ function About() {
           <SectionTag>Chapter 01 · About</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] tracking-tight">
-          A <span className="serif-italic">warmer</span> way to support{" "}
+          It started because we were{" "}
           <span className="relative inline-block">
-            every student.
+            tired of asking.
             <svg aria-hidden viewBox="0 0 340 14" className="absolute -bottom-2 left-0 h-3 w-full" fill="none">
               <path d="M4 9 C 90 2, 200 14, 336 5" stroke="var(--terracotta)" strokeWidth="3" strokeLinecap="round" />
             </svg>
@@ -443,25 +411,35 @@ function About() {
       <div className="relative grid grid-cols-12 gap-8 lg:gap-12">
         <div className="col-span-12 space-y-6 text-lg leading-relaxed text-ink-soft lg:col-span-7">
           <p className="text-2xl leading-snug text-foreground font-display">
-            Student Companion AI is an elegant, AI-driven platform that elevates
-            the student experience across universities, colleges and schools.
+            We're students at African Leadership University in Kigali. We kept
+            losing afternoons to questions that should have taken thirty seconds.
           </p>
           <p>
-            It delivers instant academic and administrative assistance — helping
-            students find information, connect with departments, and access
-            resources with ease.
+            Where do I submit the deferral form. Is the registrar open today.
+            What happens to my scholarship if I drop to three courses.
           </p>
           <p>
-            By integrating securely with each institution's systems, it offers
-            context-aware support — reducing staff pressure while making every
-            learner feel <em className="serif-italic" style={{ color: "var(--terracotta)" }}>genuinely looked after.</em>
+            The answers existed. They were in a PDF nobody could find, or in the
+            head of one administrator already handling forty other students.
+          </p>
+          <p>
+            So we built the thing we wanted. It connects to an institution's own
+            systems and answers from those, not from guesswork. When it doesn't
+            know, it says so and hands you to a human who does.
           </p>
 
-          <div className="grid grid-cols-3 gap-4 pt-8">
+          <div className="grid grid-cols-1 gap-6 pt-8 sm:grid-cols-2">
             {[
-              ["Faster", "Answers", "var(--terracotta)"],
-              ["Lower", "Staff load", "var(--sage)"],
-              ["Happier", "Students", "var(--butter)"],
+              [
+                "Answers from your systems",
+                "Not scraped from the open web. It reads what your institution actually publishes.",
+                "var(--terracotta)",
+              ],
+              [
+                "It admits what it doesn't know",
+                "No confident guessing on policy questions. Unclear cases go to a person.",
+                "var(--sage)",
+              ],
             ].map(([a, b, c]) => (
               <div key={a} className="relative">
                 <span
@@ -469,8 +447,8 @@ function About() {
                   style={{ backgroundColor: c }}
                 />
                 <div className="pl-4">
-                  <div className="font-display text-3xl text-foreground">{a}</div>
-                  <div className="text-sm text-muted-foreground">{b}</div>
+                  <div className="font-display text-xl leading-snug text-foreground">{a}</div>
+                  <div className="mt-1 text-sm text-muted-foreground">{b}</div>
                 </div>
               </div>
             ))}
@@ -491,15 +469,14 @@ function About() {
                 className="h-[460px] w-full object-cover"
               />
               <div className="pt-3 text-center font-hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
-                — late-night study, saved.
+                after the offices close
               </div>
             </div>
           </div>
 
           {/* Sticky note */}
-          <div className="sticky-note absolute -bottom-6 -left-2 max-w-[200px] rotate-[4deg] hidden md:block">
-            warm. helpful.<br />never sleepy.
-            <div className="hand mt-1 text-xs opacity-60">↗ that's the point</div>
+          <div className="sticky-note absolute -bottom-6 -left-2 max-w-[210px] rotate-[4deg] hidden md:block">
+            Nobody asks these during office hours.
           </div>
         </div>
       </div>
@@ -517,19 +494,19 @@ function Demo() {
         <div className="col-span-12 lg:col-span-5">
           <div className="flex items-center gap-3">
             <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-            <SectionTag>Live demo · see it run</SectionTag>
+            <SectionTag>A real exchange</SectionTag>
           </div>
           <h3 className="mt-6 font-display text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.02]">
-            A chat that{" "}
+            It knows{" "}
             <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-              actually
+              your
             </span>{" "}
-            gets it.
+            handbook.
           </h3>
           <p className="mt-6 max-w-md text-base text-ink-soft">
-            Quick course question? Department contact? A scholarship deadline
-            that snuck up? Watch how Student Companion answers in seconds —
-            with sources, warmth, and zero queue time.
+            A general-purpose chatbot will invent a plausible answer about your
+            withdrawal policy. This one is reading the actual document, and it
+            tells you which one.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <PrimaryButton href={COMPANION_URL} external>Launch Companion</PrimaryButton>
@@ -550,7 +527,7 @@ function Demo() {
               />
             </svg>
             <span className="hand text-xl" style={{ fontFamily: "var(--font-hand)" }}>
-              try asking <em>“when is my essay due?”</em>
+              try <em>“what happens if I withdraw after week 6?”</em>
             </span>
           </div>
         </div>
@@ -581,7 +558,7 @@ function Demo() {
               student
             </div>
             <p className="mt-1 text-sm">
-              hey companion, when is my essay due? 😅
+              if i withdraw from ENT401 now does it still show on my transcript
             </p>
           </div>
 
@@ -597,8 +574,12 @@ function Demo() {
               <Sparkles className="h-3 w-3" /> companion
             </div>
             <p className="mt-1 text-sm">
-              Your <em className="serif-italic" style={{ color: "var(--sand-deep)" }}>ENT401</em> essay
-              is due <strong>Friday 11:59pm</strong>. Want a rubric link?
+              After week 4 it shows as{" "}
+              <strong>W</strong> — no grade penalty, but it counts toward your
+              attempt limit.{" "}
+              <em className="serif-italic" style={{ color: "var(--sand-deep)" }}>
+                Academic Policy §4.2
+              </em>
             </p>
           </div>
 
@@ -608,7 +589,7 @@ function Demo() {
             style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
           >
             <span>
-              Live<br />№001
+              Cites<br />sources
             </span>
           </div>
         </div>
@@ -623,19 +604,19 @@ function Mission() {
   const items = [
     {
       n: "M.",
-      kicker: "our mission",
-      head: "Elevate student support, everywhere.",
+      kicker: "what we're doing",
+      head: "Answer the question at 11pm, not Monday at 9.",
       body:
-        "Revolutionize student support across institutions worldwide through AI-driven tools that improve accessibility, engagement and success.",
+        "Most student questions are small and urgent. Which form, which office, which deadline. They pile up in inboxes and get answered days later, if at all. We built something that answers them the moment they're asked.",
       bg: "var(--sand)",
       accent: "var(--terracotta)",
     },
     {
       n: "V.",
-      kicker: "our vision",
-      head: "The most trusted companion in education.",
+      kicker: "where this goes",
+      head: "Every campus should have one. Most can't afford to build it.",
       body:
-        "To become the world's most trusted AI-powered student support platform — empowering learners through personalized guidance and transformative experiences.",
+        "A university doesn't need another dashboard. It needs the thing students already reach for to actually know the answer. We want Student Companion to be that — configured per institution, running on their policies, not ours.",
       bg: "var(--ink)",
       accent: "var(--sage)",
       dark: true,
@@ -646,11 +627,8 @@ function Mission() {
       <div className="mb-14 flex items-end justify-between">
         <div className="flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Chapter 03 · Why we exist</SectionTag>
+          <SectionTag>Chapter 03 · Why we built it</SectionTag>
         </div>
-        <span className="hand text-xl text-ink-soft hidden md:inline" style={{ fontFamily: "var(--font-hand)" }}>
-          read me twice ↓
-        </span>
       </div>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {items.map((it, i) => (
@@ -703,8 +681,8 @@ function Features() {
     {
       n: "01",
       icon: GraduationCap,
-      title: "Academic Support",
-      body: "Help with assignments, course navigation, and access to materials.",
+      title: "Coursework",
+      body: "Where the reading list lives, what the rubric weights, whether the late penalty is per day or per hour. The things buried on page 30 of a module outline.",
       span: "lg:col-span-5 lg:row-span-2",
       dark: true,
       image: capAcademic,
@@ -712,32 +690,32 @@ function Features() {
     {
       n: "02",
       icon: Building2,
-      title: "Campus Services",
-      body: "Connect with departments, schedule appointments, and request assistance.",
+      title: "Admin and offices",
+      body: "Which office handles it, whether they're open, and what you need to bring.",
       span: "lg:col-span-4",
       image: capCampus,
     },
     {
       n: "03",
       icon: Compass,
-      title: "Personal Growth",
-      body: "Career advice, skills development, and mentorship opportunities.",
+      title: "After graduation",
+      body: "Internship routes, CV feedback, which alumni work where.",
       span: "lg:col-span-3",
       image: capGrowth,
     },
     {
       n: "04",
       icon: CalendarDays,
-      title: "Event Updates",
-      body: "Deadlines, internships, scholarships and campus events — never miss a moment.",
+      title: "Dates that move",
+      body: "Scholarship cut-offs and registration windows, pulled from the live academic calendar rather than last year's PDF.",
       span: "lg:col-span-3",
       image: capEvents,
     },
     {
       n: "05",
       icon: Users,
-      title: "Human Assistance",
-      body: "Switch seamlessly from AI to live staff whenever the moment calls for it.",
+      title: "Knowing when to stop",
+      body: "Appeals, mental health, anything with a judgement in it. Routed to staff instead of answered.",
       span: "lg:col-span-4",
       image: capHuman,
     },
@@ -755,16 +733,16 @@ function Features() {
       <div className="relative mb-14 flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Chapter 02 · Capabilities</SectionTag>
+          <SectionTag>Chapter 02 · What it handles</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          Everything a student needs,{" "}
+          What students{" "}
           <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-            in one companion.
+            actually ask it.
           </span>
         </h2>
-        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
-          like a swiss army knife, but warmer ✿
+        <p className="max-w-lg text-base text-ink-soft">
+          Five areas, in rough order of how often students actually use them.
         </p>
       </div>
 
@@ -846,10 +824,14 @@ function Features() {
             className="absolute -right-3 -top-3 -rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper"
             style={{ backgroundColor: "var(--terracotta)" }}
           >
-            For every campus
+            Configured per campus
           </div>
           <p className="font-display text-2xl leading-snug text-ink lg:text-3xl">
-            Universities. Colleges. High schools. <em className="serif-italic" style={{ color: "var(--terracotta)" }}>Student Companion</em> adapts to your programs, policies and tone of voice.
+            None of this is hardcoded. It's read from whatever your institution
+            already publishes —{" "}
+            <em className="serif-italic" style={{ color: "var(--terracotta)" }}>
+              handbooks, calendars, the intranet page nobody maintains.
+            </em>
           </p>
           <div className="mt-6">
             <PrimaryButton href="#contact">Talk to our team</PrimaryButton>
@@ -868,14 +850,13 @@ function Value() {
       <div className="mb-14 flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Chapter 04 · Value</SectionTag>
+          <SectionTag>Chapter 04 · What changes</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          Good for{" "}
-          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>institutions.</span>
-          <br />
-          Great for{" "}
-          <span className="serif-italic" style={{ color: "var(--sage)" }}>students.</span>
+          Two sides of the same{" "}
+          <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
+            unanswered email.
+          </span>
         </h2>
       </div>
 
@@ -890,13 +871,14 @@ function Value() {
             <span className="font-display text-3xl" style={{ color: "var(--terracotta)" }}>I.</span>
           </div>
           <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
-            Transform how you support learners.
+            Your staff stop answering the same six questions.
           </h3>
           <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
-              "Automates repetitive student inquiries, freeing staff for higher-value work.",
-              "Generates data-driven insights on student engagement and service gaps.",
-              "Strengthens reputation as a digitally advanced, student-centered institution.",
+              "The repetitive queue gets handled before it reaches a person. Deadlines, forms, office hours, eligibility.",
+              "You find out what students keep asking about. Usually it points at a policy page nobody can find.",
+              "Anything it can't answer from your own documents is escalated, not guessed at.",
+              "It runs on your policies. When they change, you update the source, not the chatbot.",
             ].map((t, i) => (
               <li key={t} className="flex gap-4">
                 <span className="font-display text-2xl leading-none" style={{ color: "var(--terracotta)" }}>
@@ -914,13 +896,14 @@ function Value() {
             <span className="font-display text-3xl" style={{ color: "var(--sage)" }}>II.</span>
           </div>
           <h3 className="mt-6 font-display text-3xl leading-tight md:text-4xl">
-            Empowering academic <span className="serif-italic">success.</span>
+            You stop waiting three days for a{" "}
+            <span className="serif-italic">two-line answer.</span>
           </h3>
           <ol className="mt-8 space-y-6 text-base text-ink-soft">
             {[
-              "24/7 access to academic and administrative support.",
-              "Instant answers about courses, policies and deadlines.",
-              "Personalized learning guidance and career insights.",
+              "Ask at any hour, in the middle of an assignment, without booking anything.",
+              "It cites where the answer came from, so you can check it yourself before acting on it.",
+              "Appeals and personal circumstances are judgement calls. Those it hands to a human.",
             ].map((t, i) => (
               <li key={t} className="flex gap-4">
                 <span className="font-display text-2xl leading-none" style={{ color: "var(--sage)" }}>
@@ -931,9 +914,8 @@ function Value() {
             ))}
           </ol>
 
-          <div className="sticky-note mt-10 inline-block max-w-[220px] -rotate-[3deg]">
-            free for every student.<br />always.
-            <div className="hand mt-1 text-xs opacity-60">↗ no catch</div>
+          <div className="sticky-note mt-10 inline-block max-w-[240px] -rotate-[3deg]">
+            Students never pay. The institution licenses it.
           </div>
         </div>
       </div>
@@ -949,18 +931,18 @@ function Testimonials() {
       quote:
         "The AI chatbot is very helpful and has saved me on countless occasions when I needed clarifications about my academics.",
       name: "Deborah Isimbi",
-      role: "Undergraduate Student",
+      role: "Undergraduate · ALU Kigali",
     },
     {
       quote:
         "The chatbot saved me time by curating all my information in one response — originally I would have gone through a long process of asking colleagues and waiting for a reply.",
       name: "Sonia Teta",
-      role: "Undergraduate Student",
+      role: "Undergraduate · ALU Kigali",
     },
     {
       quote: "Very useful and helpful, and saves me time. It's a very recommendable tool.",
       name: "Conzana Mangati",
-      role: "Undergraduate Student",
+      role: "Undergraduate · ALU Kigali",
     },
   ];
 
@@ -972,12 +954,16 @@ function Testimonials() {
           <SectionTag>Chapter 05 · In their words</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          What students{" "}
+          Three students,{" "}
           <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-            actually
-          </span>{" "}
-          say.
+            unedited.
+          </span>
         </h2>
+        <p className="max-w-xl text-base text-ink-soft">
+          From ALU undergraduates using the companion. We've left their
+          wording alone, including the parts that are just &ldquo;it saves me
+          time.&rdquo;
+        </p>
       </div>
       <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
         {quotes.map((q, i) => {
@@ -1052,23 +1038,25 @@ function CTABanner() {
           className="absolute right-6 top-6 hidden h-28 w-28 -rotate-[14deg] flex-col items-center justify-center rounded-full border-2 text-center font-display text-[10px] uppercase tracking-[0.18em] md:flex"
           style={{ borderColor: "var(--terracotta)", color: "var(--terracotta)" }}
         >
-          <span>Special</span>
-          <span>Edition</span>
+          <span>Kigali</span>
+          <span>Rwanda</span>
           <span className="mt-1">2026</span>
         </div>
         <div className="relative">
           <span className="section-label" style={{ color: "var(--terracotta)" }}>
-            ✦ Ready to transform your campus?
+            For institutions
           </span>
           <h2 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02]">
-            Join the future of{" "}
+            See it answer{" "}
             <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-              student support.
-            </span>
+              your
+            </span>{" "}
+            students' questions.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base opacity-75">
-            Always-on AI support, reduced administrative burden, and improved
-            engagement across your whole institution.
+            Bring the five questions your front desk is tired of. We'll point
+            the companion at your handbook and you can watch it work, or fail,
+            in real time.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
@@ -1089,11 +1077,9 @@ function CTABanner() {
               Book a demo session <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
-          <p
-            className="hand mx-auto mt-8 max-w-md text-xl opacity-80"
-            style={{ fontFamily: "var(--font-hand)", color: "var(--sand-deep)" }}
-          >
-            p.s. we reply within 24 hours. always.
+          <p className="mx-auto mt-8 max-w-md text-sm opacity-60">
+            A small team in Kigali reads every one of these. Expect a reply
+            within a day or two.
           </p>
         </div>
       </div>
@@ -1109,35 +1095,35 @@ function Team() {
       name: "Andrew Steven Boima",
       role: "Founder & Project Lead",
       meta: "BSc (Hons) Entrepreneurial Leadership",
-      blurb: "Leads project vision, strategy, and partnerships.",
+      blurb: "Runs the institutional conversations. If you book a call, this is usually who picks up.",
       photo: teamAndrew,
     },
     {
       name: "Dieudonne Ngum",
       role: "Technical Development Lead",
       meta: "BSc (Hons) Software Engineering",
-      blurb: "Oversees AI model design and system integration.",
+      blurb: "Builds the retrieval side — the part that makes it cite a real document instead of inventing one.",
       photo: teamNgum,
     },
     {
       name: "Marvin Mayonga Ogore",
       role: "Technical Supervisory Coach",
       meta: "Machine Learning Coach",
-      blurb: "Provides technical guidance and quality assurance.",
+      blurb: "Our ML coach. Mostly tells us when an approach won't survive contact with real data.",
       photo: teamMarvin,
     },
     {
       name: "Henry Chukwudi John",
       role: "Stakeholder Engagement Lead",
       meta: "Library & Information Services",
-      blurb: "Manages institutional relations and engagement strategy.",
+      blurb: "Comes from library and information services, which is why we take document structure seriously.",
       photo: teamHenry,
     },
     {
       name: "Ogbonna Ozioma Ikenna",
       role: "Customer Success & Implementation Lead",
       meta: "Customer Success",
-      blurb: "Leads customer success initiatives and implementation.",
+      blurb: "Handles setup once a campus signs on, and chases the documents nobody wants to hand over.",
       photo: teamOzioma,
     },
   ];
@@ -1147,18 +1133,14 @@ function Team() {
       <div className="mb-16 flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Chapter 07 · The makers</SectionTag>
+          <SectionTag>Chapter 06 · Who built it</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          Built by people who{" "}
+          Five people, most of us{" "}
           <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-            care
-          </span>{" "}
-          about students.
+            still enrolled.
+          </span>
         </h2>
-        <p className="hand max-w-md text-xl text-ink-soft" style={{ fontFamily: "var(--font-hand)" }}>
-          ✿ a class photo, of sorts
-        </p>
       </div>
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
         {team.map((m, i) => {
@@ -1215,14 +1197,14 @@ function Team() {
         })}
 
         {/* sign-off card */}
-        <div className="relative flex items-center justify-center p-8">
-          <div className="text-center">
-            <div className="font-display text-7xl" style={{ color: "var(--terracotta)" }}>+5</div>
-            <p className="mt-2 max-w-[200px] text-sm text-ink-soft">
-              years of student-life experience between us.
+        <div className="relative flex items-center p-8">
+          <div>
+            <p className="font-display text-2xl leading-snug">
+              We were the ones stuck in the queue.
             </p>
-            <p className="hand mt-4 text-xl" style={{ fontFamily: "var(--font-hand)" }}>
-              and still counting ✿
+            <p className="mt-3 max-w-[230px] text-sm text-ink-soft">
+              That's the whole qualification. We're building for a problem we
+              had last semester, and some of us still have.
             </p>
           </div>
         </div>
@@ -1239,17 +1221,17 @@ function Contact() {
       <div className="mb-16 flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-          <SectionTag>Say hello · finis</SectionTag>
+          <SectionTag>Get in touch</SectionTag>
         </div>
         <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]">
-          Let's talk about your institution's{" "}
+          Half an hour, and you'll know if this is{" "}
           <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-            future.
+            worth your time.
           </span>
         </h2>
         <p className="max-w-2xl text-lg text-ink-soft">
-          Book a personalized demo or consultation. We'll show you how Student
-          Companion can transform your support services.
+          No slide deck. We'd rather load your handbook and let you try to
+          break it.
         </p>
       </div>
 
@@ -1258,19 +1240,20 @@ function Contact() {
         <div className="col-span-12 lg:col-span-7">
           <div className="relative border border-border bg-card p-8 lg:p-10">
             <div className="absolute -top-3 left-8 -rotate-3 rounded-sm px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-paper" style={{ backgroundColor: "var(--terracotta)" }}>
-              Your ticket
+              No slides
             </div>
             <div className="flex items-center justify-between border-b border-dashed border-foreground/30 pb-4">
-              <span className="section-label">What to expect</span>
+              <span className="section-label">How the call goes</span>
               <span className="font-display text-sm" style={{ color: "var(--terracotta)" }}>
-                № 001 · admit one
+                four steps
               </span>
             </div>
             <ol className="mt-6 divide-y divide-dashed divide-foreground/15">
               {[
-                ["01", "Personalized demo", "See how our AI works with your specific use cases and requirements."],
-                ["02", "Expert consultation", "Get answers to all your questions from our experienced team."],
-                ["03", "Custom proposal", "A tailored implementation plan and pricing for your institution."],
+                ["01", "You bring the hard questions", "The ones your front desk answers twenty times a week, and one nobody can ever find the answer to."],
+                ["02", "We point it at your documents", "Usually a handbook and an academic calendar. This part takes about a day on our side."],
+                ["03", "You try to break it", "If it makes something up, we want to see that happen in the demo rather than in March."],
+                ["04", "Costs, in writing", "What it takes to run per year, what we'd need from your IT team, and what we can't do yet."],
               ].map(([n, t, b]) => (
                 <li key={t} className="flex items-start gap-6 py-5">
                   <span className="font-display text-3xl" style={{ color: "var(--terracotta)" }}>
@@ -1283,11 +1266,8 @@ function Contact() {
                 </li>
               ))}
             </ol>
-            <div className="mt-6 flex items-center justify-between border-t border-dashed border-foreground/30 pt-4 text-xs text-muted-foreground">
-              <span>kigali · serving worldwide</span>
-              <span className="hand text-lg" style={{ fontFamily: "var(--font-hand)" }}>
-                ✓ confirmed
-              </span>
+            <div className="mt-6 border-t border-dashed border-foreground/30 pt-4 text-xs text-muted-foreground">
+              Typically runs 30 minutes. We've never needed the full hour.
             </div>
           </div>
         </div>
@@ -1301,7 +1281,7 @@ function Contact() {
             className="absolute -right-3 -top-3 -rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em]"
             style={{ backgroundColor: "var(--terracotta)", color: "var(--paper)" }}
           >
-            Free · 15–30 min
+            Free · 30 min
           </div>
           <div>
             <span className="section-label" style={{ color: "var(--terracotta)" }}>
@@ -1313,11 +1293,11 @@ function Contact() {
                 works for you.
               </span>
             </h3>
-            <ul className="mt-6 space-y-3 text-sm opacity-80">
-              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> 15–30 minute sessions</li>
-              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> Instant confirmation</li>
-              <li className="flex gap-3"><span style={{ color: "var(--terracotta)" }}>✦</span> Automatic calendar invites</li>
-            </ul>
+            <p className="mt-6 text-sm leading-relaxed opacity-80">
+              You'll be talking to Andrew or Henry, not a sales team — we
+              don't have one. Kigali time, but we'll work around your
+              timezone.
+            </p>
           </div>
           <a
             href={BOOKING_URL}
@@ -1334,33 +1314,24 @@ function Contact() {
         <div className="relative col-span-12 border border-border bg-card p-8 lg:col-span-7">
           <div className="flex items-center gap-3">
             <span className="font-display text-2xl" style={{ color: "var(--terracotta)" }}>✉</span>
-            <span className="section-label">Stay in the loop</span>
+            <span className="section-label">Still unclear?</span>
           </div>
           <h3 className="mt-4 font-display text-2xl md:text-3xl">
-            Dispatches from the{" "}
-            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>companion</span> newsroom.
+            Questions we haven't{" "}
+            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>answered here.</span>
           </h3>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="mt-6 flex flex-col gap-3 sm:flex-row"
-          >
-            <input
-              type="email"
-              required
-              placeholder="Enter your email"
-              className="w-full flex-1 rounded-full border border-border bg-background px-5 py-3 text-sm outline-none transition-colors focus:border-foreground"
-            />
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
-              style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
-            >
-              Subscribe <ArrowUpRight className="h-4 w-4" />
-            </button>
-          </form>
-          <p className="mt-3 text-xs text-muted-foreground">
-            We respect your privacy. Unsubscribe at any time.
+          <p className="mt-4 max-w-lg text-sm text-ink-soft">
+            Pricing, data handling, what integration actually takes on your
+            side — write to us and a real person on the team replies. We
+            don't run a mailing list.
           </p>
+          <a
+            href="mailto:studentcompanionai@gmail.com?subject=Question%20about%20Student%20Companion"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all hover:gap-3"
+            style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+          >
+            Email the team <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
 
         <div
@@ -1394,29 +1365,20 @@ function Contact() {
                   Kigali, Rwanda
                 </div>
                 <div className="text-sm text-ink-soft">
-                  Serving institutions worldwide
+                  Happy to work across timezones
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex gap-3">
-            {[
-              { Icon: Linkedin, href: "https://www.linkedin.com/company/student-companion-ai-chatbot/", label: "LinkedIn" },
-              { Icon: Twitter, href: "#", label: "Twitter" },
-              { Icon: Instagram, href: "#", label: "Instagram" },
-            ].map(({ Icon, href, label }, i) => (
-              <a
-                key={i}
-                href={href}
-                target={href === "#" ? undefined : "_blank"}
-                rel={href === "#" ? undefined : "noopener noreferrer"}
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-paper transition-colors hover:bg-foreground hover:text-paper"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
+          <a
+            href="https://www.linkedin.com/company/student-companion-ai-chatbot/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-paper px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-paper"
+          >
+            <Linkedin className="h-4 w-4" />
+            Follow on LinkedIn
+          </a>
         </div>
       </div>
     </section>
@@ -1438,7 +1400,7 @@ function Footer() {
           <div className="leading-tight">
             <div className="font-display text-lg">Student Companion</div>
             <div className="text-xs text-muted-foreground">
-              Empowering student success
+              African Leadership University, Kigali
             </div>
           </div>
         </div>
@@ -1453,8 +1415,7 @@ function Footer() {
             <Linkedin className="h-4 w-4" />
           </a>
           <p className="text-sm text-muted-foreground">
-            © 2026 Student Companion AI. Built with care for students and
-            institutions everywhere.
+            © 2026 Student Companion. Made in Kigali.
           </p>
         </div>
       </div>

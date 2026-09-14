@@ -201,23 +201,3 @@
   animation: drawUnderline 1.6s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@keyframes wordFlip {
-  0%, 22%   { transform: translateY(0); opacity: 1; }
-  28%, 47%  { transform: translateY(-100%); opacity: 0; }
-  53%, 72%  { transform: translateY(-200%); opacity: 0; }
-  78%, 100% { transform: translateY(-300%); opacity: 0; }
-}
-@keyframes wordFlip2 {
-  0%, 22%   { transform: translateY(100%); opacity: 0; }
-  28%, 47%  { transform: translateY(0); opacity: 1; }
-  53%, 100% { transform: translateY(-100%); opacity: 0; }
-}
-@keyframes wordFlip3 {
-  0%, 47%   { transform: translateY(100%); opacity: 0; }
-  53%, 72%  { transform: translateY(0); opacity: 1; }
-  78%, 100% { transform: translateY(-100%); opacity: 0; }
-}
-@keyframes wordFlip4 {
-  0%, 72%   { transform: translateY(100%); opacity: 0; }
-  78%, 100% { transform: translateY(0); opacity: 1; }
-}

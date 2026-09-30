@@ -62,6 +62,17 @@ function Services() {
                 </li>
               ))}
             </ul>
+            <div className="mt-8 pt-6 border-t border-border">
+              <a
+                href="https://career.studentcompanionai.rw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all hover:gap-3"
+                style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}
+              >
+                Browse Opportunities <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
           {/* Support Platform */}

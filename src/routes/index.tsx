@@ -34,7 +34,7 @@ import logoImg from "@/assets/logo (3).png";
 const BOOKING_URL =
   "https://calendar.zoho.com/zc/view/slot-booking/zz080112208b34be761ee5eb780e0eaee02becd4e5f631653127149a0b00f33b5f2fe2f907";
 
-const COMPANION_URL = "https://student-companion-cyan.vercel.app/";
+const COMPANION_URL = "https://chat.studentcompanionai.rw";
 
 export const Route = createFileRoute("/")({
   head: () => ({

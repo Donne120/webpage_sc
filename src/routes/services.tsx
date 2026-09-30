@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { COMPANION_URL } from "@/lib/constants";
+import demoVideo from "@/assets/Student Companion AI Platform Demo.mp4";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -118,6 +119,33 @@ function Services() {
                 Try it now <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Demo video */}
+        <div className="mb-16 rounded-2xl border border-border bg-card overflow-hidden">
+          <div className="px-8 pt-8 pb-6 lg:px-10">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
+              <span className="section-label">See it in action</span>
+            </div>
+            <h2 className="font-display text-2xl text-foreground">
+              Platform demo
+            </h2>
+            <p className="mt-2 text-sm text-ink-soft max-w-xl">
+              Watch how Student Companion AI answers real student questions — citing the source every time.
+            </p>
+          </div>
+          <div className="px-8 pb-8 lg:px-10">
+            <video
+              controls
+              preload="metadata"
+              className="w-full rounded-xl border border-border bg-black"
+              style={{ maxHeight: "560px" }}
+            >
+              <source src={demoVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 

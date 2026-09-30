@@ -13,7 +13,7 @@ import logoImg    from "@/assets/logo-new.png";
 import andrewLaptop from "@/assets/andrew-laptop.jpg";
 import partnerCloudvisor from "@/assets/Cloudvisor.png";
 
-import teamAndrew  from "@/assets/Andrew.png";
+import teamAndrew  from "@/assets/Andrew.jpg";
 import teamNgum    from "@/assets/Ngum.png";
 import teamMarvin  from "@/assets/02.-marvin (1).jpg";
 import teamNuake   from "@/assets/Nuake.jpg";
@@ -444,14 +444,15 @@ function Services() {
           </div>
           <h3 className="font-display text-2xl text-foreground mb-3">Career Services</h3>
           <p className="text-sm leading-relaxed text-ink-soft mb-8">
-            Guidance on internships, graduate opportunities, CV reviews, and
-            career pathways — tailored to where ALU students actually end up.
-            Connects you to real opportunities, not generic advice.
+            Curated from trusted sources across Africa and globally — helping African
+            undergraduate students and recent graduates find opportunities that actually
+            match their level.
           </p>
           <ul className="mt-auto space-y-3">
             {[
-              "Internship and job opportunity discovery",
-              "CV and cover letter guidance",
+              "Internships, jobs, fellowships, scholarships, and competitions discovery",
+              "CV checker and opportunity matching",
+              "Cover letter guidance",
               "Alumni network insights",
               "Career pathway planning",
             ].map((item) => (
@@ -538,7 +539,7 @@ const TEAM = [
     meta: "BSc (Hons) Entrepreneurial Leadership",
     blurb: "Vision, partnerships & overall strategy across all phases.",
     photo: teamAndrew,
-    pos: "center top",
+    pos: "center 15%",
   },
   {
     name: "Dieudonne Ngum",
@@ -562,7 +563,7 @@ const TEAM = [
     meta: "Growth & Market Research",
     blurb: "Drives market research and data collection.",
     photo: teamNuake,
-    pos: "center 20%",
+    pos: "center 30%",
   },
   {
     name: "Deborah Isimibi",
@@ -610,7 +611,7 @@ function Team() {
               key={m.name}
               className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-foreground/30 hover:shadow-lg"
             >
-              <div className="aspect-[4/3] overflow-hidden" style={{ backgroundColor: "var(--sand-deep)" }}>
+              <div className="aspect-[4/5] overflow-hidden" style={{ backgroundColor: "var(--sand-deep)" }}>
                 <img
                   src={m.photo}
                   alt={m.name}

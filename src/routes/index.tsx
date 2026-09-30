@@ -11,9 +11,9 @@ import {
 
 import logoImg    from "@/assets/logo-new.png";
 import andrewLaptop from "@/assets/andrew-laptop.jpg";
-import partnerCloudvisor from "@/assets/partner-cloudvisor.png";
+import partnerCloudvisor from "@/assets/Cloudvisor.png";
 
-import teamAndrew  from "@/assets/Andrew.jpg";
+import teamAndrew  from "@/assets/Andrew.png";
 import teamNgum    from "@/assets/Ngum.png";
 import teamMarvin  from "@/assets/02.-marvin (1).jpg";
 import teamNuake   from "@/assets/Nuake.jpg";
@@ -538,6 +538,7 @@ const TEAM = [
     meta: "BSc (Hons) Entrepreneurial Leadership",
     blurb: "Vision, partnerships & overall strategy across all phases.",
     photo: teamAndrew,
+    pos: "center top",
   },
   {
     name: "Dieudonne Ngum",
@@ -545,6 +546,7 @@ const TEAM = [
     meta: "BSc (Hons) Software Engineering",
     blurb: "AI model development, system integration & platform maintenance.",
     photo: teamNgum,
+    pos: "center top",
   },
   {
     name: "Marvin Mayonga Ogore",
@@ -552,6 +554,7 @@ const TEAM = [
     meta: "Machine Learning Coach",
     blurb: "Strategic oversight, academic alignment & quality assurance.",
     photo: teamMarvin,
+    pos: "center top",
   },
   {
     name: "Nuake Justice Tsekpo Jr",
@@ -559,6 +562,7 @@ const TEAM = [
     meta: "Growth & Market Research",
     blurb: "Drives market research and data collection.",
     photo: teamNuake,
+    pos: "center 20%",
   },
   {
     name: "Deborah Isimibi",
@@ -566,6 +570,7 @@ const TEAM = [
     meta: "Student Experience",
     blurb: "Voices Student Companion's AI audio and voice persona.",
     photo: teamDeborah,
+    pos: "center top",
   },
   {
     name: "Gilbert Muramirabagabo",
@@ -573,6 +578,7 @@ const TEAM = [
     meta: "Cloud & Security",
     blurb: "Cloud Architecture Engineer & Cybersecurity Support.",
     photo: teamGilbert,
+    pos: "center top",
   },
 ];
 
@@ -608,7 +614,8 @@ function Team() {
                 <img
                   src={m.photo}
                   alt={m.name}
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: m.pos }}
                   loading="lazy"
                 />
               </div>

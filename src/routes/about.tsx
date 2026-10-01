@@ -27,11 +27,11 @@ function About() {
             <span className="section-label">Who We Are</span>
           </div>
           <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
-            What Student Companion AI does.
+            Why Student Companion AI?
           </h1>
           <p className="mt-6 text-base leading-relaxed text-ink-soft max-w-xl">
-            We're students at African Leadership University in Kigali. We kept losing
-            afternoons to questions that should have taken thirty seconds.
+            We're students at African Leadership University in Kigali, building
+            for students and staff at higher learning institutions in Rwanda.
           </p>
         </div>
 

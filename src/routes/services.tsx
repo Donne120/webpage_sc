@@ -45,9 +45,9 @@ function Services() {
             </div>
             <h2 className="font-display text-2xl text-foreground mb-3">Career Services</h2>
             <p className="text-sm leading-relaxed text-ink-soft mb-8">
-              Curated from trusted sources across Africa and globally — helping African
-              undergraduate students and recent graduates find opportunities that actually
-              match their level.
+              We curate opportunities from trusted sources across Africa and globally —
+              helping African undergraduate students and recent graduates find
+              opportunities that actually match their level.
             </p>
             <ul className="mt-auto space-y-3">
               {[
@@ -91,9 +91,12 @@ function Services() {
             </div>
             <h2 className="font-display text-2xl text-paper mb-3">Support Platform</h2>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "oklch(0.985 0.008 80 / 0.65)" }}>
-              An AI assistant trained on your institution's actual documents —
-              handbooks, academic calendars, policies. It answers from the source,
-              cites the page, and escalates to a human when it should.
+              Student Companion AI is an AI-powered assistant that connects to your
+              institution's own systems to answer everyday students' administrative
+              questions: deadlines, support forms, office hours, and more — and routes
+              to human support when needed. It gives students across Rwandan higher
+              education faster, clearer access to the information and opportunities
+              they need, while allowing staff to focus on higher priority tasks.
             </p>
             <ul className="mt-auto space-y-3">
               {[

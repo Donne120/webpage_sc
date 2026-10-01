@@ -51,9 +51,10 @@ function Home() {
               </h1>
 
               <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft lg:text-lg">
-                Ask where the deferral form lives, or what your scholarship does if
-                you drop a course. It reads your institution's actual policies and
-                answers at two in the morning, when the registrar is closed.
+                Ask where the deferral form lives, how to renew your student permit,
+                or what your scholarship does if you drop a course. Student Companion AI
+                reads your institution's real policies and answers — even at 2 a.m.,
+                when the office is closed.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">

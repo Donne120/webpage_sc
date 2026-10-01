@@ -42,9 +42,12 @@ function About() {
               The Problem
             </p>
             <p className="text-base leading-relaxed text-ink-soft">
-              Students at African universities face delays and fragmented access
-              to academic and administrative support — leading to information
-              inequality, disengagement, and missed opportunities.
+              In many African universities, students experience delays and fragmented
+              access to academic and administrative support. Without a centralized
+              solution, student needs go unmet and service delivery remains inefficient,
+              resulting in information inequality, disengagement, and missed
+              opportunities — while institutions lack scalable, well-governed, and
+              ethical AI solutions to address these gaps.
             </p>
           </div>
 

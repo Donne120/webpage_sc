@@ -44,7 +44,7 @@ const TEAM = [
   {
     name: "Nuake Justice Tsekpo Jr",
     role: "Growth & Insights Lead",
-    meta: "Growth & Market Research",
+    meta: "BSc (Hons) International Business & Trade · ALU, Rwanda",
     blurb: "Drives market research and data collection.",
     photo: teamNuake,
     pos: "center 30%",
@@ -52,15 +52,15 @@ const TEAM = [
   {
     name: "Deborah Isimibi",
     role: "Voice & Experience Assistant",
-    meta: "Student Experience",
+    meta: "BSc (Hons) Entrepreneurial Leadership · ALU, Rwanda",
     blurb: "Voices Student Companion's AI audio and voice persona.",
     photo: teamDeborah,
     pos: "center top",
   },
   {
     name: "Gilbert Muramirabagabo",
-    role: "Cloud Architecture & Cybersecurity Support",
-    meta: "Cloud & Security",
+    role: "Cloud Architecture, Software Engineering & Cybersecurity Support",
+    meta: "BSc (Hons) Software Engineering · ALU, Rwanda",
     blurb: "Cloud Architecture Engineer & Cybersecurity Support.",
     photo: teamGilbert,
     pos: "center top",
@@ -79,11 +79,11 @@ function Team() {
             <span className="section-label">Meet the Team</span>
           </div>
           <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
-            Who's who.
+            Meet the team.
           </h1>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">
-            Five people, most of us still enrolled. We're building for a problem
-            we had last semester, and some of us still have.
+            Meet the team working on bridging the information and opportunity gap
+            between students and their learning institutions.
           </p>
         </div>
 

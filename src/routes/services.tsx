@@ -73,11 +73,8 @@ function Services() {
 
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-            <span className="section-label">Products &amp; Services</span>
-          </div>
-          <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
+          <p className="section-label mb-3">Products &amp; Services</p>
+          <h1 className="text-[clamp(2.25rem,4.4vw,3.4rem)] leading-[1.1] text-foreground">
             Support from the first question to the first job.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft">
@@ -240,10 +237,7 @@ function Services() {
         {/* Demo video */}
         <div className="mb-16 rounded-2xl border border-border bg-card overflow-hidden">
           <div className="px-8 pt-8 pb-6 lg:px-10">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-              <span className="section-label">See it in action</span>
-            </div>
+            <p className="section-label mb-3">See it in action</p>
             <h2 className="font-display text-2xl text-foreground">
               Platform demo
             </h2>

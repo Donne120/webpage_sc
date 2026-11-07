@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { CONTACT_EMAIL, COMPANION_URL, SOCIAL } from "@/lib/constants";
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const ICONS: Record<string, JSX.Element> = {
+const ICONS: Record<string, ReactNode> = {
   LinkedIn: (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -46,15 +47,9 @@ function Contact() {
 
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-            <span className="section-label">Contact</span>
-          </div>
-          <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
-            Get in touch with{" "}
-            <span className="serif-italic" style={{ color: "var(--terracotta)" }}>
-              our team.
-            </span>
+          <p className="section-label mb-3">Contact</p>
+          <h1 className="text-[clamp(2.25rem,4.4vw,3.4rem)] leading-[1.1] text-foreground">
+            Get in touch with our team.
           </h1>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">
             A small team in Kigali reads every message. Expect a reply within a day or two.

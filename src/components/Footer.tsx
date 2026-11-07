@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import logoImg from "@/assets/logo-new.png";
 import partnerCloudvisor from "@/assets/Cloudvisor.png";
-import { CONTACT_EMAIL, SOCIAL, NAV_LINKS } from "@/lib/constants";
+import { CONTACT_EMAIL, SOCIAL, NAV_LINKS, SERVICES } from "@/lib/constants";
 
 /* ── Social icons ── */
-const ICONS: Record<string, JSX.Element> = {
+const ICONS: Record<string, ReactNode> = {
   LinkedIn: (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -35,36 +36,34 @@ export function Footer() {
   return (
     <footer style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}>
       {/* Partner logos */}
-      <div className="border-b" style={{ borderColor: "oklch(0.985 0.008 80 / 0.1)" }}>
+      <div className="border-b" style={{ borderColor: "oklch(1 0 0 / 0.1)" }}>
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
-          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(0.985 0.008 80 / 0.35)" }}>
+          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(1 0 0 / 0.35)" }}>
             Our Partners
           </p>
           <div className="flex flex-wrap items-center justify-center gap-10">
-            <img
-              src={partnerCloudvisor}
-              alt="Cloudvisor powered by AWS"
-              className="h-10 object-contain opacity-70 transition-opacity hover:opacity-100"
-            />
+            <span className="inline-flex items-center rounded-lg bg-white px-5 py-3">
+              <img src={partnerCloudvisor} alt="Cloudvisor, powered by AWS" className="h-8 object-contain" />
+            </span>
           </div>
         </div>
       </div>
 
       {/* Main footer */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img src={logoImg} alt="Student Companion AI" className="h-10 w-10 rounded-xl object-cover" />
               <div className="leading-tight">
-                <div className="font-display text-base text-paper">Student Companion AI</div>
-                <div className="text-[10px] uppercase tracking-widest" style={{ color: "oklch(0.985 0.008 80 / 0.4)" }}>Kigali, Rwanda</div>
+                <div className="text-base font-semibold text-paper">Student Companion AI</div>
+                <div className="text-[10px] uppercase tracking-widest" style={{ color: "oklch(1 0 0 / 0.4)" }}>Kigali, Rwanda</div>
               </div>
             </Link>
-            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "oklch(0.985 0.008 80 / 0.55)" }}>
-              An AI-powered platform delivering seamless resource library and career
-              opportunities to universities and students in Rwanda and across Africa.
+            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "oklch(1 0 0 / 0.55)" }}>
+              The student support platform for universities and students in Rwanda and across
+              Africa: an AI assistant, Pathfinder, career opportunities and courses.
             </p>
             {/* Social icons */}
             <div className="mt-6 flex gap-3">
@@ -76,7 +75,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-9 w-9 items-center justify-center rounded-full border transition-all hover:border-terracotta hover:text-paper"
-                  style={{ borderColor: "oklch(0.985 0.008 80 / 0.2)", color: "oklch(0.985 0.008 80 / 0.6)" }}
+                  style={{ borderColor: "oklch(1 0 0 / 0.2)", color: "oklch(1 0 0 / 0.6)" }}
                 >
                   {ICONS[label]}
                 </a>
@@ -86,7 +85,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(0.985 0.008 80 / 0.35)" }}>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(1 0 0 / 0.35)" }}>
               Navigation
             </p>
             <ul className="space-y-2">
@@ -95,7 +94,7 @@ export function Footer() {
                   <Link
                     to={to}
                     className="text-sm transition-colors"
-                    style={{ color: "oklch(0.985 0.008 80 / 0.6)" }}
+                    style={{ color: "oklch(1 0 0 / 0.6)" }}
                   >
                     {label}
                   </Link>
@@ -104,9 +103,30 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Services */}
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(1 0 0 / 0.4)" }}>
+              Services
+            </p>
+            <ul className="space-y-2">
+              {SERVICES.map((s) => (
+                <li key={s.anchor}>
+                  <Link
+                    to="/services"
+                    hash={s.anchor}
+                    className="text-sm transition-colors hover:text-paper"
+                    style={{ color: "oklch(1 0 0 / 0.65)" }}
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact */}
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(0.985 0.008 80 / 0.35)" }}>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(1 0 0 / 0.35)" }}>
               Contact
             </p>
             <ul className="space-y-2">
@@ -114,12 +134,12 @@ export function Footer() {
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="text-sm transition-colors"
-                  style={{ color: "oklch(0.985 0.008 80 / 0.6)" }}
+                  style={{ color: "oklch(1 0 0 / 0.6)" }}
                 >
                   {CONTACT_EMAIL}
                 </a>
               </li>
-              <li className="text-sm" style={{ color: "oklch(0.985 0.008 80 / 0.6)" }}>
+              <li className="text-sm" style={{ color: "oklch(1 0 0 / 0.6)" }}>
                 Kigali, Rwanda
               </li>
             </ul>
@@ -128,12 +148,12 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t" style={{ borderColor: "oklch(0.985 0.008 80 / 0.1)" }}>
+      <div className="border-t" style={{ borderColor: "oklch(1 0 0 / 0.1)" }}>
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 sm:flex-row lg:px-10">
-          <p className="text-xs" style={{ color: "oklch(0.985 0.008 80 / 0.3)" }}>
+          <p className="text-xs" style={{ color: "oklch(1 0 0 / 0.3)" }}>
             © {new Date().getFullYear()} Student Companion AI · Made in Kigali.
           </p>
-          <p className="text-xs" style={{ color: "oklch(0.985 0.008 80 / 0.3)" }}>
+          <p className="text-xs" style={{ color: "oklch(1 0 0 / 0.3)" }}>
             All rights reserved.
           </p>
         </div>

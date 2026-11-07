@@ -10,7 +10,7 @@ export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Team — Student Companion AI" },
-      { name: "description", content: "Meet the six people building Student Companion AI." },
+      { name: "description", content: "Meet the people building Student Companion AI." },
     ],
   }),
   component: Team,
@@ -74,11 +74,8 @@ function Team() {
 
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-10" style={{ backgroundColor: "var(--terracotta)" }} />
-            <span className="section-label">Meet the Team</span>
-          </div>
-          <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
+          <p className="section-label mb-3">Meet the Team</p>
+          <h1 className="text-[clamp(2.25rem,4.4vw,3.4rem)] leading-[1.1] text-foreground">
             Meet the team.
           </h1>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">
@@ -92,20 +89,20 @@ function Team() {
           {TEAM.map((m) => (
             <div
               key={m.name}
-              className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-foreground/30 hover:shadow-lg"
+              className="overflow-hidden rounded-xl border border-border bg-card"
             >
               <div className="aspect-[4/5] overflow-hidden" style={{ backgroundColor: "var(--sand-deep)" }}>
                 <img
                   src={m.photo}
                   alt={m.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                   style={{ objectPosition: m.pos }}
                   loading="lazy"
                 />
               </div>
               <div className="p-6">
-                <p className="font-display text-xl leading-snug text-foreground">{m.name}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--terracotta)" }}>
+                <p className="text-lg font-semibold leading-snug text-foreground">{m.name}</p>
+                <p className="mt-1 text-sm font-medium" style={{ color: "var(--terracotta)" }}>
                   {m.role}
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">{m.meta}</p>

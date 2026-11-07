@@ -5,9 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Student Companion AI — Warm Sand design system.
- * Editorial serif + warm neutrals + clay accent.
- * All colors in oklch.
+ * Student Companion AI design system.
+ * One typeface (Inter), white and warm-grey neutrals, near-black text,
+ * and the gold of the logo as the only accent. The --terracotta and
+ * --clay names are kept so existing classes keep working; they now hold
+ * the brand gold.
  */
 
 @theme inline {
@@ -48,25 +50,25 @@
   --color-terracotta: var(--terracotta);
   --color-sage: var(--sage);
   --color-butter: var(--butter);
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-hand: "Caveat", "Bradley Hand", cursive;
+  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.625rem;
 
-  /* Warm Sand palette */
-  --paper: oklch(0.985 0.008 80);            /* #faf8f5 */
-  --sand: oklch(0.955 0.014 78);             /* #f0ebe3 */
-  --sand-deep: oklch(0.84 0.035 75);         /* #c9b99a */
-  --clay: oklch(0.58 0.16 38);               /* terracotta — charming, alive */
-  --clay-soft: oklch(0.72 0.12 40);
-  --terracotta: oklch(0.62 0.18 35);
-  --sage: oklch(0.68 0.06 145);              /* soft sage secondary */
-  --butter: oklch(0.92 0.08 90);             /* warm pale yellow */
-  --ink: oklch(0.22 0.015 60);               /* near-black warm */
-  --ink-soft: oklch(0.42 0.015 60);
+  /* Neutrals and the brand gold (from the logo) */
+  --paper: oklch(1 0 0);                     /* #ffffff */
+  --sand: oklch(0.97 0.004 85);              /* #f6f5f2 */
+  --sand-deep: oklch(0.9 0.01 85);           /* #e4e1da */
+  --clay: oklch(0.56 0.11 82);               /* gold, for text and lines */
+  --clay-soft: oklch(0.72 0.12 85);
+  --terracotta: oklch(0.56 0.11 82);         /* #9a7a16 */
+  --gold: oklch(0.74 0.14 85);               /* #d1a52a, logo gold */
+  --sage: oklch(0.68 0.06 145);
+  --butter: oklch(0.95 0.05 90);
+  --ink: oklch(0.2 0.01 70);                 /* #1c1a17 */
+  --ink-soft: oklch(0.45 0.01 70);           /* #5f5a54 */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -84,8 +86,8 @@
   --accent-foreground: var(--paper);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: var(--paper);
-  --border: oklch(0.9 0.02 75);
-  --input: oklch(0.9 0.02 75);
+  --border: oklch(0.91 0.006 85);
+  --input: oklch(0.91 0.006 85);
   --ring: var(--clay);
 }
 
@@ -98,14 +100,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "ss02";
+    font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.022em;
   }
 
   ::selection {
@@ -117,16 +119,14 @@
 @utility section-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--clay);
 }
 
 @utility serif-italic {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--clay);
+  color: inherit;
 }
 
 @utility bento-card {

@@ -1,17 +1,70 @@
-import { createFileRoute } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { COMPANION_URL } from "@/lib/constants";
+import { COMPANION_URL, SERVICES } from "@/lib/constants";
 import demoVideo from "@/assets/Student Companion AI Platform Demo.mp4";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Products & Services — Student Companion AI" },
-      { name: "description", content: "Career Services and AI Support Platform — two ways Student Companion AI helps students succeed." },
+      { name: "description", content: "The AI Support Platform, Pathfinder, Career Services, free courses, and housing and travel support: how Student Companion AI helps students from their first question to their first job." },
     ],
   }),
   component: Services,
 });
+
+const svg = (children: ReactNode) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {children}
+  </svg>
+);
+
+const MORE = [
+  {
+    anchor: "pathfinder",
+    title: "Pathfinder",
+    accent: true,
+    icon: svg(<><circle cx="12" cy="12" r="10" /><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z" /></>),
+    body:
+      "Helps high school students find the universities and programmes that match their skills and learning profile, free and with no account needed.",
+    points: [
+      "Six short questions about subjects, strengths and plans",
+      "Programmes and universities across Africa, with accreditation checks",
+      "Students can ask a real adviser, and the universities they choose, for help",
+    ],
+    links: [{ label: "Start Pathfinder", href: `${COMPANION_URL}/pathfinder` }],
+  },
+  {
+    anchor: "courses",
+    title: "Free Courses",
+    accent: false,
+    icon: svg(<><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>),
+    body: "Short, practical courses that build the skills students need for study and for work.",
+    points: [
+      "Self-paced lessons, free to take",
+      "Practical digital and career skills",
+      "Alongside the opportunities on the career site",
+    ],
+    links: [{ label: "See the courses", href: "https://career.studentcompanionai.rw/courses.html" }],
+  },
+  {
+    anchor: "student-services",
+    title: "Housing & Travel",
+    accent: false,
+    icon: svg(<><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 22V12h6v10" /></>),
+    body:
+      "Practical help beyond the classroom, from members of the Student Companion AI team.",
+    points: [
+      "KigaliHouz: finding a place to live in Kigali",
+      "Itike: travel and getting around (Android app)",
+    ],
+    links: [
+      { label: "KigaliHouz", href: "https://www.kigalihouz.com" },
+      { label: "Itike", href: "https://play.google.com/store/apps/details?id=rw.itike.app" },
+    ],
+  },
+];
 
 function Services() {
   return (
@@ -25,15 +78,31 @@ function Services() {
             <span className="section-label">Products &amp; Services</span>
           </div>
           <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight">
-            Two ways we help students succeed.
+            Support from the first question to the first job.
           </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft">
+            One student support platform: answers about university life, help choosing the right
+            university, opportunities and skills for work, and practical help with housing and travel.
+          </p>
+          <nav aria-label="Our services" className="mt-8 flex flex-wrap gap-2">
+            {SERVICES.map((s) => (
+              <Link
+                key={s.anchor}
+                to="/services"
+                hash={s.anchor}
+                className="rounded-full border border-border px-4 py-2 text-sm text-ink-soft transition-colors hover:border-foreground hover:text-foreground"
+              >
+                {s.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Cards */}
         <div className="grid gap-6 md:grid-cols-2 mb-16">
 
           {/* Career Services */}
-          <div className="flex flex-col rounded-2xl border border-border bg-card p-8 lg:p-10">
+          <div id="career-services" className="scroll-mt-28 flex flex-col rounded-2xl border border-border bg-card p-8 lg:p-10">
             <div
               className="mb-7 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl"
               style={{ backgroundColor: "var(--ink)" }}
@@ -78,7 +147,8 @@ function Services() {
 
           {/* Support Platform */}
           <div
-            className="flex flex-col rounded-2xl border p-8 lg:p-10"
+            id="support-platform"
+            className="scroll-mt-28 flex flex-col rounded-2xl border p-8 lg:p-10 md:order-first"
             style={{ backgroundColor: "var(--ink)", borderColor: "var(--ink)", color: "var(--paper)" }}
           >
             <div
@@ -89,7 +159,7 @@ function Services() {
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </div>
-            <h2 className="font-display text-2xl text-paper mb-3">Support Platform</h2>
+            <h2 className="font-display text-2xl text-paper mb-3">AI Support Platform</h2>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "oklch(0.985 0.008 80 / 0.65)" }}>
               Student Companion AI is an AI-powered assistant that connects to your
               institution's own systems to answer everyday students' administrative
@@ -123,6 +193,48 @@ function Services() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* More ways we help */}
+        <div className="grid gap-6 md:grid-cols-3 mb-16">
+          {MORE.map((item) => (
+            <div
+              key={item.anchor}
+              id={item.anchor}
+              className="scroll-mt-28 flex flex-col rounded-2xl border border-border bg-card p-8"
+            >
+              <div
+                className="mb-6 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl"
+                style={{ backgroundColor: item.accent ? "var(--terracotta)" : "var(--ink)" }}
+              >
+                {item.icon}
+              </div>
+              <h2 className="font-display text-2xl text-foreground mb-3">{item.title}</h2>
+              <p className="text-sm leading-relaxed text-ink-soft mb-6">{item.body}</p>
+              <ul className="space-y-2.5 mb-8">
+                {item.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-sm text-ink-soft">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--terracotta)" }} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-6">
+                {item.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium transition-all hover:gap-3"
+                    style={{ color: "var(--terracotta)" }}
+                  >
+                    {link.label} <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Demo video */}

@@ -201,3 +201,116 @@
   animation: drawUnderline 1.6s 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+
+/* ── Branded devices (src/components/Devices.tsx) ─────────────────────
+   Graphite bodies with the Student Companion AI gold: a gold metal
+   frame on the phone and tablet, the gold name on the laptop and tablet
+   bezel. Sizes follow the container, so one device can be any width. */
+.device-gold-frame {
+  background: linear-gradient(145deg, #e6c25a, #a9831a 45%, #e0bb4f 70%, #9a7a16);
+}
+.device-cam {
+  position: absolute; top: 6px; left: 50%; width: 6px; height: 6px; margin-left: -3px;
+  border-radius: 50%; background: #3a3632;
+}
+.device-brand {
+  position: absolute; left: 0; right: 0; bottom: 9px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #d1a52a;
+}
+.device-brand img { width: 14px; height: 14px; border-radius: 4px; }
+.device-brand-sm { bottom: 3px; font-size: 8px; gap: 5px; }
+.device-brand-sm img { width: 10px; height: 10px; border-radius: 3px; }
+
+/* Laptop */
+.device-laptop { position: relative; }
+.device-laptop-lid {
+  position: relative; padding: 14px 14px 32px;
+  border-radius: 18px 18px 6px 6px;
+  background: linear-gradient(180deg, #2b2825, #1c1a17);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.device-laptop-screen {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 10;
+  object-fit: cover; object-position: top; border-radius: 4px; background: #fff;
+}
+.device-laptop-base {
+  position: relative; height: 18px; width: 108%; margin-left: -4%;
+  border-radius: 2px 2px 16px 16px;
+  background: linear-gradient(180deg, #ece9e3, #c7c2b9);
+  box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.5);
+}
+.device-laptop-base::before {
+  content: ""; position: absolute; top: 0; left: 50%; width: 18%; transform: translateX(-50%);
+  height: 6px; border-radius: 0 0 8px 8px; background: #b8b2a8;
+}
+.device-laptop-base::after {
+  content: ""; position: absolute; bottom: 0; left: 6%; right: 6%; height: 2px;
+  border-radius: 2px; background: #d1a52a; opacity: 0.55;
+}
+
+/* Tablet */
+.device-tablet { padding: 3px; border-radius: 34px; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.5); }
+.device-tablet-inner { position: relative; padding: 20px; border-radius: 31px; background: #141210; }
+.device-tablet-screen {
+  display: block; width: 100%; height: auto; aspect-ratio: 1180 / 820;
+  object-fit: cover; object-position: top; border-radius: 12px; background: #fff;
+}
+
+/* Phone: everything scales with the phone's width (container units). */
+.device-phone { container-type: inline-size; }
+.device-phone-body { position: relative; }
+.device-phone-frame { padding: 1.6cqw; border-radius: 18.4cqw; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.55); }
+.device-phone-inner { position: relative; padding: 4cqw; border-radius: 16.8cqw; background: #141210; }
+.device-phone-island {
+  position: absolute; z-index: 2; top: 7.2cqw; left: 50%; width: 31%; height: 8.8cqw;
+  transform: translateX(-50%); border-radius: 5cqw; background: #000;
+}
+.device-phone-display {
+  display: flex; flex-direction: column; overflow: hidden;
+  aspect-ratio: 390 / 844; border-radius: 13.2cqw; background: #fff;
+}
+.device-phone-status {
+  flex: none; height: 16cqw; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 8cqw 0 9.5cqw; font-size: 4.8cqw; font-weight: 600; color: #1c1a17;
+}
+.device-phone-icons { display: flex; align-items: center; gap: 1.4cqw; }
+.device-phone-icons i { display: block; border-radius: 0.4cqw; background: #1c1a17; }
+.device-phone-screen { display: block; width: 100%; flex: 1; min-height: 0; object-fit: cover; object-position: top; }
+.device-phone-btn { position: absolute; width: 1.6cqw; border-radius: 1cqw; background: #b8921f; }
+.device-phone-btn-1 { left: -1.2cqw; top: 18%; height: 5%; }
+.device-phone-btn-2 { left: -1.2cqw; top: 26%; height: 9%; }
+.device-phone-btn-3 { right: -1.2cqw; top: 24%; height: 12%; }
+
+/* Phone, back */
+.device-phone-back { container-type: inline-size; }
+.device-phone-back-shell {
+  aspect-ratio: 390 / 844; padding: 1.6cqw; border-radius: 18.4cqw;
+  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.55);
+}
+.device-phone-back-panel {
+  position: relative; height: 100%; border-radius: 16.8cqw;
+  background: linear-gradient(160deg, #24211d, #141210);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5cqw;
+}
+.device-phone-cams {
+  position: absolute; top: 7%; left: 7%; width: 34%; aspect-ratio: 1; border-radius: 9.6cqw;
+  background: #0d0c0b; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.device-phone-cams i {
+  position: absolute; width: 36%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, #2c3a4a 30%, #090909 32%, #1d1b19 60%);
+}
+.device-phone-cams i:nth-child(1) { top: 12%; left: 12%; }
+.device-phone-cams i:nth-child(2) { bottom: 12%; left: 12%; }
+.device-phone-cams i:nth-child(3) { top: 32%; right: 10%; }
+.device-phone-back-logo { width: 32%; height: auto; border-radius: 6.4cqw; }
+.device-phone-back-name {
+  color: #d1a52a; font-size: 7.2cqw; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; text-align: center; line-height: 1.6;
+}
+/* The laptop's bezel and name shrink with small laptops (phones). */
+.device-laptop { container-type: inline-size; }
+.device-laptop .device-laptop-lid { padding: clamp(8px, 1.7cqw, 14px) clamp(8px, 1.7cqw, 14px) clamp(20px, 3.8cqw, 32px); }
+.device-laptop .device-brand { bottom: clamp(5px, 1.1cqw, 9px); font-size: clamp(6.5px, 1.2cqw, 10px); }
+.device-laptop .device-brand img { width: clamp(9px, 1.7cqw, 14px); height: clamp(9px, 1.7cqw, 14px); }

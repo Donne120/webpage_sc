@@ -4,7 +4,9 @@ import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import andrewLaptop from "@/assets/andrew-laptop.jpg";
 import shotAssistant from "@/assets/screens/assistant.webp";
 import shotFollowup from "@/assets/screens/assistant-followup.webp";
-import shotPathfinder from "@/assets/screens/pathfinder.webp";
+import shotTablet from "@/assets/screens/tablet-pathfinder.webp";
+import shotPhone from "@/assets/screens/phone-assistant.webp";
+import { Laptop, Phone, PhoneBack, Tablet } from "@/components/Devices";
 import shotOpportunities from "@/assets/screens/opportunities.webp";
 import { COMPANION_URL, CONTACT_EMAIL, SERVICES } from "@/lib/constants";
 
@@ -26,27 +28,6 @@ export const Route = createFileRoute("/")({
 
 const PARTNER_MAIL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Student Companion AI for our institution")}`;
 
-/** A product screenshot in a plain browser-style frame. */
-function Screen({ src, alt, eager = false }: { src: string; alt: string; eager?: boolean }) {
-  return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_32px_-12px_rgba(0,0,0,0.12)]">
-      <div className="flex items-center gap-1.5 border-b border-border bg-sand px-4 py-2.5" aria-hidden>
-        <span className="h-2.5 w-2.5 rounded-full bg-sand-deep" />
-        <span className="h-2.5 w-2.5 rounded-full bg-sand-deep" />
-        <span className="h-2.5 w-2.5 rounded-full bg-sand-deep" />
-      </div>
-      <img
-        src={src}
-        alt={alt}
-        width={1280}
-        height={800}
-        loading={eager ? "eager" : "lazy"}
-        className="block h-auto w-full"
-      />
-    </div>
-  );
-}
-
 function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="section-label mb-3">{children}</p>;
 }
@@ -62,6 +43,7 @@ const FEATURES = [
       "Asks a follow-up question when it needs to, with one-tap replies",
       "Reads documents and photos students attach, by voice or text",
     ],
+    device: "laptop" as const,
     image: shotFollowup,
     alt: "Student Companion AI asking which campus the student is on before answering, with one-tap replies",
     cta: { label: "Launch Companion", href: COMPANION_URL },
@@ -72,7 +54,8 @@ const FEATURES = [
     body:
       "Six short questions about subjects, strengths, interests and budget. Pathfinder suggests fields and real universities across Africa that match the student's skills and learning profile, with accreditation checks, and lets them ask an adviser or the universities they choose for help.",
     points: ["Free, with no account needed", "27 African countries", "Universities and programmes with verified links"],
-    image: shotPathfinder,
+    device: "tablet" as const,
+    image: shotTablet,
     alt: "Pathfinder asking where the student is finishing high school",
     cta: { label: "Start Pathfinder", href: `${COMPANION_URL}/pathfinder` },
   },
@@ -82,6 +65,7 @@ const FEATURES = [
     body:
       "A curated list of internships, jobs, scholarships, fellowships and competitions for African students, filtered by country and year of study, alongside free courses on practical skills. Each listing links to the organisation's own page to apply.",
     points: ["Verified sources across Africa and globally", "Filter by country, year and remote work", "Free short courses"],
+    device: "laptop" as const,
     image: shotOpportunities,
     alt: "The Student Companion AI opportunities list with filters for country and year of study",
     cta: { label: "Browse opportunities", href: "https://career.studentcompanionai.rw/opportunities.html" },
@@ -128,7 +112,16 @@ function Home() {
               </p>
             </div>
             <div className="lg:col-span-7">
-              <Screen src={shotAssistant} alt="Student Companion AI answering a student's question, with sources" eager />
+              {/* Laptop and phone together; on small screens the laptop alone. */}
+              <div className="relative pb-6 sm:pr-[14%]">
+                <Laptop src={shotAssistant} alt="Student Companion AI on a laptop, answering a student's question with its sources" eager />
+                <Phone
+                  src={shotPhone}
+                  alt="Student Companion AI on a phone, answering the same question"
+                  eager
+                  className="absolute bottom-0 right-0 hidden w-[27%] sm:block"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -203,7 +196,11 @@ function Home() {
                 </a>
               </div>
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-1 lg:col-start-1" : ""}`}>
-                <Screen src={f.image} alt={f.alt} />
+                {f.device === "tablet" ? (
+                  <Tablet src={f.image} alt={f.alt} className="mx-auto max-w-[640px]" />
+                ) : (
+                  <Laptop src={f.image} alt={f.alt} />
+                )}
               </div>
             </div>
           </div>
@@ -278,9 +275,10 @@ function Home() {
       </section>
 
       {/* Closing call to action */}
-      <section style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}>
+      <section className="overflow-hidden" style={{ backgroundColor: "var(--ink)", color: "var(--paper)" }}>
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 py-16 lg:flex-row lg:items-center lg:px-10">
-          <div className="max-w-2xl">
+          <PhoneBack className="hidden w-[150px] flex-none lg:block" />
+          <div className="max-w-2xl lg:mr-auto lg:ml-10">
             <h2 className="text-3xl leading-tight" style={{ color: "var(--paper)" }}>
               Bring Student Companion AI to your institution.
             </h2>
